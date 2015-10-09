@@ -5,15 +5,16 @@ require.config({
     baseUrl:"",
     paths: {
         "jquery": "jquery",
-        'angularjs': 'angularjs'
+        'angular': 'angular'
     },
     //used for configuring incompatible modules
     shim: {
-        'angularjs': {
+        'angular': {
            // deps: ['jquery'],
-            exports:'angularjs'
+            exports:'angular'
         }
-    }
+    },
+    deps: ['bootstrapAngular']
 });
 
 require(['jquery'], function ($) {
@@ -25,4 +26,7 @@ require(['jquery'], function ($) {
 require(['mymodule'], function (mymodule) {
     console.log(mymodule.color);
     console.log(mymodule.size);
+    mymodule.log();
 });
+
+
