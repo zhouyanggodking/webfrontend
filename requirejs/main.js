@@ -4,8 +4,8 @@
 require.config({
     baseUrl:"",
     paths: {
-        "jquery": "jquery",
-        'angular': 'angular'
+        "jquery": "lib/jquery",
+        'angular': 'lib/angular'
     },
     //used for configuring incompatible modules
     shim: {
