@@ -1,4 +1,4 @@
-﻿define(['require', 'angular', 'jquery', 'app'], function (require, angular, $, app) {
+﻿define(['require', 'angularjs', 'jquery', 'app'], function (require, angular, $, app) {
     //require([''], function () {
     $(document).ready(function () {
 

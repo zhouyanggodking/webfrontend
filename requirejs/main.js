@@ -5,13 +5,18 @@ require.config({
     baseUrl:"",
     paths: {
         "jquery": "lib/jquery",
-        'angular': 'lib/angular'
+        'angularjs': 'lib/angular',
+        'my_module': 'mymodule',
+        'testmodule': 'scratch'
     },
-    //used for configuring incompatible modules
+    //sused for configuring incompatible modules
     shim: {
-        'angular': {
+        'angularjs': {
            // deps: ['jquery'],
             exports:'angular'
+        },
+        'testmodule': {
+            exports: 'scratchModule'
         }
     },
     deps: ['bootstrapAngular']
@@ -23,10 +28,14 @@ require(['jquery'], function ($) {
     });
 });
 
-require(['mymodule'], function (mymodule) {
+require(['my_module'], function (mymodule) {
     console.log(mymodule.color);
     console.log(mymodule.size);
     mymodule.log();
+});
+
+require(['testmodule'], function (testmodule) {
+    testmodule.func1();
 });
 
 

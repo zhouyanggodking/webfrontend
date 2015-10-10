@@ -1,4 +1,5 @@
-﻿var myModule = (function () {
+﻿//not AMD module
+(function (window) {
     var func1 = function () {
         console.log("first scratch");
     };
@@ -7,12 +8,11 @@
         console.log("second scratch");
     };
 
-    return {
+    window.scratchModule = {
         func1: func1,
-        func2: func2
-    }
-}
-)();
+        func2: func2,
+    };
 
-myModule.func1();
-myModule.func2();
+    return scratchModule
+}
+)(window);
