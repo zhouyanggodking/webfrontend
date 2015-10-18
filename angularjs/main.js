@@ -1,12 +1,18 @@
 ﻿require.config({
     paths: {
         'jquery': 'lib/jquery',
-        'angular': 'lib/angular'
+        'angular': 'lib/angular',
+        'require': 'lib/require',
+        'angularRoute': 'lib/angular-route'
     },
 
     shim: {
         'angular': {
             exports: 'angular'
+        },
+        'angularRoute': {
+            exports: 'ngRoute',
+            deps:['angular']
         }
     }
 });
