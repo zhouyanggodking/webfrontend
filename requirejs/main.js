@@ -29,9 +29,10 @@ require(['jquery'], function ($) {
 });
 
 require(['my_module'], function (mymodule) {
-    console.log(mymodule.color);
-    console.log(mymodule.size);
-    mymodule.log();
+    //console.log(mymodule.color);
+    //console.log(mymodule.size);
+    //mymodule.log();
+    mymodule();
 });
 
 require(['testmodule'], function (testmodule) {

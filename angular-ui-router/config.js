@@ -24,6 +24,64 @@
                      $scope.text = "Godking paragraph";
                  }
              })
+            .state('userlist', {
+                url: '/userlist',
+                templateUrl: 'views/userlist.html',
+                controller: function ($scope) {
+                    $scope.users = [{
+                        id: 1,
+                        name: 'godking',
+                        title: 'CEO',
+                        email: 'godking@godking.com'
+                    }, {
+                        id: 2,
+                        name: 'oceansky',
+                        title: 'CFO',
+                        email: 'oceansky@oceansky.com'
+                    }, {
+                        id: 3,
+                        name: 'Sawyer',
+                        title: 'DEV',
+                        email: 'Sawyer@advent.com'
+                    }];
+                }
+            })
+            .state('userdetail', {
+                url: '/user/:userid',
+                templateUrl: 'views/user-detail.html',
+                controller: function ($scope, $stateParams) {
+                    console.log("king");
+                    $scope.userid = $stateParams.userid;                    
+
+                    $scope.users = [{
+                        id: 1,
+                        name: 'godking',
+                        title: 'CEO',
+                        email: 'godking@godking.com'
+                    }, {
+                        id: 2,
+                        name: 'oceansky',
+                        title: 'CFO',
+                        email: 'oceansky@oceansky.com'
+                    }, {
+                        id: 3,
+                        name: 'Sawyer',
+                        title: 'DEV',
+                        email: 'Sawyer@advent.com'
+                    }];
+
+                    $scope.currentUser = findCurrUser($scope.userid);
+
+                    function findCurrUser(userid) {
+                        for (var i = 0; i < $scope.users.length; ++i) {
+                            if ($scope.users[i].id == userid) {
+                                return $scope.users[i];
+                            }
+                        }
+                        return undefined;
+                    }
+                }
+            })
             .state('about', {
                 url: '/about',
                 views: {

@@ -1,7 +1,5 @@
-﻿define({
-    color: 'black',
-    size: '32',
-    log: function(){
-        console.log(this.color +' : '+ this.size);
+﻿define([], function () {
+    return function () {
+        console.log('king');
     }
 });
