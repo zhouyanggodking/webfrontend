@@ -118,6 +118,10 @@
                     }
                 }
 
+            })
+            .state('modal', {
+                url: '/modal',
+                templateUrl:'views/modal.html'
             });
     };
 });
