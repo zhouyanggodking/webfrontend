@@ -4,7 +4,8 @@
         'require': 'lib/require',
         'ui.router': 'lib/angular-ui-router',
         'jquery': 'lib/jquery',
-        'bootstrap':'lib/bootstrap'
+        'bootstrap': 'lib/bootstrap',
+        'tokenfield':'lib/bootstrap-tokenfield.min'
     },
     shim: {
         'angular': {
@@ -13,11 +14,12 @@
         'ui.router': {
             deps:['angular']
         },
-        'bootstrap':['jquery']
+        'bootstrap': ['jquery'],
+        'tokenfield':['bootstrap']
     }
 
 });
 
-require(['angular','bootstrap', 'app'], function (angular) {
+require(['angular','bootstrap', 'app', 'tokenfield'], function (angular) {
     angular.bootstrap(document, ['app']);
 });

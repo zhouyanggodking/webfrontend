@@ -121,7 +121,10 @@
             })
             .state('modal', {
                 url: '/modal',
-                templateUrl:'views/modal.html'
+                templateUrl: 'views/modal.html',
+                controller: function ($scope) {
+                    $('#tokenfield').tokenfield();
+                }
             });
     };
 });
