@@ -1,5 +1,5 @@
 ﻿define([], function () {
-    return function ($stateProvider, $urlRouterProvider) {
+    var func = function ($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise('/home');
 
         $stateProvider
@@ -13,5 +13,8 @@
                 controller: 'serviceDemoCtrl'
             })
         ;
-    }
+    };
+
+    func.$inject = ['$stateProvider', '$urlRouterProvider'];
+    return func;
 });
