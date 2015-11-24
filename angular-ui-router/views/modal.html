@@ -44,8 +44,14 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="button" class="btn btn-info" ng-click="reset()">Reset</button>
+                        <button type="button" class="btn btn-info" ng-click="reset()">Reset</button>                        
                     </fieldset>
+                    <hr />
+                    <table class="table">
+                        <tr ng-repeat="url in urls" class="alert">
+                            <td>{{url}}<button type="button" class="close" ng-click="remove(urls, $index)" data-dismiss="alert">&times;</button></td>
+                        </tr>
+                    </table>
                 </form>
             </div>
             <div class="modal-footer">
