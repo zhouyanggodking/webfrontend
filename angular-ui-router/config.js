@@ -123,6 +123,12 @@
                 url: '/modal',
                 templateUrl: 'views/modal.html',
                 controller: 'modalCtrl'
-            });
+            })
+            .state('duallistbox', {
+                url: '/duallistbox',
+                templateUrl: 'views/duallistbox.html',
+                controller:'duallistboxCtrl'
+            })
+        ;
     };
 });

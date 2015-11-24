@@ -6,7 +6,8 @@
         'jquery': 'lib/jquery',
         'bootstrap': 'lib/bootstrap',
         'tokenfield': 'lib/bootstrap-tokenfield.min',
-        'uivalidator':'lib/validator.min'
+        'uivalidator': 'lib/validator.min',
+        'duallistbox': 'lib/jquery.bootstrap-duallistbox'
     },
     shim: {
         'angular': {
@@ -17,11 +18,12 @@
         },
         'bootstrap': ['jquery'],
         'tokenfield': ['bootstrap'],
-        'uivalidator':['jquery']
+        'uivalidator': ['jquery'],
+        'duallistbox': ['jquery']
     }
 
 });
 
-require(['angular','bootstrap', 'app', 'tokenfield', 'uivalidator'], function (angular) {
+require(['angular', 'bootstrap', 'app', 'tokenfield', 'uivalidator', 'duallistbox'], function (angular) {
     angular.bootstrap(document, ['app']);
 });
