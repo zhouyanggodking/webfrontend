@@ -12,6 +12,11 @@
                 templateUrl: 'views/service-demo.html',
                 controller: 'serviceDemoCtrl'
             })
+            .state('directive-demo', {
+                url: '/directive-demo',
+                templateUrl: 'views/directive-demo.html',
+                controller:'directiveDemoCtrl'
+            })
         ;
     };
 
