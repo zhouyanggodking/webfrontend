@@ -2,14 +2,18 @@
     var fn = function () {
         var directiveDef = {
             restrict: 'E',
-            template: '<div>directive-demo</div>',
+            template: '<div>directive - {{directiveScopeAttr}} <span ></span></div>',
             //templateUrl,
             replace: true,
-            transclude: false,
-            scope: false,
-            controller: function ($scope, $element, $attrs, $transclude) { },
+            //transclude: false,
+            scope: {
+                directiveScopeAttr: '@'
+            },
+            controller: function ($scope, $element, $attrs, $transclude) {
+                $scope.directiveScopeAttr = "godking";
+            },
             //require: ^?direciveName
-            link: function(scope, iElement, iAttr){}
+            //link: function(scope, iElement, iAttr){}
         };
 
         return directiveDef;
