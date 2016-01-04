@@ -1,6 +1,22 @@
-﻿<div class="jumbotron text-center">
-    {{test}}
-    
+﻿<div class="jumbotron">
+    <button class="btn btn-info" ng-click="generate()">Generate Reds</button>
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>Reds</td>
+                    <td>Blue</td>
+                </tr>                
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{results_reds}}</td>
+                    <td>{{results_blue}}</td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
 </div>
 
 <div ui-view></div>

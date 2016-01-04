@@ -6,9 +6,28 @@
         31, 32, 33];
 
         //var rand = Math.floor(Math.random() * 33);//get random number from 0 ~ 32
-        $scope.results_reds = generateReds();
-        $scope.results_blue = generateBlue();
+        //$scope.results_reds = generateReds();
+        //$scope.results_blue = generateBlue();
 
+        //$scope.generateReds = generateReds;
+        //$scope.generateBlue = generateBlue;
+
+        $scope.generate = function () {
+            var max_times = 10000;
+            var min_times = 1000;
+            var times = Math.floor(Math.random() * (max_times - min_times)) + min_times;
+            $scope.iterTimes = times;
+
+            for (var t = 0; t < times; ++t) {
+                $scope.results_reds = generateReds();
+                $scope.results_blue = generateBlue();
+                //$scope.$apply();
+                console.log(t);
+            }
+            console.log($scope.results_reds);
+            console.log($scope.results_blue = generateBlue());
+            console.log($scope.reds);
+        };
 
         function generateReds() {
             var reds = $scope.reds;
