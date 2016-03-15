@@ -1,9 +1,6 @@
 ﻿define([], function () {
     var fn = function ($scope) {
-        $scope.reds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
-        11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-        21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
-        31, 32, 33];
+        
 
         //var rand = Math.floor(Math.random() * 33);//get random number from 0 ~ 32
         //$scope.results_reds = generateReds();
@@ -13,6 +10,11 @@
         //$scope.generateBlue = generateBlue;
 
         $scope.generate = function () {
+            $scope.reds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+                11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+                21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
+                31, 32, 33];
+
             var max_times = 10000;
             var min_times = 1000;
             var times = Math.floor(Math.random() * (max_times - min_times)) + min_times;
@@ -22,11 +24,11 @@
                 $scope.results_reds = generateReds();
                 $scope.results_blue = generateBlue();
                 //$scope.$apply();
-                console.log(t);
+                //console.log(t);
             }
-            console.log($scope.results_reds);
-            console.log($scope.results_blue = generateBlue());
-            console.log($scope.reds);
+            //console.log($scope.results_reds);
+            //console.log($scope.results_blue);
+            //console.log($scope.reds);
         };
 
         function generateReds() {
@@ -46,9 +48,13 @@
 
             //console.log(indexes);
             //console.log(results);
-            results.sort();
+            results.sort(sortNum);
             //console.log(results);
             return results;
+        }
+
+        function sortNum(a, b) {
+            return a - b;
         }
 
         function generateBlue() {
