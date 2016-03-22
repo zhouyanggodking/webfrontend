@@ -78,23 +78,19 @@ module.exports = function (grunt) {
                 host: 'http://localhost:9090',
                 template: require('grunt-template-jasmine-requirejs'),
                 templateOptions: {
+                    requireConfigFile: 'playground/src/main.js',
                     requireConfig: {
                         baseUrl: './playground/src',
                         paths: {
-                            'angular': 'libs/angularjs/angular'
+                            
                         },
                         shim: {
-                            'angular': {
-                                exports: 'angular'
-                            }
+                            
                         }
                     }
                 }
             },
             app: {
-                src: [
-                    'src/**/*.js'    //'src/js/**/*.js??
-                ],
             }
         },//jasmine end
 
@@ -102,7 +98,7 @@ module.exports = function (grunt) {
         requirejs: {
             compile: {
                 options: {
-                    dir: 'dist/tamaleng',
+                    dir: 'dist/godkingweb',
                     modules: [{
                         name: 'main'
                     }],
