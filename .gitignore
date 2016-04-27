@@ -6,3 +6,4 @@
 /node_modules
 /_SpecRunner.html
 /.grunt/grunt-contrib-jasmine
+/dist/tamaleng
