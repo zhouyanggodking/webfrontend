@@ -1,0 +1,29 @@
+{
+  "name": "test",
+  "description": "test",
+  "main": "index.js",
+  "authors": [
+    "godking"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "test"
+  ],
+  "homepage": "https://github.com/zhouyanggodking/webfrontend",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-ui-router": "ui-router#~0.2.18",
+    "bootstrap": "~3.3.6",
+    "angular": "~1.5.5",
+    "requirejs": "~2.2.0",
+    "jquery": "~2.2.3"
+  }
+}
