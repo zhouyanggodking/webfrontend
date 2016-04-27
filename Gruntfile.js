@@ -83,17 +83,17 @@ module.exports = function (grunt) {
                         paths: {
                             'angular': 'libs/angularjs/angular',
                             'jquery': 'libs/jquery/jquery',
-                            'bootstrap':'libs/bootstrap/bootstrap'
+                            'bootstrap': 'libs/bootstrap/bootstrap'
                         },
                         shim: {
-                            'jquery':{
+                            'jquery': {
                                 exports: 'jQuery'
                             },
                             'angular': {
                                 exports: 'angular',
                                 deps: 'jquery'
                             },
-                            'bootstrap':'jquery'
+                            'bootstrap': 'jquery'
                         }
                     }
                 },
@@ -139,5 +139,5 @@ module.exports = function (grunt) {
 
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
 
-    grunt.registerTask('default', ['connect:devServer','jasmine','watch']);
+    grunt.registerTask('default', ['connect:devServer', 'jasmine', 'watch']);
 };
