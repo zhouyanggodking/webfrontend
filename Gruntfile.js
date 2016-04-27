@@ -18,7 +18,7 @@ module.exports = function (grunt) {
             },
             devServer: {
                 options: {
-                    open: "http://localhost:9090/index.html",
+                    //open: "http://localhost:9090/index.html",
                     //middleware: function (connect, options) {
                     //    return [
                     //        modRewrite(['^[^\\.]*$ /index.html [L]']),
@@ -75,26 +75,36 @@ module.exports = function (grunt) {
                 specs: [
                     'playground/test/**/*_spec.js'
                 ],
-                host: 'http://localhost:9090',
+                //host: 'http://localhost:9090',
                 template: require('grunt-template-jasmine-requirejs'),
                 templateOptions: {
                     requireConfig: {
                         baseUrl: './playground/src',
                         paths: {
-                            'angular': 'libs/angularjs/angular'
+                            'angular': 'libs/angularjs/angular',
+                            'jquery': 'libs/jquery/jquery',
+                            'bootstrap':'libs/bootstrap/bootstrap'
                         },
                         shim: {
+                            'jquery':{
+                                exports: 'jQuery'
+                            },
                             'angular': {
-                                exports: 'angular'
-                            }
+                                exports: 'angular',
+                                deps: 'jquery'
+                            },
+                            'bootstrap':'jquery'
                         }
                     }
-                }
+                },
+                //vendor:'./playground/src/libs/**/*.js'
             },
             app: {
-                src: [
-                    'src/**/*.js'    //'src/js/**/*.js??
-                ],
+                //src: [
+                //    'playground/src/libs/jquery/jquery',   //'src/js/**/*.js??
+                //    'playground/src/libs/angularjs/angular',
+                //    'playground/src/libs/bootstrap/bootstrap',
+                //],
             }
         },//jasmine end
 
@@ -120,7 +130,7 @@ module.exports = function (grunt) {
     });
 
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-connect');
+    //grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-jasmine');
     grunt.loadNpmTasks('grunt-contrib-jshint');
