@@ -2,13 +2,31 @@
     angular.module('dollarq', [])
         .controller('dollarqCtrl', function ($q, $http) {
 
-            getPersonAsync(function (response) {
-                console.log(response);
+            var personPromise = getPersonAsync();
+            personPromise.then(function (data) {
+                console.log(data);
+            }, function (data) {
+                console.log(data);
+            });
+
+            personPromise.catch(function (data) {
+                console.log('In catch: ' + data);
+            });
+
+            personPromise.finally(function () {
+                console.log('In finally: NO PARAMS');
             });
 
 
-            function getPersonAsync(success, failed) {
-                $http.get('data/person.json').then(success, failed);
+            function getPersonAsync() {
+                var deferred = $q.defer();
+                $http.get('data/person2.json').then(function (response) {
+                    deferred.resolve(response.data);
+                }, function (response) {
+                    deferred.reject(response.statusText);
+                });
+
+                return deferred.promise;
             }
         });
 });
