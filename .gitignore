@@ -7,3 +7,6 @@
 /_SpecRunner.html
 /.grunt/grunt-contrib-jasmine
 /dist/tamaleng
+/angular2/bower_components
+/angular2/node_modules
+/angular2/typings
