@@ -2,6 +2,10 @@
   "name": "angular2",
   "version": "1.0.0",
   "scripts": {
+    "lite": "lite-server",
+    "tsc": "tsc",
+    "tsc:w": "tsc -w",
+    "start": "concurrently \"npm run lite\" \"npm run tsc:w\" ",
     "postinstall": "typings install",
     "typings": "typings"
   },
@@ -23,6 +27,9 @@
     "zone.js": "^0.6.12"
   },
   "devDependencies": {
+    "concurrently": "^2.1.0",
+    "lite-server": "^2.2.0",
+    "typescript": "^1.8.10",
     "typings": "^0.8.1"
   }
 }
