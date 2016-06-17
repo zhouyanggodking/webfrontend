@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+        li{
+            color: blue;
+        }
+        /*select only first <p> after every <ul>*/
+        /*first sibling*/
+        ul + p{
+            color: red;
+        }
+        /*select all <p> after every <ul>*/
+        /*all siblings*/
+        ul ~ p{
+            color:chartreuse;
+        }
+        /*select direct children*/
+        #container > li{
+            color:brown;
+        }
+        /*select all descendant*/
+        #container li{
+            color:brown;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div id="container">
+        <ul>
+            <li>Japan</li>
+            <li>China</li>
+            <li>America</li>
+            <li>England</li>
+            <li>Canada</li>
+        </ul>
+        <p>this is a para</p>
+        <p>this is the second para</p>
+    </div>
+</body>
+</html>
