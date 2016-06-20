@@ -1,7 +1,7 @@
 ﻿import { Component } from '@angular/core';
 @Component({
     selector: 'home-page',
-    template: 'Home Component'
+    templateUrl: 'template/Components/Nav/Home/Home.template.html'
 })
 export class HomeComponent {
     name: string = 'GODKING';
