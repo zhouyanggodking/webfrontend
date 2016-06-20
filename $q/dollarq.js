@@ -9,6 +9,15 @@
                 console.log(data);
             });
 
+            var personPromise2 = personPromise.then(function (data) {
+                return data.age + 10;
+            });
+
+            personPromise2.then(function (age) {
+                console.log(age);
+            });
+
+
             personPromise.catch(function (data) {
                 console.log('In catch: ' + data);
             });
@@ -20,7 +29,7 @@
 
             function getPersonAsync() {
                 var deferred = $q.defer();
-                $http.get('data/person2.json').then(function (response) {
+                $http.get('data/person.json').then(function (response) {
                     deferred.resolve(response.data);
                 }, function (response) {
                     deferred.reject(response.statusText);
