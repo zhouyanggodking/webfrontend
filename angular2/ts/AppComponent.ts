@@ -17,8 +17,7 @@ declare let __moduleName : string;
 @RouteConfig([
     { path: '/home', name: 'Home', component: HomeComponent },
     { path: '/game', name: 'GameList', component: GameListComponent },
-    { path: '/game/jacksorbetter', name: 'JacksOrBetter', component: JacksOrBetterComponent }
-
+    { path: '/jacksorbetter', name: 'JacksOrBetter', component: JacksOrBetterComponent }
 ])
 export class AppComponent {
 }
