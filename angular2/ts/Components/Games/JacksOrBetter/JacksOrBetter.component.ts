@@ -12,6 +12,14 @@ import {CardComponent} from '../../../Components/Games/Common/Card.Component'
 })
 export class JacksOrBetterComponent {
     //cardsrc = CardService.getCardPNGImage(new Card(CardSuite.Diamonds, CardFace.King));
-    suite = CardSuite.Clubs;
-    face = CardFace.Queen;
+    //suite = CardSuite.Clubs;
+    //face = CardFace.Queen;
+    cards: Card[] = [
+        { face: CardFace.Ten, suite: CardSuite.Spades },
+        { face: CardFace.Jack, suite: CardSuite.Spades }
+        { face: CardFace.Queen, suite: CardSuite.Spades }
+        { face: CardFace.King, suite: CardSuite.Spades }
+        { face: CardFace.Ace, suite: CardSuite.Spades }
+    ];
+
 }

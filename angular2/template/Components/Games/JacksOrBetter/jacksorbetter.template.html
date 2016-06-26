@@ -1,4 +1,14 @@
 ﻿<div>
     <h1>Jacks or better</h1>
-    <card [face] ="face" [suite]="suite" width="500"></card>
+    <div class="container-fluid">
+        <!--<div class="row col-sm-2 col-lg-2" *ngFor="let card of cards">
+            <card [face]="card.face" [suite]="card.suite" width="100"></card>
+        </div>-->
+        <table>
+            <tr>
+                <td *ngFor="let card of cards" class="row col-sm-2 col-lg-2"><card [face]="card.face" [suite]="card.suite" width="100%"></card></td>
+            </tr>
+        </table>
+    </div>
+    <!--<card [face] ="face" [suite]="suite" width="500"></card>-->
 </div>
