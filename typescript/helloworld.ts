@@ -1,22 +1,33 @@
-﻿let isPerson: boolean = true;
-let age: number = 40;
-let fullname: string = 'Ocean Sky';
-let statement = `Name: ${fullname}, Age: ${age}`;
+﻿//for destructing demo
+//array destructing
+let [one, two] = [1, 2];
+//console.log(one);
+//console.log(two);
+//swap trick
+[two, one] = [one, two];
+//console.log(one);
+//console.log(two);
 
-console.log(statement);
-//array declaration
-let arrStr: string[] = ['one', 'two', 'three'];
-let arrInt: Array<number> = [1, 2, 3];
-let arrAny: Array<any> = ['one', 2, 'three'];
+let [first, ...rest] = [1, 2, 3, 4, 5];
+//console.log(first);
+//console.log(rest);
+//console.log(rest[0]);
 
-console.log(arrAny);
-//tuple
-let x: [string, number] = ["OceanSky", 40];
-console.log(x[0]);
-x[0] = 'Pacific';
-console.log(x[0]);
+let [, , three] = [1, 2, 3, 4, 5];
+//console.log(three);
 
-//type assertion
-let testAny: any = 'Ocean';
-let str: string = <string>testAny;
-str = testAny as string;
+/////////////////////////////////////////////////
+//object destructing
+let o = {
+    a: "foo",
+    b: 12,
+    c: "bar"
+}
+let {a, c} = o;
+//console.log(a);
+//console.log(b);
+//let {ae, be} = o;
+
+let {a: foo, c: bar} = o;
+//console.log(foo);
+//console.log(bar);
