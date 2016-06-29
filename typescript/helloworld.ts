@@ -1,61 +1,61 @@
-﻿//for interface and class
+﻿//for generic demo
+//generic function
+function getType<T>(identity: T): string{
+    return typeof identity;
+}
 
-class Person {
-    name: string;//default public, public/protected/private modifier
-    constructor(name: string) {
-        this.name = name;
+let type = getType('str');
+type = getType<number>(9);
+type = getType({ name: 'king' });
+type = getType([1, 2, 3, 5]);
+
+console.log(type);
+
+
+//generic type
+let myGetType: <T>(identity: T) => string = getType;
+type = myGetType(true);
+
+//generic class/interface
+class Stack<T>{
+    private _list: Array<T>;
+    constructor(list: Array<T>) {
+        this._list = list;
+    }
+    push(elem: T): void {
+        this._list.push(elem);
     }
 
-    display() {
-        console.log(this.name);
+    pop(): void {
+        this._list.pop();
+    }
+
+    top(): T {
+        let length = this._list.length;
+        return this._list[length - 1];
+    }
+}
+//generic constraint
+interface IAnimal { }
+class Animal { }
+class Fish extends Animal { }
+class AnimalStack<T extends Animal/*IAnimal*/>{
+    private _list: Array<T>;
+    constructor(list: Array<T>) {
+        this._list = list;
+    }
+    push(elem: T): void {
+        this._list.push(elem);
+    }
+
+    pop(): void {
+        this._list.pop();
+    }
+
+    top(): T {
+        let length = this._list.length;
+        return this._list[length - 1];
     }
 }
 
-class Centaur extends Person {
-    private _age: number;
-
-    constructor(name: string) {
-        super(name);
-    }
-
-    display() {
-        console.log('Centaur name :' + this.name + " Age: " + this.age);
-    }
-
-    run() {
-        super.display();
-        console.log('run...');
-    }
-
-    //setter and getter
-    get age(): number {
-        return this._age;
-    }
-
-    set age(newAge: number) {
-        this._age = newAge;
-    }
-
-    static version() {
-        console.log('1.0.0');
-    }
-}
-
-let p = new Person('OceanSky');
-p.display();
-
-let cent = new Centaur('King');
-cent.run();
-
-cent.age = 90;
-cent.display();
-Centaur.version();
-
-//abstract class
-abstract class Animal {
-    type: string;
-    abstract eat(): void;//must be implemented by derived class
-    sleep() {
-        //implementation
-    }
-}
+class Demo<T extends U, U>{ }
