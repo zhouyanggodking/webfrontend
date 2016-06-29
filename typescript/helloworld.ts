@@ -1,44 +1,61 @@
-﻿//for interface, class demo
-enum Direction{
-    Up = 1,
-    Down,
-    Right,
-    Left
-};
+﻿//for interface and class
 
-interface IPerson {
-    name: string;
-    age?: number;//optional
-    title?: string;
-    walk(distant: number, direction: Direction): void;
-}
-
-class Person implements IPerson {
-    name: string;
-    walk = (distant: number, direction: Direction) => {
-        console.log(`name: ${this.name}, distant: ${distant}, direction: ${Direction[direction]}`);
+class Person {
+    name: string;//default public, public/protected/private modifier
+    constructor(name: string) {
+        this.name = name;
     }
-    swim(): void {
-        console.log('swimming');
+
+    display() {
+        console.log(this.name);
     }
-}
-
-let person = new Person();
-person.name = "OceanSky";
-person.walk(10, Direction.Right);
-
-interface MrWhite extends IPerson {
 }
 
 class Centaur extends Person {
+    private _age: number;
+
+    constructor(name: string) {
+        super(name);
+    }
+
+    display() {
+        console.log('Centaur name :' + this.name + " Age: " + this.age);
+    }
+
+    run() {
+        super.display();
+        console.log('run...');
+    }
+
+    //setter and getter
+    get age(): number {
+        return this._age;
+    }
+
+    set age(newAge: number) {
+        this._age = newAge;
+    }
+
+    static version() {
+        console.log('1.0.0');
+    }
 }
 
-interface IDemo extends Person {
-}
+let p = new Person('OceanSky');
+p.display();
 
-class Demo implements IDemo {
-    name: string;
-    walk() { }
-    swim() { }    
-}
+let cent = new Centaur('King');
+cent.run();
 
+cent.age = 90;
+cent.display();
+Centaur.version();
+
+//abstract class
+abstract class Animal {
+    type: string;
+    abstract eat(): void;//must be implemented by derived class
+    sleep() {
+        //implementation
+    }
+}
