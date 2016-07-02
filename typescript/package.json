@@ -1,0 +1,16 @@
+{
+  "name": "typescript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "tsc": "tsc",
+    "tsc:w": "tsc -w",
+    "start" : "npm run tsc:w"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "requirejs": "^2.2.0"
+  }
+}
