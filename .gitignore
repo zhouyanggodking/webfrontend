@@ -16,4 +16,7 @@
 *.map
 /typescript/build
 /typescript/node_modules
+/typescript/typings
 
+/typescript/_SpecRunner.html
+/typescript/.grunt/
