@@ -1,4 +1,4 @@
 ﻿import { bootstrap }    from '@angular/platform-browser-dynamic';
-import { EntityDetail } from './EntityDetail';
+import { EntityList } from './EntityList';
 
-bootstrap(EntityDetail);//bootstrap our whole application
+bootstrap(EntityList);//bootstrap our whole application
