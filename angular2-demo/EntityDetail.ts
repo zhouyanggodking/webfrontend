@@ -1,8 +1,10 @@
 ﻿import { Component } from '@angular/core';
+import { DoNothingDirective } from './DoNothingDirective'
 
 @Component({
     selector: 'entity-detail',
-    templateUrl: 'EntityDetail.html'
+    templateUrl: 'EntityDetail.html',
+    directives: [DoNothingDirective]
 })
 export class EntityDetail {
     entityDetail = {
