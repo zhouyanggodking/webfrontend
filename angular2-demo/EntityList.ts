@@ -1,24 +1,16 @@
 ﻿import { Component } from '@angular/core';
-import {EntityDetail} from './EntityDetail'
+import {EntityDetail} from './EntityDetail';
+import {EntityService} from './EntityService'
 
 @Component({
     selector: 'entity-list',
     templateUrl: 'EntityList.html',
-    directives:[EntityDetail]
+    directives: [EntityDetail],
+    providers: [EntityService]
 })
 export class EntityList {
-    entityList = [
-        {
-            longName: 'Advent Software Corporation',
-            shortName: 'ADV'
-        },
-        {
-            longName: 'International Business Machine',
-            shortName: 'IBM'
-        },
-        {
-            longName: 'Microsoft Corporation',
-            shortName: 'MSFT'
-        }
-    ];
+    entityList: any[];
+    constructor(entityService: EntityService) {
+        this.entityList = entityService.get();
+    }
 }
