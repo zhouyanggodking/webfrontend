@@ -1,4 +1,11 @@
 ﻿import { bootstrap }    from '@angular/platform-browser-dynamic';
+import {provide, PLATFORM_DIRECTIVES} from '@angular/core'
 import { EntityList } from './EntityList';
+import {EntityService} from './EntityService'
+import {EntityDetail} from './EntityDetail'
+import {DoNothingDirective} from './DoNothingDirective'
 
-bootstrap(EntityList);//bootstrap our whole application
+bootstrap(EntityList, [provide(EntityService, { useClass: EntityService }),//for shorthand -> EntityService
+    provide(PLATFORM_DIRECTIVES, { useValue: EntityDetail, multi: true }),
+    provide(PLATFORM_DIRECTIVES, { useValue: DoNothingDirective, multi: true })
+]);//bootstrap our whole application

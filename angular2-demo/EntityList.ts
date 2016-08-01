@@ -4,9 +4,7 @@ import {EntityService} from './EntityService'
 
 @Component({
     selector: 'entity-list',
-    templateUrl: 'EntityList.html',
-    directives: [EntityDetail],
-    providers: [EntityService]
+    templateUrl: 'EntityList.html'
 })
 export class EntityList {
     entityList: any[];

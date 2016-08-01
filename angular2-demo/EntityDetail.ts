@@ -4,7 +4,6 @@ import { DoNothingDirective } from './DoNothingDirective'
 @Component({
     selector: 'entity-detail',
     templateUrl: 'EntityDetail.html',
-    directives: [DoNothingDirective],
     inputs: ['entityDetail']
 })
 export class EntityDetail {
