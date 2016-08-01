@@ -6,10 +6,10 @@
         <td>Long Name</td>
     </tr>
     </thead>
-    <tr *ngFor ="let entity of entityList">
+    <tr *ngFor ="let entity of entityList" (click)="rowClicked(entity)">
         <td>{{entity.shortName}}</td>
         <td>{{entity.longName}}</td>
     </tr>
 </table>
 <hr />
-<entity-detail (entityDetailClick) ="entityDetailClicked($event)"></entity-detail>
+<entity-detail [entityDetail] ="entitySelected"></entity-detail>

@@ -1,13 +1,13 @@
 ﻿<h1 [style.color]="'purple'">Entity Detail Component</h1><input [(ngModel)]="rowColor"/>
-<div doNothing logText="directive inputs demo">
-    <table [class]="'table'" [style.color]="rowColor" (click)="entityDetailClicked()">
+<div>
+    <table [class]="'table'" [style.color]="rowColor">
         <tr>
             <td>LongName:</td>
-            <td doNothing logText ="{{entityDetail.longName}}">{{entityDetail.longName}}</td>
+            <td>{{entityDetail.longName}}</td>
         </tr>
         <tr>
             <td>ShortName:</td>
-            <td doNothing [logText] ="entityDetail.shortName">{{entityDetail.shortName}}</td>
+            <td>{{entityDetail.shortName}}</td>
         </tr>
     </table>
 </div>
