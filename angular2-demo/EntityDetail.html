@@ -1,7 +1,7 @@
 ﻿<h1 [style.color]="'purple'">Entity Detail Component</h1><input [(ngModel)]="rowColor"/>
 <div doNothing logText="directive inputs demo">
-    <table [class]="'table'" [style.color]="rowColor">
-        <tr (click)="tableRowClick(entityDetail.longName)">
+    <table [class]="'table'" [style.color]="rowColor" (click)="entityDetailClicked()">
+        <tr>
             <td>LongName:</td>
             <td doNothing logText ="{{entityDetail.longName}}">{{entityDetail.longName}}</td>
         </tr>

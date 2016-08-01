@@ -13,4 +13,8 @@ export class EntityList {
     constructor(entityService: EntityService) {
         this.entityList = entityService.get();
     }
+
+    entityDetailClicked(entityDetail) {
+        console.log(entityDetail);
+    }
 }
