@@ -7,7 +7,7 @@
     </tr>
     </thead>
     <tr *ngFor ="let entity of entityList" (click)="rowClicked(entity)">
-        <td>{{entity.shortName}}</td>
+        <td><a [routerLink] ="['/entity', entity.id]">{{entity.shortName}}</a></td>
         <td>{{entity.longName}}</td>
     </tr>
 </table>
