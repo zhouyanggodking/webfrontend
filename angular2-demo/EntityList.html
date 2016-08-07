@@ -1,0 +1,15 @@
+﻿<h1>Entity List Component</h1>
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <td>Short Name</td>
+        <td>Long Name</td>
+    </tr>
+    </thead>
+    <tr *ngFor ="let entity of entityList" (click)="rowClicked(entity)">
+        <td><a [routerLink] ="['/entity', entity.id]">{{entity.shortName}}</a></td>
+        <td>{{entity.longName}}</td>
+    </tr>
+</table>
+<hr />
+<entity-detail [entityDetail] ="entitySelected"></entity-detail>

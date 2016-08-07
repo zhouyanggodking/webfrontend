@@ -1,7 +1,7 @@
 ﻿<h1 [style.color]="'purple'">Entity Detail Component</h1><input [(ngModel)]="rowColor"/>
-<div>
+<div doNothing [logText]="'Demo'">
     <table [class]="'table'" [style.color]="rowColor">
-        <tr (click)="tableRowClick(entityDetail.longName)">
+        <tr>
             <td>LongName:</td>
             <td>{{entityDetail.longName}}</td>
         </tr>
