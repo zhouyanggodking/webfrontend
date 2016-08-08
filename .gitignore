@@ -22,3 +22,4 @@
 /typescript/.grunt/
 /typescript/helloworld.js
 /zonejs/node_modules/zone.js
+/rxjs-demo/node_modules/rx
