@@ -1,0 +1,16 @@
+{
+  "name": "css",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lite": "lite-server",
+    "start": "concurrently \"npm run lite\" "
+  },
+  "author": "godking",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^2.2.0",
+    "lite-server": "^2.2.2"
+  }
+}
