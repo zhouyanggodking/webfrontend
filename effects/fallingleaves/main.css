@@ -1,0 +1,69 @@
+﻿.leave-container{
+    position:relative;
+    width: 500px;
+    height: 700px;
+    background-image: url('./image/backgroundLeaves.jpg');
+    overflow:hidden;
+}
+
+.leave-container .leaves{
+    position: absolute;
+    width:100%;
+    height:100%;
+}
+
+.leave-container .leaves > div {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    animation-iteration-count: infinite, infinite;
+    animation-direction: normal, normal;
+    animation-timing-function: linear, ease-in;
+}
+
+.leave-container .leaves > div > img {
+     position: absolute;
+     width: 100px;
+     height: 100px;
+     animation-iteration-count: infinite;
+     animation-direction: alternate;
+     animation-timing-function: ease-in-out;
+     transform-origin: 50% 100%;
+}
+
+@keyframes fade
+{
+    /* Show a leaf while into or below 95 percent of the animation and hide it, otherwise */
+    0%   { opacity: 1; }
+    95%  { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+
+/* Makes a leaf fall from -300 to 600 pixels in the y-axis */
+@keyframes drop
+{
+    /* Move a leaf to -300 pixels in the y-axis at the start of the animation */
+    0%   { transform: translate(0px, -150px); }
+    /* Move a leaf to 600 pixels in the y-axis at the end of the animation */
+    100% { transform: translate(0px, 650px); }
+}
+
+/* Rotates a leaf from -50 to 50 degrees in 2D space */
+@keyframes clockwiseSpin
+{
+    /* Rotate a leaf by -50 degrees in 2D space at the start of the animation */
+    0%   { transform: rotate(-50deg); }
+    /*  Rotate a leaf by 50 degrees in 2D space at the end of the animation */
+    100% { transform: rotate(50deg); }
+}
+
+
+/* Flips a leaf and rotates it from 50 to -50 degrees in 2D space */
+@keyframes counterclockwiseSpinAndFlip 
+{
+    /* Flip a leaf and rotate it by 50 degrees in 2D space at the start of the animation */
+    0%   { transform: scale(-1, 1) rotate(50deg); }
+    /* Flip a leaf and rotate it by -50 degrees in 2D space at the end of the animation */
+    100% { transform: scale(-1, 1) rotate(-50deg); }
+}
