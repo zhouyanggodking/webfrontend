@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>require demo</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <basket apple orange>Roll over me and check the console</basket>
+
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../node_modules/angular/angular.js"></script>
+    <script>
+        var app = angular.module('myApp', []);
+        app.directive('basket', function () {
+            return {
+                restrict: 'E',
+                link: function (scope, element, attrs) {
+                    console.log(element)
+                    element.bind('click', function () {
+                        console.log(scope.content)
+                    })
+                },
+                controller: function ($scope) {
+                    $scope.content = [];
+                    this.addApple = function () {
+                        $scope.content.push('apple');
+                    };
+
+                    this.addOrange = function () {
+                        $scope.content.push('orange');
+                    };
+                }
+            }
+        });
+
+        app.directive('apple', function () {
+            return {
+                restrict: 'A',
+                require: 'basket',
+                link: function (scope, element, attrs, basketCtrl) {
+                    basketCtrl.addApple();
+                }
+            }
+        });
+
+        app.directive('orange', function () {
+            return {
+                restrict: 'A',
+                require: 'basket',
+                link: function (scope, element, attrs, basketCtrl) {
+                    basketCtrl.addOrange();
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>

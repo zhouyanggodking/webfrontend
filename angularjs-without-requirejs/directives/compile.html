@@ -18,7 +18,7 @@
         });
 
         //compile, link, controller timeline
-        //compile => link => controller
+        //controller => link   link and compile are not compatible
         app.directive('repeat', function () {
             return {
                 restrict: 'A',
@@ -34,8 +34,6 @@
                     }
                     console.log(tElement);
                     console.log(attrs['repeat'])
-                },
-                link: function (scope, element, attrs) {
                 },
                 controller: function ($scope) {
                     //$scope.author = 'aaaaaaaa'
