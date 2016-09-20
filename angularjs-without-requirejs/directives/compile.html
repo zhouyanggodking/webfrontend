@@ -1,13 +1,12 @@
 ﻿<!DOCTYPE html>
 <html ng-app="myApp">
 <head>
-    <title>bindings demo</title>
+    <title>compile demo</title>
     <meta charset="utf-8" />
 </head>
 <body>
-    <div ng-controller="outerCtrl">
-        <b>demo for bindings - {{authorOfParent}}</b><!--////////////////////////-->
-        <replace-dir author="authorOfParent">godking</replace-dir>
+    <div repeat ="10">
+        <p>godking</p>
     </div>
 
     <script src="../node_modules/jquery/dist/jquery.js"></script>
@@ -17,19 +16,29 @@
         app.controller('outerCtrl', function ($scope) {
             $scope.authorOfParent = 'oceansky';/////////////////////////////
         });
-        app.directive('replaceDir', function () {
+
+        //compile, link, controller timeline
+        //compile => link => controller
+        app.directive('repeat', function () {
             return {
-                restrict: 'EA',
+                restrict: 'A',
                 //replace: true,
-                transclude: true,
+                //transclude: true,
                 scope: {
-                    author:'=author'//@
                 },
-                template: '<div><p>For replace attribute of directive demo</p><p ng-transclude></p><p>{{author}}</p></div>',
+                //template: '',
+                compile: function (tElement, attrs) {
+                    var content = tElement.children();
+                    for (var i = 1; i < attrs['repeat']; ++i) {
+                        tElement.append(content.clone());
+                    }
+                    console.log(tElement);
+                    console.log(attrs['repeat'])
+                },
                 link: function (scope, element, attrs) {
                 },
                 controller: function ($scope) {
-                    $scope.author = 'aaaaaaaa'
+                    //$scope.author = 'aaaaaaaa'
                 }
             }
         })
