@@ -1,0 +1,20 @@
+{
+  "name": "angularjs-without-requirejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lite": "lite-server",
+    "start": "npm run lite"
+  },
+  "author": "godking",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^2.2.0",
+    "lite-server": "^2.2.2"
+  },
+  "dependencies": {
+    "angular": "^1.5.8",
+    "jquery": "^3.1.0"
+  }
+}
