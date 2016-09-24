@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Materials</title>
+    <style>
+        html, body {
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #renderCanvas {
+            width: 100%;
+            height: 100%;
+            touch-action: none;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="renderCanvas"></canvas>
+    <script src="node_modules/babylonjs/babylon.js"></script>
+    <script>
+        var canvas = document.getElementById('renderCanvas');
+        var engine = new BABYLON.Engine(canvas, true);//true for antialias
+
+        var scene = createScene();
+
+        //important: register a render loop
+        engine.runRenderLoop(function () {
+            scene.activeCamera.alpha += .01;
+            //scene.activeCamera.beta += .01;
+            scene.render();
+        });
+
+        indow.addEventListener('resize', function () {
+            engine.resize();
+        });
+
+        function createScene() {
+            //create a scene
+            var scene = new BABYLON.Scene(engine);
+            //create a camera, position (0, 5, -10)
+            //var camera = new BABYLON.FreeCamera('camera', new BABYLON.Vector3(0, 5, -10), scene);
+            ////target the camera to scene origin
+            //camera.setTarget(BABYLON.Vector3.Zero());
+            //camera.checkCollisions = true;
+            ////attach camera to canva
+            //camera.attachControl(canvas, false);
+
+            var arcCamera = new BABYLON.ArcRotateCamera('arcCamera', 0, 0, 2, BABYLON.Vector3.Zero(), scene);
+            arcCamera.setPosition(new BABYLON.Vector3(0, 5, -10));
+            arcCamera.attachControl(canvas, false, false);//third param to forbid useCtrlForPanning
+
+            var light = new BABYLON.PointLight('light', new BABYLON.Vector3(5, 5, -5), scene);
+            // create a built-in "sphere" shape; its constructor takes 6 params: name, segments, diameter, scene, updatable, sideOrientation
+            var sphere = BABYLON.Mesh.CreateSphere('sphere', 10, 4, scene);
+
+            // move the sphere upward 1/2 of its height
+            sphere.position.y = 2;
+
+            //controlling materials
+            var material = new BABYLON.StandardMaterial('texture', scene);
+
+            sphere.material = material;
+            //material.alpha = 0.4;
+            material.diffuseColor = new BABYLON.Color3(0.1, 0.5, 0.5);
+            //material.diffuseTexture = new BABYLON.Texture('sum.jpg', scene);
+            material.emissiveColor = new BABYLON.Color3(0.3, 0.8, 0.4);
+            material.ambientColor = new BABYLON.Color3(0.4, 0.2, 0.9);
+            material.specularColor = new BABYLON.Color3(1, 0, 0);
+            material.specularPower = 90;
+            material.backFaceCulling = true;
+            material.wireframe = true;
+
+            // create a built-in "ground" shape; its constructor takes the same 5 params : name, width, height, subdivisions, scene, updatable
+            var ground = BABYLON.Mesh.CreateGround('ground', 10, 10, 1, scene);
+
+            var groundMaterial = new BABYLON.StandardMaterial('ground_material', scene);
+            //groundMaterial.diffuseTexture = new BABYLON.Texture('sun.jpg', scene);
+            groundMaterial.diffuseColor = new BABYLON.Color3(0.3, 0.7, 0.1);
+            ground.material = groundMaterial;
+            // return the created scene
+            return scene;
+
+        };
+    </script>
+</body>
+</html>
