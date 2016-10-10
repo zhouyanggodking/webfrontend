@@ -1,11 +1,12 @@
 ﻿describe('first test', function () {
     it('first case', function () {
-        browser.get('http://localhost:9033/app/index.html');
-        var name = element(by.model('name'));
-        var url = browser.getCurrentUrl();
-        console.log(url);
+        browser.get('http://localhost:9090/tamaleweb/login');
+        var name = element(by.model('inputUsr'));
+        var pwd = element(by.model('inputPwd'));
         name.clear();
-        name.sendKeys('test');
+        name.sendKeys('sawyer');
+        pwd.clear();
+        pwd.sendKeys('123');
         expect(name.getAttribute('value')).toBe('test');
         browser.pause();
     });

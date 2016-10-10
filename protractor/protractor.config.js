@@ -3,7 +3,7 @@
      * Use `seleniumAddress` for faster startup; run `./node_modules/.bin/webdriver-manager start` to launch the Selenium server.
      * Use `seleniumPort` to let Protractor manage its own Selenium server instance (using the server JAR in its default location).
      */
-    seleniumAddress: 'http://localhost:4444/wd/hub',
+    seleniumAddress: 'http://localhost:4444/wd/hub',//if comment this out, protractor will start and end webdriver-manager automaticaly
     // seleniumPort: 4444,
 
     /**
@@ -24,5 +24,5 @@
     /**
      * This should point to your running app instance, for relative path resolution in tests.
      */
-    baseUrl: 'http://localhost:9033'
+    baseUrl: 'http://localhost:9090'
 };
