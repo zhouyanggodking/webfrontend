@@ -33,3 +33,5 @@
 /babylonjs/node_modules
 /protractor/node_modules
 /effects/gridstack/node_modules
+/sass-demo/css
+/sass-demo/node_modules
