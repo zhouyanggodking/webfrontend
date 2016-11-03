@@ -1,0 +1,7 @@
+﻿@function square($num){
+    @return $num*$num;
+}
+
+input{
+    width: square(5)+px;
+}
