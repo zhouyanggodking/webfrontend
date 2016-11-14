@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html ng-app ="injectorModule">
+<head>
+    <title>Injector</title>
+	<meta charset="utf-8" />
+    <link rel="stylesheet" href="node_modules//bootstrap/dist/css/bootstrap.css" />
+
+</head>
+<body>
+    <h1>{{message}}</h1>
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="node_modules/angular/angular.js"></script>
+    <script>
+        var injectorModule = angular.module('injectorModule', []);        
+
+        injectorModule.service('serviceA', ServiceA);
+        injectorModule.service('serviceB', ServiceB);
+
+        //must be after serivce declaration
+        var $injector = angular.injector(['injectorModule']);//retrieve $inject from module
+
+        function doSomething(serviceA, serviceB) {
+            serviceA.print();
+            serviceB.print();
+        }
+
+        //there're three ways to inject: inferred, inline and annotated
+
+        //inferred
+        //$injector.invoke(doSomething);
+
+        //inline
+        $injector.invoke(['serviceA', 'serviceB', doSomething]);
+
+        //annotated
+        //doSomething['$injector'] = ['serviceA', 'serviceB'];
+        //$injector.invoke(doSomething);
+
+        function ServiceA() {
+            this.print = function () {
+                console.log('serviceA ...');
+            }
+        }
+
+        function ServiceB() {
+            this.print = function () {
+                console.log('serviceB ...');
+            }
+        }
+    </script>
+</body>
+</html>
