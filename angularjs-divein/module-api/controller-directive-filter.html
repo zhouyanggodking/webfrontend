@@ -3,7 +3,7 @@
 <head>
     <title>controller-directive-filter</title>
 	<meta charset="utf-8" />
-    <link rel="stylesheet" href="node_modules//bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="../node_modules//bootstrap/dist/css/bootstrap.css" />
 </head>
 <body>
     <div ng-controller="demoCtrl">
@@ -15,25 +15,15 @@
         </table>
         <demo-directive></demo-directive>
     </div>
-    <script src="node_modules/jquery/dist/jquery.js"></script>
-    <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="node_modules/angular/angular.js"></script>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../node_modules/angular/angular.js"></script>
     <script>
         //signature:
-        //run(initializationFun)
-        //config(function(xxxProvider){})
 
         //controller(name, constructor)
         //directive(name, directiveFn)
         //filter(name, filterFactory)
-
-        //service(name, constructor)
-        //factory(name, providerFn)
-        //provider(name, providerType)
-        //decorator(name, fn)
-
-        //constant(name, object)
-        //value(name, object)
 
         var myApp = angular.module('myApp', []);
 
