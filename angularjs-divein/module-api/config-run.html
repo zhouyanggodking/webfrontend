@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html ng-app="myApp">
 <head>
-    <title>controller-directive-filter</title>
+    <title>config-run</title>
 	<meta charset="utf-8" />
     <link rel="stylesheet" href="../node_modules//bootstrap/dist/css/bootstrap.css" />
 </head>
@@ -36,7 +36,8 @@
             customerManagerProvider.setSuffix(INDUSTRY);
         });
 
-        myApp.run(function (customerManager) {
+        myApp.run(function (customerManager, customerList) {
+            //customerList.push('ADVS');//it's OK to change value of custmerList
             console.log(customerManager.customers);
         });
 
