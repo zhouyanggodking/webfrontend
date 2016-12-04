@@ -37,3 +37,6 @@
 /sass-demo/node_modules
 /angularjs-divein/node_modules
 /finance/node_modules
+/finance/app/**/*.js
+/.vscode
+/finance/build

@@ -1,0 +1,22 @@
+<div>
+    <div>{{stock.name}}</div>
+    <div>
+        <h1 class="negative-sentiment">{{stock.currentPrice}}</h1>
+    </div>
+    <div class="negative-sentiment">
+        <p>
+            {{stock.delta | number: '1.2-2'}}
+        </p>
+        <p>
+            {{stock.deltaRatio | number: '1.2-2'}}%
+        </p>
+    </div>
+    <table>
+        <tr>
+            <td>今日开盘价：{{stock.startPrice}}</td><td>昨日收盘价：{{stock.endPrice}}</td>
+        </tr>
+        <tr>            
+            <td>{{stock.date}}</td><td> {{stock.time}}</td>
+        </tr>
+    </table>
+</div>

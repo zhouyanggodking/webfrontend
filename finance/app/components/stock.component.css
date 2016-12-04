@@ -1,0 +1,9 @@
+div{
+    border:solid;
+    border-color:gray;
+    color:black;
+}
+
+.negative-sentiment{
+    color: green;
+}
