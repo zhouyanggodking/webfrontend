@@ -1,22 +1,21 @@
-<div>
-    <div>{{stock.name}}</div>
-    <div>
-        <h1 class="negative-sentiment">{{stock.currentPrice}}</h1>
+<div class="stock-container {{sentiment}}-border">
+    <div class="name"><h3><a href="http://finance.sina.com.cn/realstock/company/{{stockCode}}/nc.shtml" target="_blank">{{stock.name}} ({{stockCode | slice: 2}})</a></h3></div>  
+    <div class="{{sentiment}}">  
+        <div class="price"><h1>{{stock.currentPrice}}</h1></div>    
+        <div class="trend glyphicon {{arrowClass}}"></div>
+        <div class="delta">
+            <div>{{stock.delta | number: '1.2-2'}}</div>
+            <div>{{stock.deltaRatio | number: '1.2-2'}}%</div>
+        </div>
+    </div>    
+    <div class="other-info">
+        <table class="table">
+            <tr>
+                <td>今开：{{stock.startPrice}}</td><td>昨收：{{stock.endPrice}}</td>
+            </tr>
+            <tr>            
+                <td>{{stock.date}}</td><td> {{stock.time}}</td>
+            </tr>
+        </table>
     </div>
-    <div class="negative-sentiment">
-        <p>
-            {{stock.delta | number: '1.2-2'}}
-        </p>
-        <p>
-            {{stock.deltaRatio | number: '1.2-2'}}%
-        </p>
-    </div>
-    <table>
-        <tr>
-            <td>今日开盘价：{{stock.startPrice}}</td><td>昨日收盘价：{{stock.endPrice}}</td>
-        </tr>
-        <tr>            
-            <td>{{stock.date}}</td><td> {{stock.time}}</td>
-        </tr>
-    </table>
 </div>
