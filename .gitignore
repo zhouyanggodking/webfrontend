@@ -40,3 +40,4 @@
 /finance/app/**/*.js
 /.vscode
 /finance/build
+/effects/treegrid/node_modules
