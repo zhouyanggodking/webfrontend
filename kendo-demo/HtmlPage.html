@@ -1,0 +1,112 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <base href="http://demos.telerik.com/kendo-ui/grid/remote-data-binding">
+    <style>
+        html {
+            font-size: 14px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+    <title></title>
+    <link rel="stylesheet" href="//kendo.cdn.telerik.com/2016.3.1118/styles/kendo.common-material.min.css" />
+    <link rel="stylesheet" href="//kendo.cdn.telerik.com/2016.3.1118/styles/kendo.material.min.css" />
+    <link rel="stylesheet" href="//kendo.cdn.telerik.com/2016.3.1118/styles/kendo.material.mobile.min.css" />
+
+    <script src="//kendo.cdn.telerik.com/2016.3.1118/js/jquery.min.js"></script>
+    <script src="//kendo.cdn.telerik.com/2016.3.1118/js/kendo.all.min.js"></script>
+</head>
+<body>
+
+    <div id="example">
+        <div id="grid"></div>
+        <script>
+            $(document).ready(function () {
+                $("#grid").kendoGrid({
+                    dataSource: {
+                        type: "json",
+                        read: {
+                            url: 'http://localhost:17262/api/items',   //this url could be anything, I don't worry the response
+                            dataType: 'json'
+                        },
+                        parameterMap: function (data, type) {
+                            if (type == "read") {
+                                // send take as "$top" and skip as "$skip"
+                                console.log(data);
+                                var sort = [];
+                                angular.forEach(data['sort'], function (item) {
+                                    sort.push(item['field']);
+                                });
+
+                                return {
+                                    //take: data.take,
+                                    //skip: data.skip,
+                                    pageIndex: data.page,
+                                    pageSize: data.pageSize,
+                                    //groupBy: data
+                                    sortBy: sort.join(';')
+                                }
+                            }
+                        },
+                        schema: {
+                            total: function (res) { return 3; }, //for server paging, just fake
+                            data: function (res) {                    //just fake data, so it's empty when page is open
+                                return [];
+                            },
+                            groups: function (res) {                // when drop and drop header, use this fake data
+                                return [{
+                                    "aggregates": null,
+                                    "field": "source",
+                                    "items": [{
+                                        "source": "Sawyer",
+                                        "ticker": "IBM",
+                                        "currentPrice": 20,
+                                        "targetPrice": 50,
+                                        "approved": false
+                                    }, {
+                                        "source": "Sawyer",
+                                        "ticker": "ADVS",
+                                        "currentPrice": 60,
+                                        "targetPrice": 50,
+                                        "approved": false
+                                    }, {
+                                        "source": "Sawyer",
+                                        "ticker": "ACTL",
+                                        "currentPrice": 15,
+                                        "targetPrice": 20,
+                                        "approved": false
+                                    }],
+                                    "hasSubgroups": false,
+                                    "value": "Sawyer"
+                                }];
+                            }
+                        },
+                        pageSize: 20,
+                        serverPaging: true,
+                        serverFiltering: true,
+                        serverGrouping: true,
+                        serverSorting: true
+                    },
+                    height: 550,
+                    filterable: true,
+                    sortable: true,
+                    pageable: true,
+                    groupable: true,
+                    columns: [{
+                        field: "source",
+                        title: "Author"
+                    },
+                        {
+                            field: "ticker",
+                            title: "Ticker"
+                        },
+                    ]
+                })
+            });
+        </script>
+    </div>
+
+
+</body>
+</html>
