@@ -2,18 +2,29 @@
 <html>
 <head>
     <title>Kendo Grid</title>
-	<meta charset="utf-8" />    
+    <meta charset="utf-8" />
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="lib/kendo/styles/kendo.common-bootstrap.core.min.css" />
     <link rel="stylesheet" href="lib/kendo/styles/kendo.common-bootstrap.min.css" />
     <link rel="stylesheet" href="lib/kendo/styles/kendo.dataviz.bootstrap.min.css" />
     <link rel="stylesheet" href="lib/kendo/styles/kendo.bootstrap.min.css" />
+    <style>
+        .k-virtual-scrollable-wrap tr {
+            height: 3em;
+        }
+
+        /* or */
+
+        .k-virtual-scrollable-wrap td {
+            white-space: nowrap;
+        }
+    </style>
 </head>
 <body ng-app="app">
     <div ng-controller="gridCtrl">
         <grid-view></grid-view>
     </div>
-    <script src="node_modules/jquery/dist/jquery.js"></script>    
+    <script src="node_modules/jquery/dist/jquery.js"></script>
     <script src="node_modules/angular/angular.js"></script>
     <script src="lib/kendo/js/jszip.min.js"></script>
     <script src="lib/kendo/js/kendo.all.min.js"></script>

@@ -17,6 +17,13 @@
                 console.log(age);
             });
 
+            var personPromise3 = personPromise.then(function (data) {
+                console.log(data);
+            });
+
+            personPromise3.then(function (data) {
+                console.log('in personPromise3 ' + data);
+            })
 
             personPromise.catch(function (data) {
                 console.log('In catch: ' + data);
