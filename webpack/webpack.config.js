@@ -1,9 +1,12 @@
 ﻿var path = require('path');
 var webpack = require('webpack');
+var CleanWebpackPlugin = require('clean-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {    
     entry: {
-        index: './app/index.js',
+        index: './app/index.js'
     },
     output: {
         filename: 'index.js',
@@ -32,10 +35,15 @@ module.exports = {
             }
         }]
     },
-    //plugins: [
-    //    new webpack.optimize.CommonsChunkPlugin({
-    //        names: ['vendor', 'manifest']
-    //    }),
-    //    new ExtractTextPlugin('styles.css')
-    //]
+    plugins: [
+        new CleanWebpackPlugin(['dist'], {
+            verbose: true,
+            //root: './'
+        }),
+        new CopyWebpackPlugin([
+            {
+                from: './app/index.html'
+            }
+        ])
+    ]
 };
