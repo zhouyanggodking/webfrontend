@@ -6,10 +6,11 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {    
     entry: {
-        index: './app/index.js'
+        index: './app/index.js',
+        vendor: ['angular', 'jquery']
     },
     output: {
-        filename: 'index.js',
+        filename: '[name].js',
         path: path.resolve(__dirname, 'dist')
     },
     devServer: {
@@ -44,6 +45,9 @@ module.exports = {
             {
                 from: './app/index.html'
             }
-        ])
+        ]),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'vendor'
+        })
     ]
 };
