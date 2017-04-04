@@ -2,112 +2,251 @@
     angular.module('app.treeGrid', [])
     .controller('treeGridCtrl', treeGridContrller)
 
-    function treeGridContrller(){
+    function treeGridContrller($scope, $http) {
         var data = {
             "Cfg": {
-                "id": "basic"
+                //Style: "Office",
+                //CSS: 'src/views/grid-demo/treeGrid/Office/sassyGrid.css',
+                "MainCol": "Id",
+                "id": "basic",
+                "MaxSort": 1,
+                "SortedLap": 1,
+                "Sort": "",
+                "SortLap": 1,
+                "AutoSort": 1, //row is automatically sorted (moved) after value is changed by user's edit
+                //"Sorted": 0
+                "Paging": 3,
+                //"AllPages": 0
+                "PageLength": 50,
+                //"FastPages": 500,
+                "ChildPaging": 3,
+                "RemoveCollapsed": 3,
+                "ChildParts": 2,
+                "ChildPartLength": 50,
+
+                NoPager: 1,
+                //CalcOrder: "DeltaColor"
             },
-            "Panel":{
+            "Panel": {
                 "Visible": false
             },
+            "Actions": {
+                OnClickSort: "SortAsc OR SortDesc OR NoSort"
+            },
             "Solid": [//put Group into Solid tag to use Group UI
+                //{
+                //    "King": "TopBar"
+                //},
                 {
                     "Kind": "Group",
-                    "Cells": "List,Custom",
-                    "ListCustom": "unknown",
-                    "List": "|Group by DATA1|Group by DATA2|Group by DATA1 and DATA2",
-                    "Cols": "|DATA1|DATA2|DATA1, DATA2"
+                    Space: 0
+                    //"Cells": "List,Custom",
+                    //"ListCustom": "unknown",
+                    //"List": "|Group by DATA1|Group by DATA2|Group by DATA1 and DATA2",
+                    //"Cols": "|DATA1|DATA2|DATA1, DATA2"
                 }
             ],
-            "LeftCols": [
-              {
-                  "Name": "LEFT1",
-                  "Width": "200"
-              }
-            ],
+            //"LeftCols": [
+            //  {
+            //      "Name": "LEFT1",
+            //      "Width": "200"
+            //  }
+            //],
             "Cols": [
               {
-                  "Name": "DATA1"
+                  "Name": "Id",
+                  //"CaseSensitive": "0"
+                  "Type": "Text",
+                  "CanEmpty": 1,
+                  "EmptyValue": ""
               },
               {
-                  "Name": "DATA2"
+                  "Name": "Name",
+                  Align: "right",
+                  "CanEmpty": 1,
+                  "EmptyValue": ""
               },
               {
-                  "Name": "DATA3",
-                  "CanGroup": false
-              }
-            ],
-            "RightCols": [
+                  "Name": "ShortName",
+                  //"CanGroup": false,
+                  //"Formula":"DATA1 + DATA2" 
+              },
               {
-                  "Name": "RIGHT1"
-              }
+                  "Name": "CurrentPrice",
+                  Type: "Int"
+              },
+              {
+                  "Name": "TargetPrice",
+                  Type: "Int",
+                  "CanEmpty": 1,
+                  "ColorFormula": "Value>50 ? 'red': 'green'"
+              },
+              {
+                  "Name": "Delta",
+                  "CanGroup": false,
+                  "Formula": "TargetPrice - CurrentPrice",
+                  //"CanEmpty": 1,
+                  Type: "Int",
+                  //Calculated: 1,
+                  "ColorFormula": "Value>=0 ? 'green': 'red'"
+              }//, {
+              //    "Name": "HasNextPage",
+              //    "Type": "Bool"
+              //}
             ],
+            //"RightCols": [
+            //  {
+            //      "Name": "RIGHT1",
+            //      "Type": "Int",
+            //      "ColorFormula": "Value < 30? 'red': 'green'", //not working unless added to CalcOrder
+            //  }
+            //],
             "Header": {
-                "LEFT1": "Left Fixed Column",
-                "DATA1": "Data1 Column",
-                "DATA2": "Data2 Column",
-                "DATA3": "Data3 Column(can not be grouped)",
-                "RIGHT1": "RIGHT1 Column"
+                "Id": "Id",
+                "Name": "Name",
+                "ShortName": "Short Name",
+                "CurrentPrice": "CurrentPrice",
+                "TargetPrice": "TargetPrice",
+                "Delta": "Delta (cannot be grouped)"
             },
-            "Head": [
-                {//filtering settings
-                    "Kind": "Filter"
-                },
+            Def: [
                 {
-                "LEFT1": "fixed head row",
-                "DATA1": "1",
-                "DATA2": "2",
-                "DATA3": "3",
-                "RIGHT1": "4"
+                    Name: "R",
+                    Calculated: "1",
+                    CalcOrder: "Delta,DeltaColor"
+                }, {
+                    Name: "GroupHeader",
+                    Expanded: 0,
+                    Calculated: "1",
+                    CalcOrder: "IdHtmlPostfix",
+                    CurrentPriceFormula: "sum()",
+                    IdHtmlPostfixFormula: "' (' + myCount(Grid, Row, Col) + ') '"
+                    //Formula: "sdfas + sdfsd"
                 }
             ],
-            "Body": [//variable rows in pages
-                [
-                    {
-                        "LEFT1": "1",
-                        "DATA1": "GOD",
-                        "DATA2": "KING",
-                        "DATA3": "KING11",
-                        "RIGHT1": 11
-                    },
-                    {
-                        "LEFT1": "2",
-                        "DATA1": "Ocean",
-                        "DATA2": "Sky",
-                        "DATA3": "Sky22",
-                        "RIGHT1": 22
-                    },
-                    {
-                        "LEFT1": "3",
-                        "DATA1": "Jerry",
-                        "DATA2": "Jones",
-                        "DATA3": "Jerry33",
-                        "RIGHT1": 33
-                    },
-                    {
-                        "LEFT1": "4",
-                        "DATA1": "Jerry",
-                        "DATA2": "King",
-                        "DATA3": "KING44",
-                        "RIGHT1": 44
-                    }
-                ]
-            ],
-            "Foot": [
-                {
-                    "LEFT1": "fixed foot row",
-                    "DATA1": "1",
-                    "DATA2": "2",
-                    "DATA3": "3",
-                    "RIGHT1": "4"
-                }
-            ]
+            //"Head": [
+            //    {//filtering settings
+            //        //"Kind": "Filter",
+            //        //"RIGHT1Range": "1",
+            //        //"RIGHT1ShowMenu": "",
+            //        //"RIGHT1": "0~9;15~40",
+            //        //"RIGHT1Filter": "1"
+            //    }
+            //],
+            //"Body": [
+            //    [
+            //        {
+            //            "Def": "PARENT",
+            //            "Id": "TestGroup",
+            //            Count: 100
+            //        }
+            //    ]
+            //]
         };
 
-        var grid = TreeGrid({ Data: { Data: data } }, 'main');
+        var testHeader = "==asfsdfsdfas=";
+
+        window.myCount = function (grid, row, col) {
+            return row.sum;
+        }
+
+        TreeGrid({//jshint ignore:line
+            Layout: {
+                Data: data,
+                Format: "JSON",
+                Header: {
+                    Authorization: testHeader
+                }
+            },
+            Data: {
+                Url: "http://localhost:17262/api/treegrid/data",
+                //Url: getDataUrl()
+                //Params: getDataParams()
+                Format: "JSON",
+                Method: "POST",
+                Header: {
+                    Authorization: testHeader
+                }
+            },
+            Page: {
+                Url: "http://localhost:17262/api/treegrid/page?pageIndex=*Pos&pageSize=50&groupId=*id",
+                Method: "POST",
+                Format: "JSON",
+                Header: {
+                    Authorization: testHeader
+                }
+            }
+        }, "main");
+
+        Grids.OnSort = function (grid, col, sort) {
+        };
 
         Grids.OnRenderFinish = function (G) {
-            console.log(G.Source);
         };
+
+        Grids.OnDataSend = function (grid, source, data, callback) {
+        };
+
+        Grids.OnDataReceive = function (grid, source) {
+            //console.log(source.data);
+        };
+
+        Grids.OnDataGet = function (grid, source, data, io) {
+            //console.log(data);
+        };
+
+        Grids.OnFilter = function (grid, type) {
+        };
+
+        Grids.OnDisplayRow = function (grid, row) {
+            //console.log(row);
+
+        };
+
+        Grids.OnRenderRow = function (grid, row, col) {
+            //console.log(row);
+        };
+
+        Grids.OnExpand = function (grid, row) {
+            //console.log(row);
+        };
+
+        Grids.OnDownloadPage = function (grid, row, func) {
+            //console.log(row);
+        };
+
+        Grids.OnScrollRow = function (grid, row) {
+            //console.log(row);
+            if (!row.nextSibling && row.childNodes.length === 0 && row.HasNextPage) {
+                var pageNum = row.NextPageNum;
+                var groupid = row.parentNode.id;
+                var url = 'http://localhost:17262/api/treegrid/testrows?pagesize=50&pageNum=' + pageNum + '&groupid=' + groupid;
+                $http.get(url).then(function (response) {
+                    //console.log(response);
+                    Grids.PagingRows = response.data;
+                    grid.AddRows(response.data.length, row.parentNode);
+                });
+                grid.loading = 1;
+            }
+        };
+
+        Grids.OnRowAdd = function (grid, row) {
+            var rowR = Grids.PagingRows.shift();
+            row.Id = rowR.Id;
+            row.Name = rowR.Name;
+            row.ShortName = rowR.ShortName;
+            row.CurrentPrice = rowR.CurrentPrice;
+            row.TargetPrice = rowR.TargetPrice;
+            row.HasNextPage = rowR.HasNextPage;
+            row.NextPageNum = rowR.NextPageNum;
+            if (Grids.PagingRows.length === 0) {
+                grid.Loading = 0;
+            }
+        };
+
     }
+
+
+
 });
+

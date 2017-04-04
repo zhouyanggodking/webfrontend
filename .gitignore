@@ -43,3 +43,6 @@
 /effects/treegrid/node_modules
 /kendo-demo/node_modules
 /effects/treegrid-requirejs-angularjs/node_modules
+/webpack/dist
+/webpack/dist
+/webpack/node_modules
