@@ -1,2 +1,9 @@
-﻿body {
+﻿$width: 500;
+
+.responsive-color {
+    @if $width > 500 {
+        color: green;
+    }@else{
+         color: red;
+     }
 }

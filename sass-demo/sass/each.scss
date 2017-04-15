@@ -1,2 +1,6 @@
-﻿body {
+﻿
+@each $name in godking oceansky{
+    .#{$name}{
+        background-image: url('/images/#{$name}.jpg');
+    }
 }

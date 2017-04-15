@@ -1,2 +1,5 @@
-﻿body {
+﻿@for $columnNum from 1 through 12{
+  .col-#{$columnNum}{
+    width:100%/12*$columnNum;
+  }
 }
