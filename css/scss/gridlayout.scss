@@ -1,0 +1,41 @@
+﻿@import "./init.scss";
+
+.container{
+    display: grid;
+    height: 100vh;
+    grid-template-columns:3fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+        "header header"
+        "main sidebar"
+        "footer footer";
+}
+
+.header{
+    grid-area: header;
+    background-color:$headerBgColor;
+    height:6vh;
+}
+
+
+.main{
+    grid-area:main;
+    background-color: $mainBgColor;
+    height:88vh;
+}
+
+.side-bar{
+    grid-area:sidebar;
+    background-color: $sideBarBgColor;
+    height:88vh;
+}
+
+.footer{
+    grid-area:footer;
+    background-color: $footerBgColor;
+    height:6vh;
+}
+
+@media(max-width: 600px){
+    
+}

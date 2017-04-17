@@ -1,10 +1,5 @@
 ﻿@import "./init.scss";
 
-$headerBgColor: yellow;
-$mainBgColor: grey;
-$sideBarBgColor: purple;
-$footerBgColor: #00ff21;
-
 .container{
     display: flex;
     flex-direction:column;
@@ -20,7 +15,7 @@ $footerBgColor: #00ff21;
 .main-sidebar{
     display:flex;
     flex-direction: row;
-    height:100%;
+    height:88vh;
 }
 
 .main{
