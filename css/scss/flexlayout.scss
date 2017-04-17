@@ -1,0 +1,48 @@
+﻿@import "./init.scss";
+
+$headerBgColor: yellow;
+$mainBgColor: grey;
+$sideBarBgColor: purple;
+$footerBgColor: #00ff21;
+
+.container{
+    display: flex;
+    flex-direction:column;
+    height:100vh;
+    background-color: aqua;
+}
+
+.header{
+    background-color:$headerBgColor;
+    height:6vh;
+}
+
+.main-sidebar{
+    display:flex;
+    flex-direction: row;
+    height:100%;
+}
+
+.main{
+    background-color: $mainBgColor;
+    flex-grow: 3;
+    height:100%;
+}
+
+.side-bar{
+    background-color: $sideBarBgColor;
+    flex-grow: 1;
+    height:100%;
+}
+
+.footer{
+    background-color: $footerBgColor;
+    height:6vh;
+}
+
+@media(max-width: 600px){
+    .main-sidebar{
+        flex-direction: column;
+    }
+}
+
