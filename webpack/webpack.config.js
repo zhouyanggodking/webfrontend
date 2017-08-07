@@ -1,53 +1,57 @@
-﻿var path = require('path');
-var webpack = require('webpack');
+﻿const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
-var CopyWebpackPlugin = require('copy-webpack-plugin');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-module.exports = {    
-    entry: {
-        index: './app/index.js',
-        vendor: ['angular', 'jquery']
-    },
+
+let isProd = process.env.NODE_ENV === 'production' ? true : false; //should use cross-env package
+console.log('isProd: ' + isProd);
+module.exports = {
+    entry: './app/index.js',
     output: {
-        filename: '[name].js',
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, 'dist'),
+        filename: 'main.bundle.js'
     },
-    devServer: {
-        contentBase: path.join(__dirname, 'app'),
-        watchContentBase: true,
-        clientLogLevel: "info",
-        open: true,
-        inline: true,
-        port: 9090
-    },
+
     module: {
         rules: [{
-            test: /\.css$/,
-            use: ExtractTextPlugin.extract({
-                use: 'css-loader'
+            test: /\.scss$/,
+            use: ExtractTextWebpackPlugin.extract({
+                fallback: 'style-loader',
+                use: ['css-loader', 'sass-loader']
             })
-        },
-        {
-            test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
-            loader: 'url-loader',
-            options: {
-                limit: 10000
-            }
+        }, {
+            test: /\.(jpe?g|png|gif|svg)/,
+            use: [
+                'file-loader?name=[name].[ext]&outputPath=img/',
+                'image-webpack-loader'
+            ]
         }]
     },
+
+    devServer: {
+        contentBase: path.join(__dirname, 'dist'),
+        compress: true,
+        port: 9000,
+        open: true,
+        openPage: 'index.html'
+    },
+
     plugins: [
         new CleanWebpackPlugin(['dist'], {
             verbose: true,
-            //root: './'
         }),
-        new CopyWebpackPlugin([
-            {
-                from: './app/index.html'
-            }
-        ]),
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'vendor'
+        new HtmlWebpackPlugin({
+            template: './app/index.html',
+            // minify: {
+            //     collapseWhitespace: true
+            // },
+            hash: true
+        }),
+        new ExtractTextWebpackPlugin({
+            filename: 'app.css',
+            disable: false,
+            allChunks: true
         })
     ]
+
 };

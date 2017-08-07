@@ -1,0 +1,7 @@
+$paraColor: red;
+body {
+    background-color: pink;
+    p {
+        color: $paraColor;
+    }
+}
