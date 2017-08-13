@@ -14,6 +14,13 @@ module.exports = {
 
     module: {
         rules: [{
+            test: /\.js$/,
+            enforce: "pre",
+            exclude: /node_modules/,
+            use: [{
+                loader: 'jshint-loader'
+            }]
+        }, {
             test: /\.scss$/,
             use: ExtractTextWebpackPlugin.extract({
                 fallback: 'style-loader',
