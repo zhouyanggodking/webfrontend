@@ -20,6 +20,92 @@
         <div v-for="todo in todoList" v-if="todo.show">
             {{todo.text}}
         </div>
+
+        <hr>
+        <h1>Form Handling</h1>
+        <div>
+            <label for="username">User Name:</label>{{userName}}, length: {{userName.length}}
+            <input class="input-block" type="text" id="username" v-model.lazy.trim="userName">
+        </div>
+        <div>
+            <label for="password">Password:</label>{{password}}
+            <input class="input-block" type="password" id="password" v-model="password">
+        </div>
+        <button v-on:click="logIn(userName, password, $event)">Log In</button>
+        <h3>Choose your skills</h3>
+        <div>Your skill set: {{skills}}</div>
+        <input type="checkbox" v-model="skills" value="C++">C++
+        <input type="checkbox" v-model="skills" value="C#">C#
+        <input type="checkbox" v-model="skills" value="Javascript">Javascript
+
+        <h3>Choose your gender</h3>
+        <div>Your gender: {{gender}}</div>
+        <input type="radio" v-model="gender" value="Male">Male
+        <input type="radio" v-model="gender" value="Female">Female
+
+        <h3>Choose your product</h3>
+        <div>Your product: {{productName}}</div>
+        <select name="product" id="product" v-model="productName">
+            <option value="Casinolink">Casinolink</option>
+            <option value="Tamale">Tamale</option>
+            <option value="Advantage">Advantage</option>
+        </select>
+
+        <div>Your product: {{productNameList}}</div>
+        <select name="productList" id="productList" multiple v-model="productNameList">
+            <option value="Casinolink">Casinolink</option>
+            <option value="Tamale">Tamale</option>
+            <option value="Advantage">Advantage</option>
+        </select>
+
+        <hr>
+        <h1>Event Handling - bubbling</h1>
+        <div v-on:click="buttonGrandParentClick">
+            <div v-on:click="buttonParentClick">
+                <button v-on:click.ctrl="buttonClick">Event propagation test</button>
+            </div>
+        </div>
+
+        <h1>Event Handling - capturing</h1>
+        <div v-on:click.capture="buttonGrandParentClick">
+            <div v-on:click.capture="buttonParentClick">
+                <button v-on:click.capture="buttonClick">Event propagation test</button>
+            </div>
+        </div>
+
+        <h1>Conditional Rendering</h1>
+        <input type="text" v-model="conditional">
+        <div v-if="conditional.toLowerCase() === 'casinolink'">
+            Casinolink description
+        </div>
+        <div v-else-if="conditional.toLowerCase() === 'advantage'">
+            Advantage description
+        </div>
+        <div v-else-if="conditional.toLowerCase() === 'tamale'">
+            Tamale description
+        </div>
+
+        <div v-if="conditional.length === 0">
+            <div>Casinolink description</div>
+            <div>Advantage description</div>
+            <div>Tamale description</div>
+        </div>
+
+        <span v-for="page in pageCount">{{page}}</span>
+        <span v-for="page of pageCount">{{page}}</span>
+        <div v-for="prop in godking">{{prop}}</div>
+        <div v-for="(value, key, index) in godking">
+            {{index}} - {{key}} : {{value}}
+        </div>
+
+        <hr>
+        <h1>Computed properties and watcher</h1>
+        <h2>Reversed Product Name: {{reversedProductname}}</h2>
+        <h3>Current Time: {{now}}</h3>
+        <input type="text" v-model="forWatcher"> {{forWatcher | postfix | upper}}
+
+        <hr>
+        <h1>Component</h1>
     </main>
 </body>
 
