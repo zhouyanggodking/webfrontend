@@ -2,6 +2,10 @@ import './main.scss'
 
 import Vue from 'vue/dist/vue.js'
 
+Vue.component('my-comp', {
+    template: '<h1>Message from component</h1>'
+});
+
 var main = new Vue({
     el: 'main',
     data: {

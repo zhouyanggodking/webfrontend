@@ -3,10 +3,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtracTextWebpackPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-    entry: './app/main.js',
+    entry: {
+        main: './app/main.js',
+        compdemo: './app/component-demo.js'
+    },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js'
+        filename: '[name].bundle.js'
     },
 
     module: {
@@ -15,6 +18,13 @@ module.exports = {
             use: ExtracTextWebpackPlugin.extract({
                 use: ['css-loader', 'sass-loader']
             })
+        }, {
+            test: /\.js$/,
+            exclude: /node_modules/,
+            use: ['babel-loader']
+        }, {
+            test: /\.vue$/,
+            use: ['vue-loader']
         }]
     },
 
@@ -27,7 +37,15 @@ module.exports = {
 
     plugins: [
         new HtmlWebpackPlugin({
-            template: './app/index.html'
+            template: './app/index.html',
+            chunks: ['main'],
+            filename: 'index.html'
+        }),
+
+        new HtmlWebpackPlugin({
+            template: './app/component-demo.html',
+            chunks: ['compdemo'],
+            filename: 'component-demo.html'
         }),
 
         new ExtracTextWebpackPlugin({
