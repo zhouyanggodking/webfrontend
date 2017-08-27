@@ -2,7 +2,7 @@
     <div>
         <h1>Card</h1>
         <h2>{{face}} - {{suit}}</h2>
-        <img v-bind:src="cardSrc" v-bind:alt="`${cardSrc} not found`">
+        <img v-bind:src="cardSrc" v-bind:alt="'card not found'">
     </div>
   
 </template>
@@ -26,8 +26,8 @@ export default {
         }
     },
     computed:{
-        cardSrc: function(){
-            return `./img/png/${this.face}_of_${this.suit}s.png`
+        cardSrc: function(){//enable image to get working
+            return require(`./img/png/${this.face}_of_${this.suit}s.png`)
         }
     }
 }

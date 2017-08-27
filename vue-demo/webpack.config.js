@@ -35,6 +35,11 @@ module.exports = {
                     })
                 }
             }
+        }, {
+            test: /\.(png|jpe?g|gif|svg)/,
+            use: [
+                'file-loader?name=[name].[ext]&outputPath=img/'
+            ]
         }]
     },
 
