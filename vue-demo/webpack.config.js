@@ -24,7 +24,17 @@ module.exports = {
             use: ['babel-loader']
         }, {
             test: /\.vue$/,
-            use: ['vue-loader']
+            loader: 'vue-loader',
+            options: {
+                loaders: {
+                    css: ExtracTextWebpackPlugin.extract({
+                        use: ['css-loader']
+                    }),
+                    scss: ExtracTextWebpackPlugin.extract({
+                        use: ['css-loader', 'sass-loader']
+                    })
+                }
+            }
         }]
     },
 
@@ -32,7 +42,7 @@ module.exports = {
         contentBase: path.join(__dirname, 'dist'),
         port: 9000,
         open: true,
-        openPage: 'index.html'
+        openPage: 'component-demo.html'
     },
 
     plugins: [
@@ -49,7 +59,7 @@ module.exports = {
         }),
 
         new ExtracTextWebpackPlugin({
-            filename: 'main.css',
+            filename: '[name].css',
             disable: false,
             allChunks: true
         })

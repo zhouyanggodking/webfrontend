@@ -1,8 +1,11 @@
 import Vue from 'vue/dist/vue.js'
-import MainComponent from './components/main-component.vue'
+
+import App from './App.vue'
+import router from './router'
 
 new Vue({
     el: 'main',
-    template: '<main-component></main-component>',
-    components: { MainComponent }
+    router: router,
+    template: '<app></app>',
+    components: { App }
 });
