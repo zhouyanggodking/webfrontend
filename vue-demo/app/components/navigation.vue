@@ -32,18 +32,19 @@ nav{
     margin:0;
     li{
       display: inline-block;
-      list-style-type: none;   
-       
+      list-style-type: none; 
       a{
         display: inline-block;     
         padding: 10px 15px; 
         color: #f1f1f1;
         font-size: 30px;
         text-decoration: none;
-        &:focus{          
-          background-color: #4CAF50;
+        
+      }
+
+      a.router-link-exact-active{
+        background-color: #4CAF50;
           color: #ffffff;
-        }
       }
     }
   }

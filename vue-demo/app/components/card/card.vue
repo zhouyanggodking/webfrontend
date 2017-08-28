@@ -1,10 +1,5 @@
 <template>
-    <div>
-        <h1>Card</h1>
-        <h2>{{face}} - {{suit}}</h2>
-        <img v-bind:src="cardSrc" v-bind:alt="'card not found'">
-    </div>
-  
+    <img v-bind:src="cardSrc" v-bind:alt="'card not found'" v-bind:width="width + 'px'" v-bind:height="height + 'px'">    
 </template>
 
 <script>
@@ -23,6 +18,14 @@ export default {
         suit:{
             type: String,
             required: true
+        },
+        width:{
+            type: Number,
+            default: 500
+        },
+        height:{
+            type: Number,
+            default: 726
         }
     },
     computed:{
