@@ -1,3 +1,5 @@
+let unique = 100; //let defined top-level variables don't add to window object.
+
 {
     for (var i = 0; i < 10; ++i) {
         setTimeout(function() {
