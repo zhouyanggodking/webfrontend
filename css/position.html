@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Positioning</title>
+    <link rel="stylesheet" href="css/init.css">
+    <style>
+        div {
+            display: inline-block;
+            height: 50px;
+        }
+        
+        .col {
+            width: 100%;
+        }
+        
+        .col-4 {
+            width: 20%;
+        }
+        
+        .red {
+            background: red;
+        }
+        
+        .purple {
+            background: purple;
+        }
+        
+        .yellow {
+            background: yellow;
+        }
+        
+        .lime {
+            background: lime;
+        }
+        
+        .relative {
+            position: relative;
+            top: 10px;
+            left: 20px;
+        }
+        
+        .absolute {
+            position: absolute;
+            top: 10px;
+            left: 20px;
+        }
+        
+        .fixed {
+            position: fixed;
+            top: 80%;
+            left: 80%;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="col">
+            <div class="col-4 red"></div>
+            <div class="col-4 purple"></div>
+            <div class="col-4 yellow"></div>
+            <div class="col-4 lime"></div>
+        </div>
+
+        <br><br><br>
+
+        <div class="col">
+            <div class="col-4 red"></div>
+            <div class="col-4 purple relative"></div>
+            <div class="col-4 yellow"></div>
+            <div class="col-4 lime"></div>
+        </div>
+
+        <br><br><br>
+
+        <div class="col" style="position: relative;">
+            <div class="col-4 red"></div>
+            <div class="col-4 purple"></div>
+            <div class="col-4 yellow absolute"></div>
+            <div class="col-4 lime"></div>
+        </div>
+
+        <br><br><br>
+
+        <div class="col">
+            <div class="col-4 red fixed"></div>
+            <div class="col-4 purple"></div>
+            <div class="col-4 yellow"></div>
+            <div class="col-4 lime"></div>
+        </div>
+
+    </main>
+</body>
+
+</html>

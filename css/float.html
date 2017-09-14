@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Float</title>
+    <link rel="stylesheet" href="css/init.css">
+    <style>
+        .parent {
+            min-height: 10px;
+        }
+        /* .parent:after {
+            clear: both;
+        } */
+        
+        .empty {
+            clear: both;
+            height: 0;
+        }
+        
+        .pull-left {
+            float: left;
+        }
+        
+        .pull-right {
+            float: right;
+        }
+        
+        .red {
+            background: red;
+        }
+        
+        .yellow {
+            background: yellow;
+        }
+        
+        .lime {
+            background: lime;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="yellow parent">
+            <div class="red pull-left" style="height: 100px;">Float left</div>
+            <div class="lime pull-right" style="height: 100px;">Float right</div>
+            <div class="empty"></div>
+        </div>
+    </main>
+</body>
+
+</html>
