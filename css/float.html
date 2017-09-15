@@ -11,9 +11,12 @@
         .parent {
             min-height: 10px;
         }
-        /* .parent:after {
+        
+        .parent:after {
+            content: "";
+            display: block;
             clear: both;
-        } */
+        }
         
         .empty {
             clear: both;
@@ -47,7 +50,7 @@
         <div class="yellow parent">
             <div class="red pull-left" style="height: 100px;">Float left</div>
             <div class="lime pull-right" style="height: 100px;">Float right</div>
-            <div class="empty"></div>
+            <!-- <div class="empty"></div> -->
         </div>
     </main>
 </body>
