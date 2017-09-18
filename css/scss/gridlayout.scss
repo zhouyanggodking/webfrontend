@@ -1,41 +1,36 @@
 ﻿@import "./init.scss";
-
-.container{
+.container {
     display: grid;
     height: 100vh;
-    grid-template-columns:3fr 1fr;
-    grid-template-rows: auto;
-    grid-template-areas:
-        "header header"
-        "main sidebar"
-        "footer footer";
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: 6vh 88vh 6vh;
+    grid-template-areas: "header header" "main sidebar" "footer footer";
 }
 
-.header{
+.header {
     grid-area: header;
-    background-color:$headerBgColor;
-    height:6vh;
+    background-color: $headerBgColor;
 }
 
-
-.main{
-    grid-area:main;
+.main {
+    grid-area: main;
     background-color: $mainBgColor;
-    height:88vh;
 }
 
-.side-bar{
-    grid-area:sidebar;
+.side-bar {
+    grid-area: sidebar;
     background-color: $sideBarBgColor;
-    height:88vh;
 }
 
-.footer{
-    grid-area:footer;
+.footer {
+    grid-area: footer;
     background-color: $footerBgColor;
-    height:6vh;
 }
 
-@media(max-width: 600px){
-    
+@media(max-width: 768px) {
+    .container {
+        grid-template-columns: auto;
+        grid-template-rows: 6vh 66vh 22vh 6vh;
+        grid-template-areas: "header" "main" "sidebar" "footer";
+    }
 }

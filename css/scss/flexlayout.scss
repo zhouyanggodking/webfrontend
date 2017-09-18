@@ -1,43 +1,51 @@
 ﻿@import "./init.scss";
-
-.container{
+.container {
     display: flex;
-    flex-direction:column;
-    height:100vh;
+    flex-direction: column;
+    height: 100vh;
     background-color: aqua;
 }
 
-.header{
-    background-color:$headerBgColor;
-    height:6vh;
+.header {
+    background-color: $headerBgColor;
+    height: 6vh;
 }
 
-.main-sidebar{
-    display:flex;
+.main-sidebar {
+    display: flex;
     flex-direction: row;
-    height:88vh;
+    height: 88vh;
 }
 
-.main{
+.main {
     background-color: $mainBgColor;
     flex-grow: 3;
-    height:100%;
+    // width: 0;
+    height: 100%;
 }
 
-.side-bar{
+.side-bar {
     background-color: $sideBarBgColor;
     flex-grow: 1;
-    height:100%;
+    // width: 0;
+    height: 100%;
 }
 
-.footer{
+.footer {
     background-color: $footerBgColor;
-    height:6vh;
+    height: 6vh;
 }
 
-@media(max-width: 600px){
-    .main-sidebar{
+@media(max-width: 768px) {
+    .main-sidebar {
         flex-direction: column;
     }
+    .main {
+        flex-grow: 3;
+        height: 0;
+    }
+    .side-bar {
+        flex-grow: 1;
+        height: 0;
+    }
 }
-
