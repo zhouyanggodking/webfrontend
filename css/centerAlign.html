@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Center Algin</title>
+    <link rel="stylesheet" href="css/init.css">
+    <style>
+        .flex-parent {
+            width: 400px;
+            height: 400px;
+            background: yellow;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+        
+        .flex-child {
+            width: 200px;
+            height: 200px;
+            background: lime;
+            align-self: center;
+        }
+        
+        .grid-parent {
+            width: 400px;
+            height: 400px;
+            background: yellow;
+            display: grid;
+            grid-template-rows: auto;
+            grid-template-columns: auto;
+            /* justify-content: center;
+            align-content: center; */
+            justify-items: center;
+            align-items: center;
+        }
+        
+        .grid-child {
+            width: 200px;
+            height: 200px;
+            background: lime;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Using Flex layout</h1>
+    <div class="flex-parent">
+        <div class="flex-child"></div>
+    </div>
+
+    <h1>Using Grid layout</h1>
+    <div class="grid-parent">
+        <div class="grid-child"></div>
+    </div>
+</body>
+
+</html>
