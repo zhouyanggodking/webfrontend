@@ -34,6 +34,23 @@
         .collapse {
             background: #04EC10;
         }
+        
+        main {
+            display: grid;
+            grid-template-columns: auto;
+            grid-template-rows: 10% 90%;
+            grid-template-areas: "filter" "sprint";
+        }
+        
+        .filters {
+            grid-area: filter;
+            background: blue;
+        }
+        
+        .sprints {
+            grid-area: sprint;
+            background: #9CA2A7;
+        }
     </style>
 </head>
 
@@ -44,8 +61,8 @@
         <div class="collapse">Collapse Side Bar</div>
     </aside>
     <main>
-        <section></section>
-        <article>
+        <section class="filters"></section>
+        <article class="sprints">
 
         </article>
     </main>
