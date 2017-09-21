@@ -1,7 +1,7 @@
-﻿@function square($num){
+﻿@function square($num) {
     @return $num*$num;
 }
 
-input{
+input {
     width: square(5)+px;
 }

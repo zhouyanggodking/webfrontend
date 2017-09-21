@@ -1,5 +1,13 @@
-﻿@for $columnNum from 1 through 12{
-  .col-#{$columnNum}{
-    width:100%/12*$columnNum;
-  }
+﻿@for $columnNum from 1 through 12 {
+    //includes 12
+    .col-#{$columnNum} {
+        width: 100% / 12 * $columnNum;
+    }
+}
+
+@for $headIndex from 1 to 6 {
+    //exclude 6
+    .head-#{$headIndex} {
+        font-size: 14px * $headIndex;
+    }
 }
