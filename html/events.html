@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Events and DOM</title>
+    <link rel="stylesheet" href="css/init.css">
+    <style>
+        .one {
+            height: 500px;
+        }
+        
+        .two {
+            height: 300px;
+        }
+        
+        .three {
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="one yellow">
+        <div class="two purple">
+            <div class="three lightblue">
+                <button>One time trigger</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector('.one').addEventListener('click', function(event) {
+            console.log('one div clicked');
+            console.log(this); //this refers to element on which click event operate 
+        }, true); //trigger at capture phase
+
+        document.querySelector('.two').addEventListener('click', function(event) {
+            console.log('two div clicked');
+        }, false); //trigger at bubbling phase
+
+        document.querySelector('.three').addEventListener('click', function(event) {
+            console.log('three div clicked');
+        }, false); //trigger at bubbling phase
+
+        document.querySelector('div > button').addEventListener('click', function(event) {
+            console.log('button clicked');
+        }, {
+            capture: false,
+            once: true
+        });
+    </script>
+</body>
+
+</html>
