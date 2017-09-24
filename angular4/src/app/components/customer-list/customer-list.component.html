@@ -1,0 +1,14 @@
+<section>
+    <table>
+        <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>email</th>
+        </tr>
+        <tr *ngFor="let customer of customerList">
+            <td>{{customer.id}}</td>
+            <td>{{customer.name}}</td>
+            <td>{{customer.email}}</td>
+        </tr>
+    </table>
+</section>
