@@ -51,3 +51,4 @@
 /css/css
 sass-demo/cssbuild/
 html/css/
+angular4/src/**/*.css
