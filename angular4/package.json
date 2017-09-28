@@ -6,7 +6,7 @@
         "scss:compile": "node-sass src -o src",
         "scss:watch": "node-sass -rw src -o src",
         "ng": "ng",
-        "start": "concurrently \"npm run scss:watch\" \"npm run ng serve\" ",
+        "start": "concurrently \"npm run scss:compile && ng serve\" \"npm run scss:watch\"",
         "build": "ng build",
         "test": "ng test",
         "lint": "ng lint",
