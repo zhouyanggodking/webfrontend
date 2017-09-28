@@ -3,7 +3,7 @@ import { CustomerListService } from '../../services/customerList';
 import {Customer} from '../../model/customer';
 
 @Component({
-  selector: 'customer-list',
+  selector: 'gk-customer-list',
   templateUrl: './customer-list.component.html',
   styleUrls: ['./customer-list.component.css'],
   providers:[CustomerListService]
