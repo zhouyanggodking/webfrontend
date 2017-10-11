@@ -1,14 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
+import { Router } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import {NavigationComponent} from './components/navigation/navigation.component';
-
-import {AppRoutingModule} from './app-routing.module';
+import { NavigationComponent } from './components/navigation/navigation.component';
 import { AboutComponent } from './components/about/about.component';
+
+import { AppRoutingModule } from './app-routing.module';
+import { CustomerModule } from './customer/customer.module';
 
 @NgModule({
   declarations: [
@@ -20,9 +21,14 @@ import { AboutComponent } from './components/about/about.component';
   ],
   imports: [
     BrowserModule,
+    CustomerModule,
     AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(router: Router){
+    console.log(JSON.stringify(router.config, undefined, 2));
+  }
+ }
