@@ -17,7 +17,7 @@ const appRoutes : Routes = [//first win strategy
     imports:[RouterModule.forRoot(
         appRoutes,
         {
-            enableTracing: true
+            enableTracing: false
         }
     )],
     exports:[

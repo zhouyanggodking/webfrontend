@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Customer } from '../../model/customer';
 import { Address } from '../../model/address';
 
+import { CustomerService } from '../customer.service'
+
 @Component({
   selector: 'app-customer-list',
   templateUrl: './customer-list.component.html',
@@ -12,20 +14,11 @@ export class CustomerListComponent implements OnInit {
 
   customerList: Customer[];
 
-  constructor() { }
+  constructor(private customerSrc: CustomerService) { }
 
   ngOnInit() {
-    this.customerList =[{
-      id: '1',
-      name: 'GodKing',
-      email: 'godking@gmail.com',
-      phone: '123456789'
-    },{
-      id: '2',
-      name: 'OceanSky',
-      email: 'oceansky@gmail.com',
-      phone: '121212121'
-    }];
+    this.customerSrc.getCustomers()
+      .subscribe(custs => this.customerList = custs);
   }
 
 }

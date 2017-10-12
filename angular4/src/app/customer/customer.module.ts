@@ -4,6 +4,8 @@ import { CustomerListComponent } from './customer-list/customer-list.component';
 import { CustomerDetailComponent } from './customer-detail/customer-detail.component';
 import { CustomerRoutingModule } from './customer-routing.module';
 
+import { CustomerService } from './customer.service';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -12,6 +14,7 @@ import { CustomerRoutingModule } from './customer-routing.module';
   declarations: [
     CustomerListComponent, 
     CustomerDetailComponent
-  ]
+  ],
+  providers: [CustomerService]
 })
 export class CustomerModule { }
