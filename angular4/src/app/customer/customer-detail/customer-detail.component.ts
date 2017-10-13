@@ -18,19 +18,16 @@ export class CustomerDetailComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router, private customerService: CustomerService) { }
 
   ngOnInit() {
-    this.route.paramMap
-      .switchMap((params: ParamMap) => {
-        console.log(params);
-        return this.customerService.getCustomer(params.get('id'));
-      })
-      .subscribe((customer: Customer) => this.customer = customer);
+    console.log('custome-detail init');
 
-      console.log(this.route);
+    this.route.paramMap
+      .switchMap((params: ParamMap) => this.customerService.getCustomer(params.get('id')))
+      .subscribe((customer: Customer) => this.customer = customer);
   }
 
   gotoCustomers(){
-    //this.router.navigate(['/customer-list', {id: this.customer.id, foo: 'foo'}]);
-    this.router.navigate(['/customer-detail', 2, {customerId: this.customer.id, foo: 'foo'}]);
+    this.router.navigate(['/customer-list', {id: this.customer.id, foo: 'foo'}]);
+    //this.router.navigate(['/customer-detail', 2, {customerId: this.customer.id, foo: 'foo'}]);
   }
 
 }

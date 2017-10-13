@@ -10,6 +10,7 @@ import { AboutComponent } from './components/about/about.component';
 
 import { AppRoutingModule } from './app-routing.module';
 import { CustomerModule } from './customer/customer.module';
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { CustomerModule } from './customer/customer.module';
   imports: [
     BrowserModule,
     CustomerModule,
+    AdminModule,
     AppRoutingModule
   ],
   providers: [],
@@ -29,6 +31,6 @@ import { CustomerModule } from './customer/customer.module';
 })
 export class AppModule {
   constructor(router: Router){
-    //console.log(JSON.stringify(router.config, undefined, 2));
+    // console.log(JSON.stringify(router.config, undefined, 2));
   }
  }
