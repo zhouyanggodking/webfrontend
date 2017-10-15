@@ -11,7 +11,7 @@ import { CustomerService } from './customer.service';
     CommonModule,
     CustomerRoutingModule
   ],
-  exports:[CustomerListComponent],
+  exports:[CustomerListComponent],//make other modules use it
   declarations: [
     CustomerListComponent, 
     CustomerDetailComponent

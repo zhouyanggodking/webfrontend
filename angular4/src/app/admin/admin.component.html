@@ -1,4 +1,8 @@
 <div>
-    <h1>Admin Page</h1>
+    <h1>Welcome to Admin Page</h1>
+    <nav>
+        <a [routerLink]="['customer-center']">Customer</a>
+        <a [routerLink]="['company-center']">Company</a>
+    </nav>
     <router-outlet></router-outlet>
 </div>
