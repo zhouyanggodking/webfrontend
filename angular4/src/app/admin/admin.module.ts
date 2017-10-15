@@ -7,7 +7,7 @@ import { CustomerCenterComponent } from './customer-center/customer-center.compo
 import { CompanyCenterComponent } from './company-center/company-center.component';
 
 import { CustomerModule } from "../customer/customer.module";
-// import { CustomerListComponent } from "../customer/customer-list/customer-list.component";
+import { AuthGuard } from '../auth-guard.service';
 
 @NgModule({
   imports: [
@@ -15,6 +15,11 @@ import { CustomerModule } from "../customer/customer.module";
     CustomerModule,
     AdminRoutingModule
   ],
-  declarations: [AdminComponent, CustomerCenterComponent, CompanyCenterComponent]
+  declarations: [
+    AdminComponent, 
+    CustomerCenterComponent, 
+    CompanyCenterComponent
+  ],
+  providers: [AuthGuard]
 })
 export class AdminModule { }
