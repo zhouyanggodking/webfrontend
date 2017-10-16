@@ -10,7 +10,11 @@ const appRoutes: Routes = [
   //first win strategy
   { path: "login", component: LoginComponent },
   { path: "about", component: AboutComponent },
-  { path: "admin", loadChildren: "app/admin/admin.module#AdminModule", canLoad: [AuthGuard] },
+  {
+    path: "admin",
+    loadChildren: "app/admin/admin.module#AdminModule",
+    canLoad: [AuthGuard]
+  },
   { path: "pagenotfound", component: PageNotFoundComponent },
   { path: "", redirectTo: "login", pathMatch: "full" }, //init page
   { path: "**", component: PageNotFoundComponent } //last resort
@@ -22,6 +26,7 @@ const appRoutes: Routes = [
       enableTracing: false
     })
   ],
-  exports: [RouterModule] //TODO: why need to export RouterModule
+  exports: [RouterModule], //TODO: why need to export RouterModule
+  providers: [AuthGuard]
 })
 export class AppRoutingModule {}
