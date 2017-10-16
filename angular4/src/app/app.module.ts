@@ -13,6 +13,7 @@ import { CustomerModule } from './customer/customer.module';
 // import { AdminModule } from './admin/admin.module';
 import { AuthService } from './auth.service';
 import { CanDeactivateGuard } from './can-deactivate-guard.service';
+import { RxjsDemoService } from './rxjs-demo.service';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { CanDeactivateGuard } from './can-deactivate-guard.service';
   ],
   providers: [
     AuthService,
-    CanDeactivateGuard
+    CanDeactivateGuard,
+    RxjsDemoService
   ],
   bootstrap: [AppComponent]
 })
