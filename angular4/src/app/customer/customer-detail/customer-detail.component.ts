@@ -20,9 +20,14 @@ export class CustomerDetailComponent implements OnInit {
   ngOnInit() {
     console.log('custome-detail init');
 
-    this.route.paramMap
-      .switchMap((params: ParamMap) => this.customerService.getCustomer(params.get('id')))
-      .subscribe((customer: Customer) => this.customer = customer);
+    // this.route.paramMap
+    //   .switchMap((params: ParamMap) => this.customerService.getCustomer(params.get('id')))
+    //   .subscribe((customer: Customer) => this.customer = customer);
+
+    //in this case, we use Rosolver to prefetch route data, so just get customer detail from route data.
+    this.route.data.subscribe((data: {customer: Customer}) =>{
+      this.customer = data.customer;
+    });
   }
 
   gotoCustomers(){

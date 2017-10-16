@@ -11,8 +11,8 @@ export class AuthService {
 
   constructor() { }
 
-  login(userName: string, password: string): boolean | Observable<boolean>{
-    return Observable.of(true).delay(1000).do(val => this.isLoggedIn = true)
+  login(userName?: string, password?: string): Observable<boolean>{
+    return Observable.of(true).delay(1000).do(val => this.isLoggedIn = true);
   }
 
   logout(){

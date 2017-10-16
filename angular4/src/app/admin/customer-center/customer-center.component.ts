@@ -14,4 +14,8 @@ export class CustomerCenterComponent implements OnInit {
   ngOnInit() {
   }
 
+  canDeactivate(): boolean{
+    return true;
+  }
+
 }

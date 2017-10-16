@@ -11,6 +11,8 @@ import { AboutComponent } from './components/about/about.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CustomerModule } from './customer/customer.module';
 import { AdminModule } from './admin/admin.module';
+import { AuthService } from './auth.service';
+import { CanDeactivateGuard } from './can-deactivate-guard.service';
 
 
 @NgModule({
@@ -27,7 +29,10 @@ import { AdminModule } from './admin/admin.module';
     AdminModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    AuthService,
+    CanDeactivateGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

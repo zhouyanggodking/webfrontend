@@ -6,6 +6,7 @@ import { AdminComponent } from "./admin.component";
 import { CustomerCenterComponent } from "./customer-center/customer-center.component";
 import { CompanyCenterComponent } from "./company-center/company-center.component";
 import { AuthGuard } from '../auth-guard.service';
+import { CanDeactivateGuard } from "../can-deactivate-guard.service";
 
 const adminRoutes: Routes = [
   {
@@ -14,12 +15,19 @@ const adminRoutes: Routes = [
     canActivate: [AuthGuard],
     children: [
       {
-        path: "customer-center",
-        component: CustomerCenterComponent
-      },
-      {
-        path: "company-center",
-        component: CompanyCenterComponent
+        path: '',//use component-less route to manage all child routes
+        canActivateChild: [AuthGuard],
+        children:[
+          {
+            path: "customer-center",
+            component: CustomerCenterComponent,
+            canDeactivate: [CanDeactivateGuard],
+          },
+          {
+            path: "company-center",
+            component: CompanyCenterComponent
+          }
+        ]
       }
     ]
   }
