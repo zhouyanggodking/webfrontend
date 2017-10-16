@@ -10,7 +10,7 @@ import { CanDeactivateGuard } from "../can-deactivate-guard.service";
 
 const adminRoutes: Routes = [
   {
-    path: "admin",
+    path: "",
     component: AdminComponent,
     canActivate: [AuthGuard],
     children: [

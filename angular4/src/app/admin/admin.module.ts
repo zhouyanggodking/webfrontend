@@ -22,4 +22,8 @@ import { AuthGuard } from '../auth-guard.service';
   ],
   providers: [AuthGuard]
 })
-export class AdminModule { }
+export class AdminModule { 
+  constructor(){
+    console.log('admin module loaded');
+  }
+}

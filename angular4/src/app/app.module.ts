@@ -10,7 +10,7 @@ import { AboutComponent } from './components/about/about.component';
 
 import { AppRoutingModule } from './app-routing.module';
 import { CustomerModule } from './customer/customer.module';
-import { AdminModule } from './admin/admin.module';
+// import { AdminModule } from './admin/admin.module';
 import { AuthService } from './auth.service';
 import { CanDeactivateGuard } from './can-deactivate-guard.service';
 
@@ -26,7 +26,7 @@ import { CanDeactivateGuard } from './can-deactivate-guard.service';
   imports: [
     BrowserModule,
     CustomerModule,
-    AdminModule,
+    // AdminModule,
     AppRoutingModule
   ],
   providers: [
