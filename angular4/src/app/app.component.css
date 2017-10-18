@@ -1,0 +1,10 @@
+header {
+  height: 40px;
+  background: yellow; }
+
+footer {
+  height: 40px;
+  background: blue; }
+
+main {
+  height: calc(100vh - 80px); }
