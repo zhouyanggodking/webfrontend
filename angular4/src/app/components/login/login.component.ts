@@ -11,6 +11,7 @@ export class LoginComponent implements OnInit {
 
   userName: string;
   password: string;
+  submitted: boolean;
 
   constructor(private authService: AuthService, private router: Router) { }
 
@@ -18,7 +19,8 @@ export class LoginComponent implements OnInit {
   }
 
   submit(){
-    this.authService.login().subscribe((val) => {
+    this.submitted = true;
+    this.authService.login(this.userName, this.password).subscribe((val) => {
       if(this.authService.isLoggedIn){
         let path = this.authService.redirectUrl ? this.authService.redirectUrl: '/customer-list';
         this.router.navigate([path]);
