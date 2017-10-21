@@ -5,20 +5,26 @@ import 'rxjs/add/operator/switchMap';
 
 import {CustomerService} from '../customer.service';
 import {Customer} from '../../model/customer';
+import { LoggerService } from '../../components/logger/logger.service';
 
 @Component({
   selector: 'app-customer-detail',
   templateUrl: './customer-detail.component.html',
-  styleUrls: ['./customer-detail.component.css']
+  styleUrls: ['./customer-detail.component.css'],
+  providers:[LoggerService]
 })
 export class CustomerDetailComponent implements OnInit {
 
   customer: Customer;
 
-  constructor(private route: ActivatedRoute, private router: Router, private customerService: CustomerService) { }
+  constructor(private route: ActivatedRoute, 
+    private router: Router, 
+    private customerService: CustomerService,
+    private logger: LoggerService
+  ) { }
 
   ngOnInit() {
-    console.log('custome-detail init');
+    this.logger.log('CustomerDetailComponent init');
 
     // this.route.paramMap
     //   .switchMap((params: ParamMap) => this.customerService.getCustomer(params.get('id')))

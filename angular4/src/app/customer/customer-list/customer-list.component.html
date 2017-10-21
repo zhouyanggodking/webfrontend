@@ -9,7 +9,7 @@
     <tr *ngFor="let customer of customerList">
         <td>{{customer.id}}</td>
         <td><a [routerLink]="['/customer-detail', customer.id]">{{customer.name}}</a></td>
-        <td>{{customer.email}}</td>
+        <td myHighlight>{{customer.email}}</td>
         <td>{{customer.phone}}</td>
         <td>{{customer.address}}</td>
     </tr>

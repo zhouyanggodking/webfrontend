@@ -15,7 +15,10 @@ import { CustomerModule } from './customer/customer.module';
 import { AuthService } from './auth.service';
 import { CanDeactivateGuard } from './can-deactivate-guard.service';
 import { RxjsDemoService } from './rxjs-demo.service';
-
+import { LoggerService } from './components/logger/logger.service';
+import { BetterLoggerService } from './components/logger/better-logger.service';
+import { dummyLogger } from './components/logger/dummy-logger.service';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -29,13 +32,23 @@ import { RxjsDemoService } from './rxjs-demo.service';
     BrowserModule,
     FormsModule,
     CustomerModule,
+    SharedModule,
     // AdminModule,
     AppRoutingModule
   ],
   providers: [
     AuthService,
     CanDeactivateGuard,
-    RxjsDemoService
+    RxjsDemoService,
+    // LoggerService,
+    // {
+    //   provide: LoggerService,
+    //   useExisting: BetterLoggerService
+    // },
+    // {
+    //   provide: LoggerService,
+    //   useValue: dummyLogger
+    // }
   ],
   bootstrap: [AppComponent]
 })
