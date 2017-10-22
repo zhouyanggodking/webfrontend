@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule} from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -19,6 +20,8 @@ import { LoggerService } from './components/logger/logger.service';
 import { BetterLoggerService } from './components/logger/better-logger.service';
 import { dummyLogger } from './components/logger/dummy-logger.service';
 import { SharedModule } from './shared/shared.module';
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { MockCustomerDbService } from './mock-server/mock-customers';
 
 @NgModule({
   declarations: [
@@ -30,6 +33,8 @@ import { SharedModule } from './shared/shared.module';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
+    InMemoryWebApiModule.forRoot(MockCustomerDbService),
     FormsModule,
     CustomerModule,
     SharedModule,
