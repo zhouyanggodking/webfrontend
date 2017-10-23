@@ -29,7 +29,7 @@ describe('CanDeactivateGuardService', () => {
       }
     };
 
-    expect(guard.canDeactivate(mockComp)).toBeTruthy();
+    expect(guard.canDeactivate(mockComp)).toBeFalsy();
     
   });
 });
