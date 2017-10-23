@@ -13,7 +13,7 @@ export class AuthService{
   redirectUrl: string;
   userCollections: User[]
 
-  constructor() { 
+  constructor(private logger: LoggerService) { 
     this.userCollections = [{
       userName: 'godking',
       password: 'godking'
@@ -22,7 +22,7 @@ export class AuthService{
 
   login(userName: string, password: string): Observable<boolean>{
     var logged = this.userCollections.filter(user => user.userName === userName && user.password === password).length > 0;
-    //this._logger.log(`User: ${userName} log in status: ${logged}`);
+    this.logger.log(`User: ${userName} log in status: ${logged}`);
     return Observable.of(logged).do(valid => this.isLoggedIn = valid);
   }
 

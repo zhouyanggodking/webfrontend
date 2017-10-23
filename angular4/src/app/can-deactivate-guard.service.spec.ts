@@ -1,15 +1,35 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { CanDeactiveGuardService } from './can-deactive-guard.service';
+import { CanDeactivateGuard, CanComponentDeactivate } from './can-deactivate-guard.service';
+import { Observable } from 'rxjs/Observable';
 
-describe('CanDeactiveGuardService', () => {
+describe('CanDeactivateGuardService', () => {
+
+  let guard : CanDeactivateGuard;
+
+
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      providers: [CanDeactiveGuardService]
-    });
+    guard = new CanDeactivateGuard();    
   });
 
-  it('should be created', inject([CanDeactiveGuardService], (service: CanDeactiveGuardService) => {
-    expect(service).toBeTruthy();
-  }));
+  it('CanDeactivateGuard will succeed if component passes check', () => {
+    let mockComp: CanComponentDeactivate = {
+      canDeactivate(){
+        return true;
+      }
+    };
+
+    expect(guard.canDeactivate(mockComp)).toBeTruthy();
+  });
+
+  it('CanDeactivateGuard will fail if component doesn\'t pass check', () => {
+    let mockComp: CanComponentDeactivate = {
+      canDeactivate(){
+        return false
+      }
+    };
+
+    expect(guard.canDeactivate(mockComp)).toBeTruthy();
+    
+  });
 });
