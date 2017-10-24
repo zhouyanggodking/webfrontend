@@ -24,8 +24,9 @@ describe('AuthGuardService', () => {
     };
 
     fakeAuthService = {
-      isLoggedIn: false
-    }
+      isLoggedIn: false,
+      name: 'test'
+    };
 
     TestBed.configureTestingModule({
       providers: [AuthGuard, {
@@ -36,13 +37,30 @@ describe('AuthGuardService', () => {
     });
   });
 
-  xit('if not logged in, can\'t activate component', inject([AuthGuard, Router, AuthService], (guard: AuthGuard, router, authService) => {
+  it('if not logged in, can\'t activate component', inject([AuthGuard, Router, AuthService], (guard: AuthGuard, router, authService) => {
     let route: ActivatedRouteSnapshot = new ActivatedRouteSnapshot();
+    //how to mock RouterStateSnapshot
+    let state:RouterStateSnapshot = jasmine.createSpyObj<RouterStateSnapshot>("RouterStateSnapshot", ['toString']);
+    spyOn(fakeRouter, 'navigate');
     
-    let state: RouterStateSnapshot = new RouterStateSnapshot(null);//TODO
     state.url = 'redirectUrl';
     let result = guard.canActivate(route, state);
     expect(result).toBeFalsy();
-    expect(fakeAuthService.redirectUrl).toBe('redirectUrl');
+  }));
+
+  it('if logged in, can activate component', inject([AuthGuard, Router, AuthService], (guard: AuthGuard, router, authService) => {
+    let route: ActivatedRouteSnapshot = new ActivatedRouteSnapshot();
+    //how to mock RouterStateSnapshot
+    let state:RouterStateSnapshot = jasmine.createSpyObj<RouterStateSnapshot>("RouterStateSnapshot", ['toString']);
+    spyOn(fakeRouter, 'navigate');
+    
+    state.url = 'redirectUrl';
+    let result = guard.canActivate(route, state);
+    expect(result).toBeTruthy();
+  }));
+
+  it('CanLoad', inject([AuthGuard, Router, AuthService], (guard: AuthGuard, router, authService) => {
+    let result = guard.canLoad(null);
+    expect(result).toBeTruthy();
   }));
 });
