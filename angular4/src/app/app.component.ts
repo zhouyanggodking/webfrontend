@@ -13,5 +13,4 @@ export class AppComponent implements OnInit {
     this.rxjsDemo.creation();
     this.rxjsDemo.commonOperators();
   }
-  title = "app";
 }

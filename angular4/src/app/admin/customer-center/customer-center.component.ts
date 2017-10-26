@@ -9,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CustomerCenterComponent implements OnInit {
 
+  title: string;
+
   constructor() { }
 
   ngOnInit() {
+    this.title = 'Customer Management';
   }
 
   canDeactivate(): boolean{

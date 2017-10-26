@@ -3,13 +3,16 @@ import { TestBed, inject } from '@angular/core/testing';
 import { LoggerService } from './logger.service';
 
 describe('LoggerService', () => {
+
+  let logger: LoggerService;
+
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      providers: [LoggerService]
-    });
+    logger = new LoggerService();
   });
 
-  it('should be created', inject([LoggerService], (service: LoggerService) => {
-    expect(service).toBeTruthy();
-  }));
+  it('should be created', ()=>{
+    spyOn(console, 'log');
+    logger.log('msg');
+    expect(console.log).toHaveBeenCalled();
+  });
 });

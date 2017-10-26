@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CompanyCenterComponent implements OnInit {
 
+  title: string;
+  content: string;
+
   constructor() { }
 
   ngOnInit() {
+    this.title = 'Company Management';
+    this.content = 'This is company list';
   }
 
 }

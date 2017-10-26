@@ -54,6 +54,8 @@ describe('AuthGuardService', () => {
     let state:RouterStateSnapshot = jasmine.createSpyObj<RouterStateSnapshot>("RouterStateSnapshot", ['toString']);
     spyOn(fakeRouter, 'navigate');
     
+    authService.isLoggedIn = true;
+    
     state.url = 'redirectUrl';
     let result = guard.canActivate(route, state);
     expect(result).toBeTruthy();
