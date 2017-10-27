@@ -41,18 +41,20 @@ describe('AuthGuardService', () => {
     let route: ActivatedRouteSnapshot = new ActivatedRouteSnapshot();
     //how to mock RouterStateSnapshot
     let state:RouterStateSnapshot = jasmine.createSpyObj<RouterStateSnapshot>("RouterStateSnapshot", ['toString']);
-    spyOn(fakeRouter, 'navigate');
+    spyOn(router, 'navigate');
     
     state.url = 'redirectUrl';
     let result = guard.canActivate(route, state);
-    expect(result).toBeFalsy();
+    expect(result).toBeFalsy();    
+    expect(router.navigate).toHaveBeenCalledWith(['/login']);
+    expect(authService.redirectUrl).toBe('redirectUrl');
   }));
 
   it('if logged in, can activate component', inject([AuthGuard, Router, AuthService], (guard: AuthGuard, router, authService) => {
     let route: ActivatedRouteSnapshot = new ActivatedRouteSnapshot();
     //how to mock RouterStateSnapshot
     let state:RouterStateSnapshot = jasmine.createSpyObj<RouterStateSnapshot>("RouterStateSnapshot", ['toString']);
-    spyOn(fakeRouter, 'navigate');
+    spyOn(router, 'navigate');
     
     authService.isLoggedIn = true;
     
