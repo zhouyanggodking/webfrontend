@@ -8,7 +8,7 @@
 </head>
 
 <body ng-controller="mainCtrl">
-    <my-comp hero="hero" on-delete="delete(hero.name)"></my-comp>
+    <my-comp hero="hero" on-delete="delete(hero.name)" on-change="onChange(compName, value, author)"></my-comp>
     <script src="../node_modules/jquery/dist/jquery.js"></script>
     <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
     <script src="../node_modules/angular/angular.js"></script>
@@ -23,14 +23,19 @@
             $scope.delete = function(name) {
                 console.log(name + ' is deleted - mainCtrl');
             };
+
+            $scope.onChange = function(a, b, c) {
+                console.log(`${a}   ${b}    ${c}`);
+            };
         });
 
         myApp.component('myComp', {
             bindings: {
                 hero: '<',
-                onDelete: '&'
+                onDelete: '&',
+                onChange: '&'
             },
-            template: '<div>{{$ctrl.hero.name}}<button ng-click="$ctrl.delete($ctrl.hero)">delete</button></div>',
+            template: '<div><input ng-model="$ctrl.text"/></div>',
             controller: MyCompController
         });
 
@@ -50,6 +55,12 @@
             ctrl.$doCheck = function() {
                 //$doCheck() - Called on each turn of the digest cycle.
                 console.log('$doCheck');
+
+                ctrl.onChange({
+                    compName: 'my-comp',
+                    value: ctrl.text,
+                    author: 'godking'
+                });
             };
 
             ctrl.$postLink = function() {
@@ -65,9 +76,6 @@
                 console.log(hero.name + ' is deleted');
                 ctrl.onDelete();
             };
-
-
-
         }
     </script>
 </body>
