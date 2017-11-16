@@ -1,12 +1,54 @@
-﻿<!DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-    <title>GodKing Play Ground</title>
-	<meta charset="utf-8" />
-    <link rel="stylesheet" href="main.css"/>
+    <title>Play Ground</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
 </head>
+
 <body>
-    <ui-view></ui-view>
-    <script data-main="main" src="libs/requirejs/require.js"></script>
+    <button id="test">Test</button>
+    <script src="./js/event.js"></script>
+    <script>
+        var btn = document.querySelector('#test');
+
+        eventUtility.addEvent(btn, 'click', function(event) {
+            console.log('test clicked 1');
+        });
+
+        eventUtility.addEvent(btn, 'click', function(event) {
+            console.log('test clicked 2');
+        });
+
+        var emitter = new EventEmitter();
+        emitter.bind('testclick', function(args) {
+            console.log('testclick 1 ' + args);
+        });
+
+        emitter.bind('testclick', function(args) {
+            console.log('testclick 2 ' + args);
+        });
+
+        emitter.trigger('testclick', 'godking');
+    </script>
+
+    <script>
+        var test = "a<>b     'abc<>b' 'a<>b'    c<>d";
+
+        var arr = [];
+        var king = test.replace(/<>/g, function(match, index) {
+            arr.push(index);
+            return '!=';
+        });
+
+        // test.replace(/\'.*?<>.*?\'/g, function(match, index) {
+        //     console.log(match);
+        //     console.log(index);
+        //     return match.replace(/<>/, '!=')
+        // });
+    </script>
 </body>
+
 </html>
