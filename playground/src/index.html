@@ -9,30 +9,12 @@
 </head>
 
 <body>
-    <button id="test">Test</button>
+    <!-- <button id="test">Test</button>
     <script src="./js/event.js"></script>
-    <script>
-        var btn = document.querySelector('#test');
+    <script src="./js/eventTest.js"></script>     -->
+    <script src="./js/nativeJsUtility.js"></script>
+    <script src="./js/nativeJsUtilityTest.js"></script>
 
-        eventUtility.addEvent(btn, 'click', function(event) {
-            console.log('test clicked 1');
-        });
-
-        eventUtility.addEvent(btn, 'click', function(event) {
-            console.log('test clicked 2');
-        });
-
-        var emitter = new EventEmitter();
-        emitter.bind('testclick', function(args) {
-            console.log('testclick 1 ' + args);
-        });
-
-        emitter.bind('testclick', function(args) {
-            console.log('testclick 2 ' + args);
-        });
-
-        emitter.trigger('testclick', 'godking');
-    </script>
 </body>
 
 </html>
