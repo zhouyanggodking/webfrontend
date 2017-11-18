@@ -11,7 +11,7 @@
 <body>
     <button id="test">Test</button>
     <script src="./js/event.js"></script>
-    <!-- <script>
+    <script>
         var btn = document.querySelector('#test');
 
         eventUtility.addEvent(btn, 'click', function(event) {
@@ -32,52 +32,6 @@
         });
 
         emitter.trigger('testclick', 'godking');
-    </script> -->
-
-    <script>
-        var test = "a<>b     'abc<>b ssf<>bg' 'a<>b'    c<>d";
-
-        var arr = [];
-        test.replace(/<>/g, function(match, index) {
-            arr.push(index);
-        });
-
-        var dqArr = [];
-        test.replace(/\".*?<>.*?\"/g, function(match, index) {
-            dqArr.push({
-                start: index,
-                end: index + match.length
-            });
-        });
-
-        var sqArr = [];
-        test.replace(/\'.*?<>.*?\'/g, function(match, index) {
-            sqArr.push({
-                start: index,
-                end: index + match.length
-            });
-        });
-
-        function isExcluded(index, targetArr) {
-            for (var i = 0; i < targetArr.length; ++i) {
-                if (index >= targetArr[i].start && index < targetArr[i].end) {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        var testArr = test.split('');
-
-        for (var j = 0; j < arr.length; ++j) {
-            if (!isExcluded(arr[j], dqArr) && !isExcluded(arr[j], sqArr)) {
-                // test.splice(arr[j], 2, '!=');
-                //Array.prototype.splice.call(test, arr[j], 2, '!');
-                testArr.splice(arr[j], 2, '!', '=');
-            }
-        }
-
-        var result = testArr.join('');
     </script>
 </body>
 
