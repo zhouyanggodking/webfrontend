@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Image Slider</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="./slider.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container">
+            <div class="slider-viwer">
+                <div class="slider">
+                    <img src="./universe.jpg" alt="">
+                </div>
+                <div class="slider">
+                    <img src="./universe2.jpg" alt="">
+                </div>
+                <div class="slider">
+                    <img src="./universe3.jpg" alt="">
+                </div>
+            </div>
+        </div>
+
+        <script>
+            var container = document.getElementsByClassName('container')[0];
+            // container.innerHTML += container.innerHTML;
+            var sliderViewer = document.getElementsByClassName('slider-viwer')[0];
+            sliderViewer.innerHTML += sliderViewer.innerHTML;
+            var sliders = sliderViewer.children;
+            var speed = 5;
+            sliderViewer.style.left = -sliders[0].offsetWidth * (sliders.length -1) + 'px';
+            
+            var rqId = requestAnimationFrame(move);   
+
+            container.addEventListener('mouseover', function(){
+                cancelAnimationFrame(rqId);
+            });
+
+            container.addEventListener('mouseleave', function(){
+                rqId = requestAnimationFrame(move); 
+            });
+
+            function move(){
+                if(sliderViewer.offsetLeft > 0){
+                    sliderViewer.style.left = -(sliderViewer.offsetWidth/2) + 'px';
+                }
+                sliderViewer.style.left = sliderViewer.offsetLeft + speed + 'px';
+                rqId = requestAnimationFrame(move);
+            }
+        </script>
+    </body>
+</html>
