@@ -40,7 +40,8 @@
                 rqId = requestAnimationFrame(move); 
             });
 
-            function move(){
+            function move(timeStamp){
+                // console.log(timeStamp);
                 if(sliderViewer.offsetLeft > 0){
                     sliderViewer.style.left = -(sliderViewer.offsetWidth/2) + 'px';
                 }

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>List insertion performance</title>
+    <style>
+        li{
+            border: 1px solid purple;
+        }
+    </style>
+</head>
+<body>
+    <ul id="list">
+    </ul>
+
+    <script>
+        let list = document.getElementById('list');
+        let fragment = batchInsert(100000);
+        list.appendChild(fragment);
+        document.body.appendChild(list);
+
+        function batchInsert(count){
+            let fragment = document.createDocumentFragment();
+            for(let index = 0; index < count; ++index){
+                let li = document.createElement('li');
+                li.textContent = index;
+                fragment.appendChild(li);
+            }
+            return fragment;
+        }
+    </script>
+</body>
+</html>
