@@ -5,12 +5,45 @@
     <title>Front end page</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="css/style.css" rel="stylesheet">
 </head>
 
 <body>
     <p>Front end page</p>
-    <iframe src=""></iframe>
+    <!-- <iframe src="http://localhost:9000/user/1"></iframe> -->
+    <!-- <iframe src="http://localhost:9000/nodePage.html"></iframe> -->
+    <script>
+        // let iframeWin = document.querySelector('iframe').contentWindow;
+
+        // setTimeout(()=>{
+        //     iframeWin.postMessage({data: 'from main window'}, 'http://localhost:9000'); 
+        // }, 1000);
+        
+        // window.addEventListener('message', function(event){
+        //     console.log(event.data);
+        // }); 
+        
+        
+
+        //cross origin error
+        // var xhr = new XMLHttpRequest();
+        // xhr.open('get', 'http://localhost:9000/user/1');
+        
+        // xhr.onload = function(event){
+        //     if(this.status === 200){
+        //         console.log(this.responseText);
+        //     }
+        // };
+
+        // xhr.send();
+
+        function process(data){
+            console.log(data);
+        }
+
+        var script = document.createElement('script');
+        script.src = 'http://localhost:9000/user/1?jsonp=1&callback=process';
+        document.body.appendChild(script);
+    </script>
 </body>
 
 </html>

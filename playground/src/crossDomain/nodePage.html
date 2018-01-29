@@ -9,6 +9,24 @@
 
 <body>
     <p>node page</p>
+    <script>
+        window.addEventListener('message', function(event){
+            console.log(event.data);
+            window.parent.postMessage({data: 'from iframe window'}, 'http://localhost:3000');
+        });
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('get', 'http://localhost:9000/user/1');
+        
+        xhr.onload = function(event){
+            if(this.status === 200){
+                console.log(this.responseText);
+            }
+        };
+
+        xhr.send();
+    </script>
+
 </body>
 
 </html>

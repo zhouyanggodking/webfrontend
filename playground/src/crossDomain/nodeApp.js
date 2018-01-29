@@ -3,8 +3,35 @@ const path = require('path');
 
 const app = express();
 
-app.get('/', (req, res) => {
-    console.log(__dirname);
+let userList = [{
+    id: '1',
+    name: 'godking',
+    title: 'SE'
+}, {
+    id: '2',
+    name: 'oceansky',
+    title: 'QA'
+}];
+
+app.get('/user/:id', (req, res)=>{
+    let userId = req.params.id;
+    let user = userList.filter(user => user.id === userId)[0];
+
+    //res.header('Content-Type', 'application/json');
+    // res.header('Access-Control-Allow-Methods', 'GET');
+    // res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+
+    if(req.query.jsonp && req.query.callback){
+        let userJson = JSON.stringify(user);
+        let response = `${req.query.callback}(${userJson})`;
+        res.send(response);
+    }else{
+        res.send(JSON.stringify(user));
+    }
+});
+
+
+app.get('/nodePage.html', (req, res) => {
     res.sendFile(path.join(__dirname, 'nodePage.html'));
 });
 
