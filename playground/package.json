@@ -1,16 +1,19 @@
 {
-    "name": "playground",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-        "lite": "lite-server",
-        "start": "npm run lite"
-    },
-    "author": "",
-    "license": "ISC",
-    "devDependencies": {
-        "jquery": "^3.2.1",
-        "lite-server": "^2.3.0"
-    }
+  "name": "playground",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lite": "lite-server",
+    "start": "npm run lite"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jquery": "^3.2.1",
+    "lite-server": "^2.3.0"
+  },
+  "dependencies": {
+    "express": "^4.16.2"
+  }
 }
