@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Responsive image</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        picture {
+            display: block;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <picture>
+        <source media="(min-width: 800px)" srcset="./img/kitten-large.png">
+        <source media="(min-width: 400px)" srcset="./img/kitten-medium.png">
+        <img src="./img/kitten-small.png" alt="kitten">
+    </picture>
+</body>
+
+</html>
