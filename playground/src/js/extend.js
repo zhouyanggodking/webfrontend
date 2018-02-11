@@ -1,21 +1,21 @@
-window.extend = function(){
+window.extend = function() {
     let target = arguments[0] || {};
-    for(let index = 1; index < arguments.length; ++index){
+    for (let index = 1; index < arguments.length; ++index) {
         let source = arguments[index];
-        for(let key in source){
+        for (let key in source) {
             let copy = source[key];
             let clone = target[key];
-            //recusive copy
-            if(toString.call(copy) === '[object Object]'){
+            //recursive copy
+            if (toString.call(copy) === '[object Object]') {
                 clone = clone || {};
                 target[key] = extend(clone, copy);
-            }else if(Array.isArray(copy)){
+            } else if (Array.isArray(copy)) {
                 clone = clone || [];
                 target[key] = extend(clone, copy);
-            }else{
+            } else {
                 target[key] = copy;
             }
-        }        
+        }
     }
     return target;
 };

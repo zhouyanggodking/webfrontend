@@ -55,7 +55,7 @@ window.eventUtility = (function() {
 
     function getTarget(event) {
         var ev = event || window.event;
-        var target = ev.target || event.srcElement;
+        var target = ev.target || ev.srcElement;
     }
 
 })();
