@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <table style="width: 300px;table-layout: fixed;">
+        <!-- defines a table caption. Must be inserted immediately after the <table> tag.-->
+        <caption>For demo table tags</caption>
+        <!-- specifies a group of one or more columns in a table for formatting, is useful for applying styles to entire columns, instead of repeating the styles for each cell, for each row. The <colgroup> tag must be a child of a <table> element, after any <caption> elements and before any <thead>, <tbody>, <tfoot>, and <tr> elements.-->
+        <colgroup>
+            <!-- specifies column properties for each column within a <colgroup> element. -->
+            <col span="2" style="background-color: yellow;">
+            <col span="1" style="background-color: purple;">
+        </colgroup>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Title</th>
+                <th>Company</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <td colspan="3" style="background-color: green;text-align: center;">footer</td>
+            </tr>
+        </tfoot>
+        <tbody>
+            <tr>
+                <td>GODKING</td>
+                <td>SE</td>
+                <td>GOOG</td>
+            </tr>
+            <tr>
+                <td>Ocean Sky</td>
+                <td>SE</td>
+                <td>APPL</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+
+</html>
