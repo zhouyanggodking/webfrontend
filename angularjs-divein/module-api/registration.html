@@ -1,10 +1,12 @@
 ﻿<!DOCTYPE html>
 <html ng-app="myApp">
+
 <head>
     <title>registration</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../node_modules//bootstrap/dist/css/bootstrap.css" />
 </head>
+
 <body>
     <script src="../node_modules/jquery/dist/jquery.js"></script>
     <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
@@ -29,7 +31,7 @@
 
         myApp.provider('nameListProv', ForServiceFactoryProvider);
 
-        myApp.run(function (nameListSvc, nameListFac, nameListProv) {
+        myApp.run(function(nameListSvc, nameListFac, nameListProv) {
             console.log(nameListSvc.get());
             console.log(nameListFac.get());
             console.log(nameListProv.get());
@@ -38,20 +40,20 @@
         function ForServiceFactoryProvider() {
             var nameList = ['ADVS', 'SSNC', 'APPL'];
 
-            this.get = function () {
+            this.get = function() { //for service
                 console.log('for service...');
                 return nameList;
             };
 
             return {
-                get: function () {//used for factory
+                get: function() { //used for factory
                     console.log('for factory...');
                     return nameList;
                 },
 
-                $get: function () {//used for provider
+                $get: function() { //used for provider
                     return {
-                        get: function () {
+                        get: function() {
                             console.log('for provider...');
                             return nameList;
                         }
@@ -59,9 +61,7 @@
                 }
             };
         }
-
-        
-
     </script>
 </body>
+
 </html>

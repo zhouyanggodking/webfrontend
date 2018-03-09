@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Menu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        ul,
+        li {
+            list-style: none;
+            padding: 10px;
+            margin: 0;
+        }
+        
+        ul.menu {
+            display: flex;
+        }
+        
+        ul>li {
+            position: relative;
+        }
+        
+        ul>li>ul {
+            display: none;
+            position: absolute;
+            background: yellow;
+        }
+        
+        ul>li:hover>ul {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="menu">
+        <li><a href="">king</a>
+            <ul class="sub">
+                <li>Aw</li>
+                <li>B</li>
+                <li>C</li>
+            </ul>
+        </li>
+        <li><a href="">king2</a>
+            <ul class="sub">
+                <li>Aq</li>
+                <li>B</li>
+                <li>C</li>
+            </ul>
+        </li>
+        <li><a href="">king3</a>
+            <ul class="sub">
+                <li>Ad</li>
+                <li>B</li>
+                <li>C</li>
+            </ul>
+        </li>
+    </ul>
+</body>
+
+</html>
