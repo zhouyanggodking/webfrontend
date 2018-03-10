@@ -1,15 +1,21 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+import CardList from '@/components/CardList.vue'
+import Card from '../components/Card.vue'
 
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      name: 'card-list',
+      component: CardList
+    }, {
+      path: '/card',
+      name: 'card',
+      component: Card
     }
   ]
 })

@@ -3,13 +3,15 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+// import CardList from './components/card-list/CardList.vue'
+// import Card from './components/Card.vue'
 
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',
+  el: '#main',
   router,
   components: { App },
-  template: '<App/>'
+  template: '<app/>'
 })
