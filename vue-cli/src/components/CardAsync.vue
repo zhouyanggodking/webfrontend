@@ -18,7 +18,7 @@
         },
         computed: {
             cardInfo: function() {
-                let cards = cardList.filter((item) => item.id === this.$route.params.id)
+                let cards = cardList.filter((item) => item.id === this.id)
                 return cards[0] ? cards[0] : null;
             }
         },

@@ -1,7 +1,5 @@
 <template>
     <div>
-        <h1>Welcome to Vue Tutorial</h1>
-        <router-link to="/cardlist">Go to Card List</router-link>
         <router-view/>
     </div>
 </template>
@@ -12,6 +10,9 @@
     }
 </script>
 
-<style>
-
+<style lang="scss">
+    html, body{
+        margin: 0;
+        padding: 0;
+    }
 </style>
