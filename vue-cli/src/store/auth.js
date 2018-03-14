@@ -1,21 +1,24 @@
 import userList from './user-list'
-
-let isLoggedIn = false
-
 const auth = {
     authenticate (userName, password) {
-        console.log(userList)
         let users = userList.filter((user) => user.userName === userName);
-        if(users.length){
-            isLoggedIn = users[0].password === password
+        let isLoggedIn = false;
+        if(users.length && users[0].password === password){
+            window.localStorage.setItem('isLoggedIn', 'true')
+            isLoggedIn = true;
         } else {
-            isLoggedIn = false
+            window.localStorage.setItem('isLoggedIn', 'false')
+            isLoggedIn = false;
         }
         return isLoggedIn
     },
 
     isLoggedIn () {
-        return isLoggedIn
+        return window.localStorage.getItem('isLoggedIn') === 'true'
+    },
+
+    logOut(){
+        window.localStorage.setItem('isLoggedIn', 'false')
     }
 }
 

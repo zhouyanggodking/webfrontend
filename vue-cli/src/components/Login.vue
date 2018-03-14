@@ -22,10 +22,7 @@ export default {
     methods: {
         login () {
             let loggedIn = Auth.authenticate(this.userName, this.password);
-            console.log('logging in： ' + loggedIn)
             if(loggedIn){
-                console.log('logged in')
-                console.log(this.$route.query.redirect)
                 this.$router.push({path: this.$route.query.redirect})
             }
         }
