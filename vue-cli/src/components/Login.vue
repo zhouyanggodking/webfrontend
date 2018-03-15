@@ -10,7 +10,8 @@
     </div>
 </template>
 <script>
-import Auth from '@/store/auth'
+
+import AuthSvr from '@/services/authService'
 
 export default {
     data () {
@@ -21,10 +22,14 @@ export default {
     },
     methods: {
         login () {
-            let loggedIn = Auth.authenticate(this.userName, this.password);
-            if(loggedIn){
-                this.$router.push({path: this.$route.query.redirect})
-            }
+            return AuthSvr.logIn(this.userName, this.password)
+                .then(response => {
+                    console.log(response);
+                    this.$router.push({path: this.$route.query.redirect})
+                })
+                .catch(error => {
+                    window.localStorage.setItem('isLoggedIn', 'false')
+                })
         }
     }
 }

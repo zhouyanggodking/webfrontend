@@ -6,7 +6,7 @@ import CardList from '@/components/CardList.vue'
 import Login from '@/components/Login'
 import Main from '@/components/Main.vue'
 
-import auth from '@/store/auth'
+import AuthSvr from '@/services/authService'
 
 Vue.use(Router)
 
@@ -57,8 +57,8 @@ router.beforeEach((to, from, next) =>{
     if (to.matched.some(record => record.meta.requiresAuth)) {
         // this route requires auth, check if logged in
         // if not, redirect to login page.
-        console.log(auth.isLoggedIn());
-        if (!auth.isLoggedIn()) {
+
+        if (!AuthSvr.isLoggedIn()) {
             next({
                 path: '/login',
                 query: { redirect: to.fullPath }

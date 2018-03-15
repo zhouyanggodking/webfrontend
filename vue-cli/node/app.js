@@ -4,6 +4,11 @@ const bodyParser = require('body-parser');
 const app = express();
 
 app.use(bodyParser.json());
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
 
 let userList = [{
     id: '1',
@@ -32,6 +37,7 @@ app.get('/user/:id', (req, res) => {
 app.post('/login', (req, res) =>{
     var body = req.body;
     let user = userList.filter(user => user.userName === body.userName )[0];
+    res.header('Content-Type', 'application/json');
     if(user && user.password === body.password){
         let token = 'UAf9Ppjsdjaf0wlfsa=';
         user.token = token;

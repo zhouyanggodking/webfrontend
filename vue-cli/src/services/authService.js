@@ -1,12 +1,30 @@
 import axios from 'axios'
 
-axios.defaults.baseURL = ''
+axios.defaults.baseURL = 'http://localhost:9000'
 
 const authService = {
     logIn (userName, password) {
         return new Promise((resolve, reject) => {
-            axios.get();
+            axios.post('/login', {
+                userName,
+                password
+            })
+            .then(response => {
+                resolve(response)
+                window.localStorage.setItem('isLoggedIn', 'true')
+                return true
+            })
+            .catch(error => {
+                window.localStorage.setItem('isLoggedIn', 'false')
+                reject(error)
+            })
         })
+    },
+    isLoggedIn (){
+        return window.localStorage.getItem('isLoggedIn') === 'true'
     }
+
 }
+
+export default authService
 
