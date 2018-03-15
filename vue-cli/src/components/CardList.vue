@@ -13,7 +13,7 @@
 </template>
 <script>
     import Card from './Card'
-    import cardList from '@/store/card-list'
+    import cardList from '@/data/card-list'
     export default {
         name: 'card-list',
         data() {

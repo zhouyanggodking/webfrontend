@@ -3,7 +3,7 @@
         {{cardName}} - AD</h2>
 </template>
 <script>
-    import cardList from '@/store/card-list'
+    import cardList from '@/data/card-list'
     export default {
         computed: {
             cardName: function() {

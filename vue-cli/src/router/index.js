@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import CardAd from '@/components/CardAd'
 import CardAsync from '@/components/CardAsync'
 import CardList from '@/components/CardList.vue'
+import StoreDemo from '@/components/StoreDemo'
 import Login from '@/components/Login'
 import Main from '@/components/Main.vue'
 
@@ -49,6 +50,10 @@ const router = new Router({
         path: '/login',
         name: 'login',
         component: Login
+    }, {
+        path: '/storedemo',
+        name: 'store-demo',
+        component: StoreDemo
     }]
 })
 

@@ -4,7 +4,7 @@
     </div>
 </template>
 <script>
-    import cardList from '@/store/card-list'
+    import cardList from '@/data/card-list'
     import Card from '@/components/Card'
     export default {
         name: 'card-async',
