@@ -6,6 +6,7 @@ import CardList from '@/components/CardList.vue'
 import StoreDemo from '@/components/StoreDemo'
 import Login from '@/components/Login'
 import Main from '@/components/Main.vue'
+import Result from '@/components/Result.vue'
 
 import AuthSvr from '@/services/authService'
 
@@ -54,6 +55,10 @@ const router = new Router({
         path: '/storedemo',
         name: 'store-demo',
         component: StoreDemo
+    }, {
+        path: '/result',
+        name: 'result',
+        component: Result
     }]
 })
 
