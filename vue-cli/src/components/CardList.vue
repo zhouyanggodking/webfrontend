@@ -1,7 +1,7 @@
 <template>
     <div class="card-list-container">
         <div v-for="card in cardList" v-bind:key="card.name">
-            <card v-bind="card" v-on:click.native="onCardClick(card)"></card>
+            <card v-bind="card" v-on:cardClick="onCardClick(card)"></card>
         </div>
         <hr>
         <h2 v-if="this.$route.params.id">Card Details:</h2>

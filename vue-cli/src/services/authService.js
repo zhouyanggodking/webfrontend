@@ -8,6 +8,14 @@ const authService = {
             axios.post('/login', {
                 userName,
                 password
+            }, {
+                headers: {
+                    'x-custom-header': 'king',
+                    'x-auth': true
+                },
+                params: {
+                    godking: true
+                }
             })
             .then(response => {
                 resolve(response)
