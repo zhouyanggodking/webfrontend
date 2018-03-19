@@ -3,10 +3,12 @@ import Router from 'vue-router'
 import CardAd from '@/components/CardAd'
 import CardAsync from '@/components/CardAsync'
 import CardList from '@/components/CardList.vue'
+import StoreDemo from '@/components/StoreDemo'
 import Login from '@/components/Login'
 import Main from '@/components/Main.vue'
+import Result from '@/components/Result.vue'
 
-import auth from '@/store/auth'
+import AuthSvr from '@/services/authService'
 
 Vue.use(Router)
 
@@ -49,6 +51,14 @@ const router = new Router({
         path: '/login',
         name: 'login',
         component: Login
+    }, {
+        path: '/storedemo',
+        name: 'store-demo',
+        component: StoreDemo
+    }, {
+        path: '/result',
+        name: 'result',
+        component: Result
     }]
 })
 
@@ -57,8 +67,8 @@ router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.requiresAuth)) {
         // this route requires auth, check if logged in
         // if not, redirect to login page.
-        console.log(auth.isLoggedIn())
-        if (!auth.isLoggedIn()) {
+        console.log(AuthSvr.isLoggedIn())
+        if (!AuthSvr.isLoggedIn()) {
             next({
                 path: '/login',
                 query: { redirect: to.fullPath }

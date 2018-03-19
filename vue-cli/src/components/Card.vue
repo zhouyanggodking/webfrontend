@@ -1,5 +1,5 @@
 <template>
-    <div class="card-container">
+    <div class="card-container" v-on:click="onCardClicked()">
         <div class="card-detail" v-if="name">
             <div><router-link v-bind:to="{path: '/card/' + id}">{{name}}</router-link></div>
             <div>{{title}}</div>
@@ -50,7 +50,12 @@
         data() {
             return {}
         },
-        computed: {}
+        computed: {},
+        methods: {
+            onCardClicked () {
+                this.$emit('cardClick')
+            }
+        }
     }
 </script>
 
