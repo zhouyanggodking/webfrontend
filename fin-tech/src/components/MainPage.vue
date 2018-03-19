@@ -22,10 +22,10 @@ export default {
   methods: {
     search() {
       this.$router.push({
-        name: 'result-page',
+        name: 'result-page'
       });
-    },
-  },
+    }
+  }
 };
 </script>
 
