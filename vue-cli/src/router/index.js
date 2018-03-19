@@ -52,12 +52,12 @@ const router = new Router({
     }]
 })
 
-router.beforeEach((to, from, next) =>{
+router.beforeEach((to, from, next) => {
     console.log(`Leaving ${from.fullPath}, entering ${to.fullPath}`)
     if (to.matched.some(record => record.meta.requiresAuth)) {
         // this route requires auth, check if logged in
         // if not, redirect to login page.
-        console.log(auth.isLoggedIn());
+        console.log(auth.isLoggedIn())
         if (!auth.isLoggedIn()) {
             next({
                 path: '/login',
@@ -75,4 +75,4 @@ router.afterEach((to, from) => {
     console.log(`route changing from ${from.fullPath} to ${to.fullPath} completed`)
 })
 
-export default router;
+export default router
