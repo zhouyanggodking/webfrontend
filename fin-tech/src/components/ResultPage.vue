@@ -17,15 +17,32 @@ export default {
           name: 'godking',
           title: 'SE',
           age: 40,
-          company: '<a href="www.baidu.com">Baidu</a>'
+          company: '<a href="https://www.baidu.com">Baidu</a>'
         }, {
           name: 'oceansky',
           title: 'QA',
-          age: 25
+          age: 25,
+          company: '<a href="https://www.google.com">Google</a>'
         }, {
           name: 'tester',
           title: 'admin',
-          age: 20
+          age: 20,
+          company: '<a href="https://www.facebook.com">FaceBook</a>'
+        }, {
+          name: 'godking1',
+          title: 'SE',
+          age: 40,
+          company: '<a href="https://www.baidu.com">Baidu</a>'
+        }, {
+          name: 'oceansky1',
+          title: 'QA',
+          age: 25,
+          company: '<a href="https://www.google.com">Google</a>'
+        }, {
+          name: 'tester1',
+          title: 'admin',
+          age: 20,
+          company: '<a href="https://www.facebook.com">FaceBook</a>'
         }],
         header: [{
           key: 'name',

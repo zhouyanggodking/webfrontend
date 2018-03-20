@@ -1,12 +1,15 @@
 <template>
   <div class="grid-container">
-    <el-table :data="tableData" stripe border>
+    <el-table :data="tableData" stripe border style="width: 100%;" height="200">
       <el-table-column
         v-for="col in tableHeader"
         :prop="col.key"
         :label="col.title"
         :key="col.index"
         sortable>
+        <template slot-scope="scope">
+          <span v-html="scope.row[col.key]"></span>
+      </template>
       </el-table-column>
   </el-table>
   </div>
