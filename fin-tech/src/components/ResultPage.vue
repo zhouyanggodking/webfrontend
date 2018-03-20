@@ -1,14 +1,19 @@
 <template>
-  <grid :data="data"></grid>
+  <div>
+    <grid :data="data"></grid>
+    <bar-chart></bar-chart>
+  </div>
 </template>
 
 <script>
 import Grid from '@/components/Grid';
+import BarChart from '@/components/BarChart';
 
 export default {
   name: 'result',
   components: {
-    Grid
+    Grid,
+    BarChart
   },
   data() {
     return {
