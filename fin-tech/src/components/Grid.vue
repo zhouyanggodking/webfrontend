@@ -9,7 +9,7 @@
         sortable>
         <template slot-scope="scope">
           <span v-html="scope.row[col.key]"></span>
-      </template>
+        </template>
       </el-table-column>
   </el-table>
   </div>

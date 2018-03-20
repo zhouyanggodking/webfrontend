@@ -5,10 +5,12 @@ import 'element-ui/lib/theme-chalk/index.css';
 import ElementUI from 'element-ui';
 
 import Vue from 'vue';
+import ViserVue from 'viser-vue';
 import App from './App';
 import router from './router';
 
 Vue.use(ElementUI);
+Vue.use(ViserVue);
 
 Vue.config.productionTip = false;
 
