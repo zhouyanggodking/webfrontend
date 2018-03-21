@@ -1,38 +1,43 @@
 <template>
-  <div>
-    <v-chart :forceFit="true" :height="height" :data="data" :scale="scale">
+  <div class="bar-chart-container">
+    <v-chart :forceFit="true" :height="height" :data="chartData">
       <v-tooltip />
       <v-axis />
-      <v-bar position="year*sales" />
+      <v-legend />
+      <v-bar position="key*value" color="name" :adjust="adjust"/>
     </v-chart>
   </div>
 </template>
 
 <script>
-const data = [
-  { year: '1951', sales: 38 },
-  { year: '1952', sales: 52 },
-  { year: '1956', sales: 61 },
-  { year: '1957', sales: 145 },
-  { year: '1958', sales: 48 },
-  { year: '1959', sales: 38 },
-  { year: '1960', sales: 38 },
-  { year: '1962', sales: 38 }
-];
-
-const scale = [{
-  dataKey: 'sales',
-  tickInterval: 20
-}];
+import DataSet from '@antv/data-set';
 
 export default {
   name: 'barChart',
+  props: ['data'],
   data() {
     return {
-      data,
-      scale,
-      height: 400
+      height: 400,
+      adjust: [{
+        type: 'dodge'
+      }]
     };
+  },
+  computed: {
+    chartData() {
+      if (this.data && this.data.series) {
+        const dv = new DataSet.View().source(this.data.series);
+        dv.transform({
+          type: 'fold',
+          fields: this.data.fields,
+          key: 'key',
+          value: 'value'
+        });
+        const data = dv.rows;
+        return data;
+      }
+      return [];
+    }
   }
 };
 </script>
