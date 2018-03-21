@@ -2,6 +2,7 @@
   <div>
     <grid :data="tableData"></grid>
     <bar-chart :data="barChartData"></bar-chart>
+    <line-chart :data="lineChartData"></line-chart>
   </div>
 </template>
 
@@ -9,17 +10,20 @@
 import axios from 'axios';
 import Grid from '@/components/Grid';
 import BarChart from '@/components/BarChart';
+import LineChart from '@/components/LineChart';
 
 export default {
   name: 'result',
   components: {
     Grid,
-    BarChart
+    BarChart,
+    LineChart
   },
   data() {
     return {
       tableData: {},
-      barChartData: {}
+      barChartData: {},
+      lineChartData: {}
     };
   },
   mounted() {
@@ -29,6 +33,7 @@ export default {
 
     axios.get('/static/mock/bar-chart-multiple.json').then((response) => {
       this.barChartData = response.data;
+      this.lineChartData = response.data;
     });
   }
 };
