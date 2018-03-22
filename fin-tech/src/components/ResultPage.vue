@@ -2,7 +2,7 @@
   <div>
     <grid :data="tableData"></grid>
     <bar-chart :data="barChartData"></bar-chart>
-    <line-chart :data="lineChartData"></line-chart>
+    <line-chart v-if="lineChartData" :data="lineChartData"></line-chart>
   </div>
 </template>
 
@@ -23,7 +23,7 @@ export default {
     return {
       tableData: {},
       barChartData: {},
-      lineChartData: {}
+      lineChartData: null
     };
   },
   mounted() {
@@ -33,6 +33,9 @@ export default {
 
     axios.get('/static/mock/bar-chart-multiple.json').then((response) => {
       this.barChartData = response.data;
+    });
+
+    axios.get('/static/mock/line-chart-multiple.json').then((response) => {
       this.lineChartData = response.data;
     });
   }
