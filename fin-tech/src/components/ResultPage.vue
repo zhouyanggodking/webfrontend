@@ -3,6 +3,7 @@
     <grid :data="tableData"></grid>
     <bar-chart :data="barChartData"></bar-chart>
     <line-chart v-if="lineChartData" :data="lineChartData"></line-chart>
+    <pie-chart v-if="pieChartData" :data="pieChartData"></pie-chart>
   </div>
 </template>
 
@@ -11,19 +12,22 @@ import axios from 'axios';
 import Grid from '@/components/Grid';
 import BarChart from '@/components/BarChart';
 import LineChart from '@/components/LineChart';
+import PieChart from '@/components/PieChart';
 
 export default {
   name: 'result',
   components: {
     Grid,
     BarChart,
-    LineChart
+    LineChart,
+    PieChart
   },
   data() {
     return {
       tableData: {},
       barChartData: {},
-      lineChartData: null
+      lineChartData: null,
+      pieChartData: null
     };
   },
   mounted() {
@@ -37,6 +41,10 @@ export default {
 
     axios.get('/static/mock/line-chart-multiple.json').then((response) => {
       this.lineChartData = response.data;
+    });
+
+    axios.get('/static/mock/bar-chart.json').then((response) => {
+      this.pieChartData = response.data;
     });
   }
 };

@@ -10,7 +10,7 @@
     </v-chart>
     <v-plugin>
       <v-slider width="auto" :height="26"
-        :data="sourceData" xAxis="time" yAxis="value" :scales="{
+        :data="sourceData" xAxis="time" yAxis="value" :start="start" :end="end" :scales="{
           time: {
             type: 'timeCat',
             nice: false,
@@ -38,7 +38,7 @@ export default {
       height: 400,
       chartData: [],
       start: '1951-01-01',
-      end: '1962-01-01',
+      end: '1961-01-01',
       style: { stroke: '#fff', lineWidth: 1 }
     };
   },
