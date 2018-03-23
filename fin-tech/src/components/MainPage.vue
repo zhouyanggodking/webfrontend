@@ -5,6 +5,7 @@
       <el-input placeholder="Please input your inquery"
         clearable
         size="large"
+        v-model="searchText"
         @change="search()">
         <el-button slot="append" icon="el-icon-search" title="Search"></el-button>
       </el-input>
@@ -16,14 +17,19 @@
 export default {
   data() {
     return {
-
+      searchText: ''
     };
   },
   methods: {
     search() {
-      this.$router.push({
-        name: 'result-page'
-      });
+      if (this.searchText) {
+        this.$router.push({
+          name: 'result-page',
+          query: {
+            q: this.searchText
+          }
+        });
+      }
     }
   }
 };
