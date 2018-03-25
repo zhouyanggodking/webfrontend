@@ -9,7 +9,8 @@
       "name":"oceansky",
       "title":"QA",
       "age":25,
-      "company":"<a href=\"https://www.google.com\">Google</a>"},
+      "company":"<a href=\"https://www.google.com\">Google</a>"
+    },
     {
       "name":"tester",
       "title":"admin",

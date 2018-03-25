@@ -1,7 +1,16 @@
 [
   {
     "title": "",
-    "type": "bar-chart/pie-chart/line-chart/stock-chart",
+    "description": "",
+    "type": "bar-chart/pie-chart/line-chart/stock-chart/table",
+    "data":{
+
+    }
+  },
+  {
+    "title": "",
+    "description": "",
+    "type": "bar-chart/pie-chart/line-chart/stock-chart/table",
     "data":{
 
     }
