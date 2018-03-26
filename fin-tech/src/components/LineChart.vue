@@ -37,8 +37,8 @@ export default {
       scale,
       height: 400,
       chartData: [],
-      start: '1951-01-01',
-      end: '1961-01-01',
+      start: '',
+      end: '',
       style: { stroke: '#fff', lineWidth: 1 }
     };
   },
@@ -85,7 +85,11 @@ export default {
     }
   },
   mounted() {
-    this.chartData = this.getChartData();
+    if (this.start || this.end) {
+      this.chartData = this.getChartData();
+    } else {
+      this.chartData = this.sourceData;
+    }
   }
 };
 </script>
