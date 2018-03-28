@@ -16,4 +16,8 @@ html, body{
   height: 100%;
   box-sizing: border-box;
 }
+
+*{
+  box-sizing: border-box;
+}
 </style>

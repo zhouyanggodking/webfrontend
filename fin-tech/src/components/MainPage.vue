@@ -24,7 +24,7 @@ export default {
     search() {
       if (this.searchText) {
         this.$router.push({
-          name: 'result-page',
+          name: 'demo-page',
           query: {
             q: this.searchText
           }
@@ -43,17 +43,22 @@ export default {
   width: 100%;
   height: 100%;
   background-image: url('../assets/finance_bg.jpg');
-
-  .logo{
-    display: flex;
-    align-items: center;
-    border:1px solid blue;
-  }
+  background-size: 100% 100%;
 
   .search-container{
     display: flex;
     width: 50%;
     min-width: 300px;
+
+    .logo{
+      display: flex;
+      align-items: center;
+      border:1px solid blue;
+    }
+
+    .el-input__inner{
+      height: 50px;
+    }
   }
 }
 </style>
