@@ -1,13 +1,12 @@
 <template>
   <div class="main-page">
-    <div class="search-container">
+    <div class="search-container" id="search">
       <div class="logo">Logo</div>
       <el-input placeholder="Please input your inquery"
         clearable
-        size="large"
         v-model="searchText"
-        @change="search()">
-        <el-button slot="append" icon="el-icon-search" title="Search"></el-button>
+        @keypress.enter.native="search()">
+        <el-button @click="search()" slot="append" icon="el-icon-search" title="Search"></el-button>
       </el-input>
     </div>
   </div>
@@ -56,8 +55,18 @@ export default {
       border:1px solid blue;
     }
 
-    .el-input__inner{
+    .el-input{
       height: 50px;
+      & /deep/ .el-input__inner{
+        height: 50px;
+        line-height: 50px;
+        border-radius: 0;
+        border: none;
+      }
+
+      & /deep/ .el-input-group__append{
+        border-radius: 0;
+      }
     }
   }
 }

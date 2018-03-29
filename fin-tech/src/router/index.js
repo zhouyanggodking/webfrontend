@@ -20,7 +20,7 @@ export default new Router({
       component: ResultPage
     },
     {
-      path: 'demo',
+      path: '/demo',
       name: 'demo-page',
       component: DemoPage
     }
