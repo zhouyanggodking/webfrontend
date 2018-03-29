@@ -51,6 +51,7 @@ module.exports = {
     'max-len': 'off',
     'arrow-body-style': 'off',
     'arrow-parens': 'off',
-    'no-param-reassign': 'off'
+    'no-param-reassign': 'off',
+    'object-shorthand': 'off'
   }
 }

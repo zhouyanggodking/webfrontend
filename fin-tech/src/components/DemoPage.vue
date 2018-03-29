@@ -69,7 +69,7 @@ export default {
     }
   },
   watch: {
-    '$route'(to, from) {
+    '$route'(to) { // (to, from)
       this.searchText = to.query.q || '';
       this.getData();
     }
