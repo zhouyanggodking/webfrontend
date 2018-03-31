@@ -8,7 +8,7 @@
         :key="col.index"
         sortable>
         <template slot-scope="scope">
-          <span v-html="scope.row[col.key]"></span>
+          <span v-html="formatCell(scope.row, col)"></span>
         </template>
       </el-table-column>
   </el-table>
@@ -33,6 +33,14 @@ export default {
     },
     tableHeader() {
       return this.data.header;
+    }
+  },
+  methods: {
+    formatCell(row, col) {
+      if (col.type === 'number') {
+        return new Intl.NumberFormat().format(row[col.key]);
+      }
+      return row[col.key];
     }
   }
 };

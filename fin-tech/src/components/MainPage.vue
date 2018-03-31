@@ -1,15 +1,17 @@
 <template>
-  <div class="main-page">
-    <div class="search-container" id="search">
-      <div class="logo">Logo</div>
-      <el-input placeholder="Please input your inquery"
-        clearable
-        v-model="searchText"
-        @keypress.enter.native="search()">
-        <el-button @click="search()" slot="append" icon="el-icon-search" title="Search"></el-button>
-      </el-input>
+  <transition name="slide-fade">
+    <div class="main-page">
+      <div class="search-container" id="search">
+        <div class="logo">Logo</div>
+        <el-input placeholder="Please input your inquery"
+          clearable
+          v-model="searchText"
+          @keypress.enter.native="search()">
+          <el-button @click="search()" slot="append" icon="el-icon-search" title="Search"></el-button>
+        </el-input>
+      </div>
     </div>
-  </div>
+  </transition>
 </template>
 
 <script>
@@ -69,5 +71,16 @@ export default {
       }
     }
   }
+}
+
+.slide-fade-enter-active {
+  transition: all .3s linear;
+}
+.slide-fade-leave-active {
+  transition: all 0.8s linear;
+}
+// .slide-fade-enter,
+.slide-fade-leave-to {
+  transform: translateY(-100vh);
 }
 </style>
