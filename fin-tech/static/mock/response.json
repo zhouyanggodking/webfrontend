@@ -103,7 +103,7 @@
           {
             "name":"tester",
             "title":"admin",
-            "age":20,
+            "age":2068797080,
             "company":"<a href=\"https://www.facebook.com\">FaceBook</a>"
         }],
         "header":[
@@ -115,7 +115,8 @@
             "title":"Title"
           },{
             "key":"age",
-            "title":"Age"
+            "title":"Age",
+            "type": "number"
           },{
             "key":"company",
             "title":"Company"

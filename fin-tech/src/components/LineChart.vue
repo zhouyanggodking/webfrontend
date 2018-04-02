@@ -1,6 +1,6 @@
 <template>
   <div class="line-chart-container">
-    <v-chart :force-fit="true" :height="height" :data="chartData" :scale="scale" :animate="false">
+    <v-chart :force-fit="true" :height="height" :data="chartData" :scale="scale" :animate="false" :padding="[ 10, 40, 40, 40 ]">
       <v-tooltip />
       <v-axis />
       <v-legend />
@@ -9,7 +9,7 @@
         :size="4" :v-style="style" :shape="'circle'" />
     </v-chart>
     <v-plugin>
-      <v-slider width="auto" :height="26"
+      <v-slider width="auto" :height="26" :padding="[ 10, 100, 40, 100 ]"
         :data="sourceData" xAxis="time" yAxis="value" :start="start" :end="end" :scales="{
           time: {
             type: 'timeCat',
@@ -93,3 +93,10 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.line-chart-container{
+  // padding: 50px;
+}
+</style>
+

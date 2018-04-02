@@ -10,11 +10,11 @@
       </el-input>
     </div>
     <div v-for="config in contentConfig" :key="config.index">
+      <hr>
       <bar-chart v-if="config.data && config.type === 'bar-chart'" :data="config.data"></bar-chart>
       <line-chart v-if="config.data && config.type === 'line-chart'" :data="config.data"></line-chart>
       <pie-chart v-if="config.data && config.type === 'pie-chart'" :data="config.data"></pie-chart>
       <grid v-if="config.data && config.type === 'table'" :data="config.data"></grid>
-      <hr>
     </div>
   </div>
 </template>
@@ -66,6 +66,27 @@ export default {
       axios.get('/static/mock/response.json').then((response) => {
         this.contentConfig = response.data['search-result'] || [];
       });
+
+      const questtion = {
+        question: this.searchText
+      };
+
+      // axios.post('http://39.106.179.25:8080', questtion, {
+      //   headers:{
+      //     'Content-Type': 'application/json'
+      //   }
+      // }).then((response) => {
+      //   console.log(response.data);
+      // });
+
+      // axios.post('/api', questtion, {
+      //   headers: {
+      //     'Content-Type': 'application/json'
+      //   }
+      // }).then((response) => {
+      //   const data = JSON.parse(response.data);
+      //   this.contentConfig = data['search-result'] || [];
+      // });
     }
   },
   watch: {
@@ -79,6 +100,7 @@ export default {
 
 <style lang="scss" scoped>
 .search-result-container{
+  padding: 10px;
   .search-box{
     width: 50%;
     min-width: 300px;
