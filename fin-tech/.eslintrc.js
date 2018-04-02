@@ -52,6 +52,6 @@ module.exports = {
     'arrow-body-style': 'off',
     'arrow-parens': 'off',
     'no-param-reassign': 'off',
-    'object-shorthand': 'off'
+    'object-shorthand': ['error', 'properties']
   }
 }
