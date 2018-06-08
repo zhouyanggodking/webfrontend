@@ -1,0 +1,21 @@
+{
+  "name": "g6-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lite": "lite-server",
+    "start": "npm run lite"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {    
+    "lite-server": "^2.3.0"
+  },
+  "dependencies": {
+    "@antv/g6": "^1.2.8",
+    "@antv/g6-plugins": "^1.0.9",
+    "d3": "^5.0.0",
+    "d3-force": "^1.1.0"
+  }
+}

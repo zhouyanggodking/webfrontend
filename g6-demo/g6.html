@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>G6 Force Relationship</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> -->
+  <script src="./node_modules/@antv/g6/dist/g6.min.js"></script>
+  <script src="./node_modules/@antv/g6-plugins/dist/g6-plugins.min.js"></script>
+  <!-- <script src="./node_modules/d3-force/build/d3-force.js"/> -->
+  <!-- <script src="https://d3js.org/d3-collection.v1.min.js"></script>
+  <script src="https://d3js.org/d3-dispatch.v1.min.js"></script>
+  <script src="https://d3js.org/d3-quadtree.v1.min.js"></script>
+  <script src="https://d3js.org/d3-timer.v1.min.js"></script>
+  <script src="https://d3js.org/d3-force.v1.min.js"></script> -->
+  <!-- <script src="https://d3js.org/d3.v4.min.js"></script> -->
+  <style>
+
+      .links line {
+        stroke: #999;
+        stroke-opacity: 0.6;
+      }
+      
+      .nodes circle {
+        stroke: #fff;
+        stroke-width: 1.5px;
+      }
+      
+      </style>
+</head>
+<body>
+  <div id="test"></div>
+  <svg width="100" height="100"></svg>
+  <script>
+    const plugin = new G6.Plugins['layout.d3.force']({
+      dynamic: true,
+      manyBody: true,
+      callback: function(simulation){
+        console.log(simulation);
+        simulation.restart();
+      }
+    });
+const data = {
+  nodes: [
+    { id: '3', x: 150, y: 300},
+    { id: '4', x: 50, y: 400},
+    { id: '5', x: 200, y: 400},
+    { id: '6', x: 150, y: 500},
+    { id: '7', x: 150, y: 600},
+  ],
+  edges: [
+    { id: '3-4', source: '3', target: '4' },
+    { id: '3-5', source: '3', target: '5' },
+    { id: '4-5', source: '4', target: '5' },
+    { id: '5-6', source: '5', target: '6' },
+    { id: '6-7', source: '6', target: '7' },
+  ]
+}
+const net = new G6.Net({
+  id: 'test',                      // dom id
+  height: window.innerHeight,    // 画布高
+  grid: null,
+  useAnchor: false,
+  plugins: [ plugin ],
+});
+net.source(data.nodes, data.edges);
+net.node()
+    .shape('circle')
+    .size(20)
+    .style({
+      fill: '#32A1EB',
+      fillOpacity: 1,
+    })
+    // .drag();
+
+net.render();
+  </script>
+</body>
+</html>
