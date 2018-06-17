@@ -34,9 +34,9 @@ app.get('/user/:id', (req, res) => {
     res.send(JSON.stringify(user));
 });
 
-app.post('/login', (req, res) =>{
+app.post('/api/login', (req, res) =>{
     var body = req.body;
-    let user = userList.filter(user => user.userName === body.userName )[0];
+    let user = userList.filter(user => user.userName === body.username )[0];
     res.header('Content-Type', 'application/json');
     if(user && user.password === body.password){
         let token = 'UAf9Ppjsdjaf0wlfsa=';
@@ -54,6 +54,15 @@ app.post('/login', (req, res) =>{
         res.send(JSON.stringify(result));
     }
 
+});
+
+app.post('/api', (req, res) =>{
+    res.header('Content-Type', 'application/json');
+    res.status(200);
+    let result = {
+        authenticated: false
+    };
+    res.send(JSON.stringify(result));
 });
 
 let server = app.listen(9000, () => {
