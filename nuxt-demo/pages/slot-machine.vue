@@ -1,9 +1,10 @@
 <template>
-  <div>TOP NAVIGATION</div>
+  <div>
+    <h1>Slot Machine</h1>
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'navigation'
 };
 </script>
