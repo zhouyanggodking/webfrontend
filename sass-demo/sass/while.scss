@@ -1,7 +1,0 @@
-﻿$index: 1;
-@while $index <= 12{
-    .col-#{$index}{
-        width: 100% /12*$index;
-    }
-    $index: $index + 1;
-}
