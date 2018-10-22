@@ -1,15 +1,20 @@
 {
-    "name": "webpack-config",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-        "dev": "webpack-dev-server",
-        "prod": ""
-    },
-    "author": "",
-    "license": "ISC",
-    "devDependencies": {
-    },
-    "dependencies": {}
+  "name": "webpack-config",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack-dev-server",
+    "build": "node build/build.js",
+    "build-cli": "webpack -p"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "ora": "^3.0.0",
+    "webpack": "^4.22.0",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.9"
+  },
+  "dependencies": {}
 }
