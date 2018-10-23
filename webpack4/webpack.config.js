@@ -52,17 +52,19 @@ module.exports = {
       filename: "[name].[hash].css"
     })
   ],
-  // optimization: {
-  //   splitChunks: {
-  //     chunks: 'all',
-  //     minSize: 0,
-  //     name: true,
-  //     cacheGroups: {
-  //       commons: {
-  //         name:'commons'
-  //       }
-  //     },
-
-  //   }
-  // }
+  optimization: {
+    // splitChunks: {
+    //   chunks: 'all',
+    //   minSize: 0,
+    //   name: true,
+    //   cacheGroups: {
+    //     commons: {
+    //       name:'commons'
+    //     }
+    //   },
+    // },
+    runtimeChunk: {
+      name: 'manifest'
+    }
+  }
 };
