@@ -1,4 +1,5 @@
 ﻿const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
@@ -16,7 +17,7 @@ module.exports = {
   devServer: {
     clientLogLevel: 'warning',
     hot: true,
-    contentBase: path.resolve(__dirname, 'dist'),
+    contentBase: false,
     compress: true,
     port: 9090,
     open: true,
@@ -29,6 +30,7 @@ module.exports = {
     },
     quiet: true, // necessary for FriendlyErrorsPlugin
     watchOptions: {
+      poll: false,
       watch: true
     }
   },
@@ -69,7 +71,8 @@ module.exports = {
       // Options similar to the same options in webpackOptions.output
       // both options are optional
       filename: "[name].[hash].css"
-    })
+    }),
+    new webpack.HotModuleReplacementPlugin()
   ],
   optimization: {
     // splitChunks: {
@@ -82,8 +85,5 @@ module.exports = {
     //     }
     //   },
     // },
-    runtimeChunk: {
-      name: 'manifest'
-    }
   }
 };
