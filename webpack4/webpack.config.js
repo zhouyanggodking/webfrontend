@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-  mode: 'production',
+  mode: 'development',
   context: path.resolve(__dirname), // absolute string containing entry files
   entry: {
     app: './src/main.js',
@@ -12,6 +12,25 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].[hash].js'
+  },
+  devServer: {
+    clientLogLevel: 'warning',
+    hot: true,
+    contentBase: path.resolve(__dirname, 'dist'),
+    compress: true,
+    port: 9090,
+    open: true,
+    openPage: 'mainApp.html',
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8080/',
+        changeOrigin: true
+      }
+    },
+    quiet: true, // necessary for FriendlyErrorsPlugin
+    watchOptions: {
+      watch: true
+    }
   },
   module: {
     rules: [
