@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Locating</title>
+</head>
+
+<body>
+    <button id="addNewBtn">Add a new button</button><strong id="btnCount"></strong>
+    <section id="newBtnSection">
+
+    </section>
+    <script>
+        var addBtn = document.getElementById('addNewBtn');
+        // var btns = document.querySelectorAll('button');//not live
+        var btns = document.getElementsByTagName('button'); //live
+        document.getElementById('btnCount').innerText = btns.length;
+
+        addBtn.onclick = function() {
+            var newBtn = document.createElement('button');
+            newBtn.innerText = "Newly added button!";
+            document.getElementById('newBtnSection').appendChild(newBtn);
+            document.getElementById('btnCount').innerText = btns.length;
+        };
+    </script>
+</body>
+
+</html>

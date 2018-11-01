@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Particle System</title>
+    <style>
+        html, body {
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #renderCanvas {
+            width: 100%;
+            height: 100%;
+            touch-action: none;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="renderCanvas"></canvas>
+    <script src="node_modules/babylonjs/babylon.js"></script>
+    <script>
+        var canvas = document.getElementById('renderCanvas');
+        var engine = new BABYLON.Engine(canvas, true);//true for antialias
+
+        var scene = createScene();
+
+        //important: register a render loop
+        engine.runRenderLoop(function () {
+            scene.activeCamera.alpha += 0.01;
+            scene.render();
+        });
+
+        indow.addEventListener('resize', function () {
+            engine.resize();
+        });
+
+        function createScene() {
+            //create a scene
+            var scene = new BABYLON.Scene(engine);
+
+            var arcCamera = new BABYLON.ArcRotateCamera('arcCamera', 0, 0, 2, BABYLON.Vector3.Zero(), scene);
+            arcCamera.setPosition(new BABYLON.Vector3(0, 5, -10));
+            arcCamera.attachControl(canvas, false, false);//third param to forbid useCtrlForPanning
+
+            var hemiSphericLight= new BABYLON.HemisphericLight('hemiLight', new BABYLON.Vector3(0, 1, 0), scene);
+            hemiSphericLight.diffuse = new BABYLON.Color3(0.4, 0.2, 0.7);
+            hemiSphericLight.groundColor = new BABYLON.Color3(0, 1, 0);
+
+            // create a built-in "ground" shape; its constructor takes the same 5 params : name, width, height, subdivisions, scene, updatable
+            var ground = BABYLON.Mesh.CreateGround('ground', 10, 10, 1, scene);
+
+            var groundMaterial = new BABYLON.StandardMaterial('ground_material', scene);
+            groundMaterial.diffuseColor = new BABYLON.Color3(0.3, 0.8, 0.4);
+            ground.material = groundMaterial;
+            ground.material.backFaceCulling = false;
+            //make collision check enable
+            scene.collisionsEnabled = true;
+            ground.checkCollisions = true;
+
+            //second parameter is the maximum amount of particles
+            var particleSystem = new BABYLON.ParticleSystem('particles', 2000, scene);
+            particleSystem.particleTexture = new BABYLON.Texture('sun.jpg', scene);
+            particleSystem.color1 = new BABYLON.Color4(0.2, 0.5, 0.3, 0.8);
+            particleSystem.color2 = new BABYLON.Color4(0.8, 0.1, 0.7, 0.7);
+
+            //particleSystem.textureMask = new BABYLON.Color4(0.1, 0.8, 0.8, 0.9);
+
+            var fountain = new BABYLON.Mesh.CreateSphere('fountain', 10, 0.1, scene);
+            fountain.position.y = 3;
+
+            particleSystem.emitter = fountain;
+            //the size of particles
+            particleSystem.maxSize = 0.1;
+            particleSystem.minSize = 0.05;
+
+            //emit rate
+            particleSystem.emitRate = 1000;
+
+            particleSystem.direction1 = new BABYLON.Vector3(5, 0, 5);
+            particleSystem.direction2 = new BABYLON.Vector3(-5, 0, -5);
+
+            //gravity
+            particleSystem.gravity = new BABYLON.Vector3(0, -3, 0);
+
+            // Life time of each particle (random between...)
+            particleSystem.minLifeTime = 0.3;
+            particleSystem.maxLifeTime = 10;
+
+            //particleSystem.minAngularSpeed = 0;
+            //particleSystem.maxAngularSpeed = Math.PI;
+
+            // Blend mode : BLENDMODE_ONEONE, or BLENDMODE_STANDARD
+            particleSystem.blendMode = BABYLON.ParticleSystem.BLENDMODE_ONEONE;
+            particleSystem.start();
+
+            //animation setup
+            //params: name, targetProperty, framePerSecond, dataType, loopMode, enableBlending
+            var animation = new BABYLON.Animation('rotation', 'rotation.x', 30, BABYLON.Animation.ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
+            var rotationKeys = [];
+            rotationKeys.push({
+                frame: 0,
+                value: 0
+            });
+
+            rotationKeys.push({
+                frame: 50,
+                value: Math.PI
+            });
+
+            rotationKeys.push({
+                frame: 100,
+                value: 2* Math.PI
+            });
+
+
+            animation.setKeys(rotationKeys);
+            fountain.animations.push(animation);
+            scene.beginAnimation(fountain, 0, 100, true);
+
+            // return the created scene
+            return scene;
+
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Play Ground</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+</head>
+
+<body>
+    <!-- <button id="test">Test</button>
+    <script src="./js/event.js"></script>
+    <script src="./js/eventTest.js"></script>     -->
+    <!-- <script src="./js/nativeJsUtility.js"></script>
+    <script src="./js/nativeJsUtilityTest.js"></script> -->
+    <!-- <script src="./js/cookieMgr.js"></script>
+    <script src="./js/cookieMgrTest.js"></script> -->
+    <!-- <script src="./js/localStorageTest.js"></script> -->
+    <!-- <script src="./js/webworker/mainthread.js"></script> -->
+    <!-- <script src="./js/jquery.js"></script>
+    <script src="./js/extend.js"></script>
+    <script src="./js/extendTest.js"></script> -->
+    <!-- <script src="./js/map-set.js"></script> -->
+    <!-- <script src="./js/generatorTest.js"></script> -->
+    <script>
+        // var z = 10;
+
+        // function foo() {
+        //     console.log(z);
+        // }
+        // (function(funcArg) {
+        //     var z = 20;
+        //     funcArg();
+        // })(foo);
+        var arr = [1, 2, 4, 4, 3, 3, 1, 5, 1, 4];
+
+        function d(arr) {
+            var map = {};
+            var duplicates = [];
+            // for (var i = 0; i < arr.length; ++i) {
+            //     if (map[arr[i]]) {
+            //         map[arr[i]] += 1;
+            //         if (map[arr[i]] === 2) {
+            //             duplicates.push(arr[i]);
+            //         }
+            //     } else {
+            //         map[arr[i]] = 1;
+            //     }
+            // }
+            duplicates = arr.filter(function(val, index, array) {
+                return array.lastIndexOf(val) !== index;
+            });
+            duplicates = duplicates.filter(function(val, index, array) {
+                return array.indexOf(val) == index;
+            });
+            return duplicates;
+        }
+
+        var r = d(arr).sort();
+        console.log(r);
+    </script>
+</body>
+
+</html>

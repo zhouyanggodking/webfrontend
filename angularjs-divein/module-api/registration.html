@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+    <title>registration</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../node_modules//bootstrap/dist/css/bootstrap.css" />
+</head>
+
+<body>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../node_modules/angular/angular.js"></script>
+    <script>
+        //signature:
+        //service(name, constructor)
+        //factory(name, providerFn)
+        //provider(name, providerType)
+        //decorator(name, fn)
+        //constant(name, object)
+        //value(name, object)
+        var myApp = angular.module('myApp', []);
+
+        myApp.constant('COMPANY_NAME', 'ADVS');
+
+        myApp.value('customerList', ['IBM', 'GOOG', 'MSFT']);
+
+        myApp.service('nameListSvc', ForServiceFactoryProvider);
+
+        myApp.factory('nameListFac', ForServiceFactoryProvider);
+
+        myApp.provider('nameListProv', ForServiceFactoryProvider);
+
+        myApp.run(function(nameListSvc, nameListFac, nameListProv) {
+            console.log(nameListSvc.get());
+            console.log(nameListFac.get());
+            console.log(nameListProv.get());
+        });
+
+        function ForServiceFactoryProvider() {
+            var nameList = ['ADVS', 'SSNC', 'APPL'];
+
+            this.get = function() { //for service
+                console.log('for service...');
+                return nameList;
+            };
+
+            return {
+                get: function() { //used for factory
+                    console.log('for factory...');
+                    return nameList;
+                },
+
+                $get: function() { //used for provider
+                    return {
+                        get: function() {
+                            console.log('for provider...');
+                            return nameList;
+                        }
+                    };
+                }
+            };
+        }
+    </script>
+</body>
+
+</html>

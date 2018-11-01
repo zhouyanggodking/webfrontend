@@ -1,0 +1,19 @@
+{
+  "name": "babylonjs-tutorial",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lite": "lite-server",
+    "start": "npm run lite"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^2.2.0",
+    "lite-server": "^2.2.2"
+  },
+  "dependencies": {
+    "babylonjs": "^2.4.1"
+  }
+}

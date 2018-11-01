@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+    <title>component</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../node_modules//bootstrap/dist/css/bootstrap.css" />
+</head>
+
+<body ng-controller="mainCtrl">
+    <my-comp hero="hero" on-delete="delete(hero.name)" on-change="onChange(compName, value, author)"></my-comp>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../node_modules/angular/angular.js"></script>
+    <script>
+        var myApp = angular.module('myApp', []);
+
+        myApp.controller('mainCtrl', function($scope) {
+            $scope.hero = {
+                name: 'god-king'
+            };
+
+            $scope.delete = function(name) {
+                console.log(name + ' is deleted - mainCtrl');
+            };
+
+            $scope.onChange = function(a, b, c) {
+                console.log(`${a}   ${b}    ${c}`);
+            };
+        });
+
+        myApp.component('myComp', {
+            bindings: {
+                hero: '<',
+                onDelete: '&',
+                onChange: '&'
+            },
+            template: '<div><input ng-model="$ctrl.text"/></div>',
+            controller: MyCompController
+        });
+
+        function MyCompController() {
+            var ctrl = this;
+
+            ctrl.$onInit = function() {
+                console.log('$onInit...');
+            };
+
+            ctrl.$onChanges = function(changeObj) {
+                //Called whenever one-way bindings are updated. 
+                console.log(changeObj);
+                console.log('$onChanges');
+            };
+
+            ctrl.$doCheck = function() {
+                //$doCheck() - Called on each turn of the digest cycle.
+                console.log('$doCheck');
+
+                ctrl.onChange({
+                    compName: 'my-comp',
+                    value: ctrl.text,
+                    author: 'godking'
+                });
+            };
+
+            ctrl.$postLink = function() {
+                //Called after this controller's element and its children have been linked
+                console.log('$postLink');
+            };
+
+            ctrl.$onDestroy = function() {
+                console.log('$onDestroy');
+            };
+
+            ctrl.delete = function(hero) {
+                console.log(hero.name + ' is deleted');
+                ctrl.onDelete();
+            };
+        }
+    </script>
+</body>
+
+</html>

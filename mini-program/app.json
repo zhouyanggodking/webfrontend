@@ -1,0 +1,29 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/activity/activity"
+  ],
+  "window": {
+    "navigationBarTitleText": "WX tutorial",
+    "navigationBarTextStyle": "white",
+    "navigationBarBackgroundColor": "#ff00ff",
+    "backgroundColorTop": "#00ff00",
+    "backgroundColorBottom": "#00ffff",
+    "backgroundColor": "#ff0000"
+  },
+  "tabBar": {
+    "color": "#f00000",
+    "selectedColor": "#00ff00",
+    "backgroundColor": "#ffff00",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/activity/activity",
+        "text": "活动"
+      }
+    ]
+  }
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Flex</title>
+    <link rel="stylesheet" href="css/init.css">
+    <style>
+        .container {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+        }
+        
+        .vertical {
+            flex-direction: column;
+        }
+        
+        .horizontal {
+            flex-direction: row;
+        }
+        
+        .size-1 {
+            flex: 1 1 auto;
+        }
+        
+        .size-2 {
+            flex: 2 2 auto;
+        }
+        
+        .size-3 {
+            flex: 1 1 auto;
+        }
+        
+        .yellow {
+            background: yellow;
+        }
+        
+        .red {
+            background: red;
+        }
+        
+        .lime {
+            background: lime;
+        }
+        
+        .purple {
+            background: purple;
+        }
+        
+        div {
+            width: 0;
+        }
+        
+        div.large {
+            width: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="container horizontal">
+            <div class="size-1  red">One</div>
+            <div class="size-2 yellow">Two</div>
+            <div class="size-1 lime">Three</div>
+        </div>
+        <div class="container purple">
+            <div class="red size-1">One</div>
+            <div class="yellow size-1">Two</div>
+            <div class="lime size-1">Three</div>
+        </div>
+
+        <div class="container horizontal">
+            <div class="large size-1 red">One</div>
+            <div class="large size-2 yellow">Two</div>
+            <div class="large size-1 lime">Three</div>
+        </div>
+    </main>
+</body>
+
+</html>

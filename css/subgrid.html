@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sub grid</title>
+    <link rel="stylesheet" href="css/init.css">
+    <style>
+        body {
+            display: grid;
+            grid-template-columns: 1fr 5fr;
+            grid-template-rows: 6vh 94vh;
+            grid-template-areas: "nav nav" "side main";
+            background: aqua;
+        }
+        
+        nav {
+            grid-area: nav;
+            background: yellow;
+        }
+        
+        .side-bar {
+            display: grid;
+            grid-template-rows: 94% 6%;
+            grid-template-columns: auto;
+        }
+        
+        .side-links {
+            background: purple;
+        }
+        
+        .collapse {
+            background: #04EC10;
+        }
+        
+        main {
+            display: grid;
+            grid-template-columns: auto;
+            grid-template-rows: 10% 90%;
+            grid-template-areas: "filter" "sprint";
+        }
+        
+        .filters {
+            grid-area: filter;
+            background: blue;
+        }
+        
+        .sprints {
+            grid-area: sprint;
+            background: #9CA2A7;
+        }
+    </style>
+</head>
+
+<body>
+    <nav></nav>
+    <aside class="side-bar">
+        <section class="side-links">Functionalities</section>
+        <div class="collapse">Collapse Side Bar</div>
+    </aside>
+    <main>
+        <section class="filters"></section>
+        <article class="sprints">
+
+        </article>
+    </main>
+</body>
+
+</html>

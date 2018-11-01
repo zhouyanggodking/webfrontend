@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>directive</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../node_modules//bootstrap/dist/css/bootstrap.css" />
+</head>
+<body>
+    <demo-directive></demo-directive>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../node_modules/angular/angular.js"></script>
+    <script>
+
+        var myApp = angular.module('myApp', []);       
+
+        myApp.directive('demoDirective', function () {
+            var DDO = {
+                restrict: 'E',
+                replace: true,
+                scope: false,//share parent scope
+                template: '<div><h1>Demo Directive</h1></div>',
+                controller: DemoDirectiveCtrl,
+                //compile: DemoDirectiveCompileFn,
+                link: DemoDirectiveLinkFn
+            };
+            return DDO;
+        });
+
+        function DemoDirectiveCtrl() {
+            console.log('demo directive controller...');
+        }
+
+        function DemoDirectiveCompileFn(tElem, tAttr) {//t for template
+            console.log('DemoDirectiveCompile...');
+            return {//link phase is split two parts
+                pre: function (scope, iElem, iAttr) {
+                    console.log('DemoDirectiveCompile pre-link...');
+                },
+                post: function (scope, iElem, iAttr) {
+                    console.log('DemoDirectiveCompile post-link...');
+                }
+            };
+
+        }
+
+        function DemoDirectiveLinkFn(scope, iElem, iAttr) {//iElem stands for element instance
+            console.log('DemoDirectiveLinkFn...');
+        }
+    </script>
+</body>
+</html>

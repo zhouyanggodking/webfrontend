@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>table</title>
+    <style>
+        table,
+        th,
+        td {
+            width: 10px;
+            border: 1px solid;
+        }
+        
+        table.collapsed-table {
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Title</th>
+            </tr>
+            <tbody>
+                <tr>
+                    <td>godking</td>
+                    <td>10</td>
+                    <td>SE</td>
+                </tr>
+                <tr>
+                    <td>OceanSky</td>
+                    <td>100</td>
+                    <td>QA</td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="collapsed-table" style="table-layout: fixed;">
+            <caption>Collapsed Table</caption>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Title</th>
+            </tr>
+            <tbody>
+                <tr>
+                    <td>godking</td>
+                    <td>10</td>
+                    <td>SE</td>
+                </tr>
+                <tr>
+                    <td>OceanSky</td>
+                    <td>100</td>
+                    <td>QA</td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+</body>
+
+</html>

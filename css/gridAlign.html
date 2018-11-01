@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Grid Align</title>
+    <link rel="stylesheet" href="css/init.css">
+    <style>
+        .container {
+            background: yellow;
+            height: 30vh;
+            display: grid;
+            grid-template-columns: 20% 20% 20% 20% 20%;
+            grid-auto-rows: 50% 50%;
+            justify-items: center;
+            align-items: center;
+            border: 2px solid pink;
+        }
+        
+        .lime {
+            background: lime;
+        }
+        
+        .red {
+            background: red;
+        }
+        
+        .purple {
+            background: purple;
+        }
+        
+        .small {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .median {
+            width: 100px;
+            height: 100px;
+        }
+        
+        .full {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .container-2 {
+            background: yellow;
+            height: 30vh;
+            display: grid;
+            grid-template-columns: 100px 100px 100px;
+            grid-auto-rows: 100px;
+            justify-content: center;
+            align-content: center;
+            border: 2px solid pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="lime full"></div>
+        <div class="purple small"></div>
+        <div class="red median"></div>
+    </div>
+
+    <div class="container-2">
+        <div class="lime full"></div>
+        <div class="purple small"></div>
+        <div class="red median"></div>
+    </div>
+</body>
+
+</html>

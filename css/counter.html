@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Counter</title>
+    <link rel="stylesheet" href="css/init.css">
+    <style>
+        .container {
+            counter-reset: head;
+        }
+        
+        h1 {
+            counter-reset: subhead;
+        }
+        
+        h1::before {
+            content: counter(head)':';
+            counter-increment: head;
+        }
+        
+        h2::before {
+            content: counter(head) '-' counter(subhead) ':';
+            counter-increment: subhead;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="container">
+            <h1>SE</h1>
+            <h2>Jack</h2>
+            <h2>Kate</h2>
+            <h1>HR</h1>
+            <h2>King</h2>
+            <h2>God</h2>
+        </div>
+    </main>
+</body>
+
+</html>

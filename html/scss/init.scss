@@ -1,0 +1,12 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+$colors: red yellow lightblue purple lime darkgray;
+@each $color in $colors {
+    .#{$color} {
+        background: #{$color};
+    }
+}

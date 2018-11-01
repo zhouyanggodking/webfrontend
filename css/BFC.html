@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BFC</title>
+    <link rel="stylesheet" href="css/init.css">
+    <style>
+        .parent {
+            overflow: hidden;
+            margin: 10px;
+        }
+        
+        .child {
+            height: 100px;
+            margin: 50px;
+        }
+        
+        .pull-left {
+            float: left;
+            height: 150px;
+        }
+        
+        .pull-right {
+            float: right;
+            height: 150px;
+        }
+        
+        .pink {
+            opacity: 0.5;
+        }
+        
+        .purple {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body class="lightgreen">
+    <div class="parent lightblue">
+        <div class="child pink">Child1</div>
+        <div class="child purple">Child2</div>
+    </div>
+
+    <div class="parent aqua">
+        <div class="child pull-left pink">Child1</div>
+        <div class="child purple">Child2</div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />  
+    <style>
+        #boxmodel{
+            background-color: purple;
+            border-style:solid;
+            height:300px;
+            width:300px
+        }
+
+        #innerbox{
+            margin:50px 50px auto auto;
+            height:100px;
+            width:100px;
+            background-color:yellow;
+            
+            border-width:5px;
+            border-color:red;
+            border-style:dashed;
+            /*border: 5px, red, dashed*/
+
+            padding:10px 10px;
+        }
+    </style>  
+</head>
+<body>
+   <div id="boxmodel">
+       <div id="innerbox">
+           <div style="border-color:green; background-color:darkcyan;width:100px;height:100px"></div>
+       </div>
+   </div>
+</body>
+</html>

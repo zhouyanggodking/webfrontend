@@ -1,0 +1,19 @@
+{
+  "name": "css",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "godking",
+  "license": "ISC",
+  "scripts": {
+    "lite": "lite-server",
+    "scss-compile:watch": "node-sass -rw scss/ -o css/",
+    "scss-compile:compile": "node-sass scss/ -o css/",
+    "start": "concurrently \"npm run scss-compile:compile\" \"npm run scss-compile:watch\" \"npm run lite\""
+  },
+  "devDependencies": {
+    "concurrently": "^3.1.0",
+    "lite-server": "^2.2.2",
+    "node-sass": "^3.10.1"
+  }
+}

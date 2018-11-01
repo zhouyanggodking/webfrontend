@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Three ways to clear float</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .purple {
+            background: purple;
+        }
+        
+        .aqua {
+            background: aqua;
+        }
+        
+        .yellow {
+            background: yellow;
+        }
+        
+        .pink {
+            background: pink;
+        }
+        
+        .parent {
+            border: 1px solid red;
+            min-height: 10px;
+        }
+        
+        .child {
+            height: 100px;
+            width: 100px;
+        }
+        
+        .pull-left {
+            float: left;
+        }
+        
+        .pull-right {
+            float: right;
+        }
+        
+        .clear-float {
+            clear: both;
+        }
+        
+        .BFC {
+            overflow: hidden;
+        }
+        
+        .clear-fix:after {
+            content: "";
+            display: block;
+            height: 0;
+            clear: both;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="parent yellow">No clear float
+        <div class="child pull-left aqua"></div>
+        <div class="child pull-right purple"></div>
+    </div>
+
+    <div class="clear-float">
+
+    </div>
+
+    <div class="parent yellow">Using empty tag to clear both
+        <div class="child pull-left aqua"></div>
+        <div class="child pull-right purple"></div>
+        <div class="clear-float"></div>
+    </div>
+
+    <div class="parent yellow BFC">Using BFC to clear
+        <div class="child pull-left aqua"></div>
+        <div class="child pull-right purple"></div>
+    </div>
+    <div class="parent yellow clear-fix">Using pseudo class to clear
+        <div class="child pull-left aqua"></div>
+        <div id="pseudo" class="child pull-right purple"></div>
+    </div>
+</body>
+
+</html>
