@@ -1,0 +1,20 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+.upper {
+  height: calc(100vh - 48px);
+}
+
+.msg-container {
+  height: calc(100% - 32px);
+}
+
+.action-indicator {
+  height: 32px;
+}
+
+.footer {
+  height: 48px;
+}

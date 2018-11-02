@@ -8,11 +8,51 @@
   <link rel="stylesheet" href="main.css">
 </head>
 <body>
-  GOKDING
-
+  <div class="upper">
+    <div class="msg-container"></div>
+    <div class="action-indicator"></div>
+  </div>  
+  <div class="footer">
+    <input class="msg-input" type="text">
+  </div>
   <script src="./socket.io.js"></script>
   <script>
-    const socket = io();
+    const socket = io.connect('http://localhost:3000');
+    const msgContainer = document.querySelector('.msg-container');
+    const actionIndicator = document.querySelector('.action-indicator');
+    socket.on('CHAT', msg =>{
+      addMessageToList(msg);
+    });
+
+    socket.on('INDICATOR', msg => {
+      if (msg === 'focus') {
+        actionIndicator.innerHTML = 'some is typing message';
+      } else {
+        actionIndicator.innerHTML = '';
+      }
+    });
+
+    const input = document.querySelector('.msg-input');
+    input.addEventListener('focus', (event) => {
+      socket.emit('INDICATOR', 'focus');
+    });
+
+    input.addEventListener('blur', () =>{
+      socket.emit('INDICATOR', 'blur');
+    });
+
+    input.addEventListener('keypress', (event) => {
+      if (event && event.key === 'Enter') {
+        addMessageToList(input.value);
+        socket.emit('CHAT', input.value)
+      }
+    })
+
+    function addMessageToList(msg) {
+      const div = document.createElement('div');
+      div.innerText = msg;
+      msgContainer.appendChild(div);
+    }
   </script>
 </body>
 </html>
