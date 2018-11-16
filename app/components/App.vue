@@ -96,10 +96,13 @@
         font-size: 12px;
     }
 
+    .index-text {
+        color: white;
+    }
+
     .index-item {}
 
     .up {
-
         .index-val,
         .delta-sign,
         .delta-val {
@@ -108,7 +111,6 @@
     }
 
     .down {
-
         .index-val,
         .delta-sign,
         .delta-val {
