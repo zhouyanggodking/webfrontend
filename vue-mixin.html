@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vue-extend</title>
+</head>
+<body>
+  <div id="app"></div>
+  <script src="./node_modules/vue/dist/vue.js"></script>
+  <script>
+    const mixin = {
+      name: 'mixin',
+      data() {
+        return {
+          name: 'mixin'
+        }
+      },
+      created() {
+        console.log('mixin created')
+      }, 
+      mounted() {
+        console.log('mixin mounted')
+        console.log(this.name) // app
+      }
+    };
+    
+    new Vue({
+      mixins: [mixin],
+      data() {
+        return {
+          name: 'app',
+          person: {
+            name: 'test',
+            age: 10
+          }
+        }
+      },
+      created() {
+        console.log('app created')
+      },
+      mounted() {
+        console.log('app mounted')
+        console.log(this.name) // app
+      }
+    }).$mount('#app')
+  </script>
+</body>
+</html>
