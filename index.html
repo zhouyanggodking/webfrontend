@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Canvas</title>
+  <style>
+    #canvas {
+      border: solid 1px red;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas" width="500" height="500"></canvas>
+  <script>
+    var canvas = document.querySelector('#canvas');
+    var ctx = canvas.getContext('2d');
+    // ctx.fillRect(25, 25, 100, 100);
+    // ctx.clearRect(45, 45, 60, 60);
+    // ctx.strokeRect(50, 50, 50, 50);
+
+    // ctx.beginPath();
+    // // ctx.moveTo(175, 75);
+    // ctx.arc(200, 70, 50, 0, Math.PI)
+    // ctx.closePath();
+    // ctx.stroke();
+    
+    ctx.setLineDash([10, 5]);
+    ctx.lineWidth = 10;
+
+    // create gradient
+    var lineGrad = ctx.createLinearGradient(25, 150, 300, 400);
+    lineGrad.addColorStop(0, 'white');
+    lineGrad.addColorStop(0.5, 'blue');
+    lineGrad.addColorStop(1, 'green');
+    ctx.strokeStyle = lineGrad;
+    ctx.beginPath();
+    ctx.moveTo(25, 150);
+    ctx.lineTo(300, 400);
+    ctx.stroke();
+
+    // ctx.moveTo(100, 200)
+    // ctx.arcTo(200, 300, 100, 400, 50 * Math.sqrt(2))
+    // ctx.lineTo(100, 400)
+    // ctx.stroke();
+  </script>
+</body>
+</html>
