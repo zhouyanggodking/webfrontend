@@ -44,6 +44,23 @@
     // ctx.arcTo(200, 300, 100, 400, 50 * Math.sqrt(2))
     // ctx.lineTo(100, 400)
     // ctx.stroke();
+
+    var url = canvas.toDataURL('image/png');
+    
+    // download canvas image
+    // var link = document.createElement('a');
+    // link.href = url;
+    // link.download = 'test.png';
+    // link.click();
+
+    canvas.toBlob((blob) => {
+      var t = URL.createObjectURL(blob);
+      var link = document.createElement('a');
+      link.href = t;
+      link.download = 'test.png';
+      link.click();
+      URL.revokeObjectURL(t);
+    })
   </script>
 </body>
 </html>
