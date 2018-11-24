@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Web Camera</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    #cam {
+      width: calc(100vw * 0.8);
+      height: calc(100vw * 0.8);
+      max-width: 500px;
+      max-height: 500px;
+      border: solid 4px grey;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+  <video autoplay="true" id="cam"></video>
+  <script>
+    var video = document.querySelector('#cam');
+    if (navigator.mediaDevices.getUserMedia) {
+      navigator.mediaDevices.getUserMedia({
+        video: true
+      }).then(stream => {
+        video.srcObject = stream;
+        alert('bingo');
+      }).catch(error => {
+        alert(error.message);
+      })
+    } else {
+      alert('camera not supported')
+    }
+  </script>
+</body>
+</html>
