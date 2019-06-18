@@ -1,1 +1,1 @@
-check related branches for each field demo
+vue core concept
