@@ -1,9 +1,12 @@
-const { defineReactive } = require('./Observer');
+const { defineReactive, Observer } = require('./Observer');
 const Watcher = require('./Watcher');
 
-const obj = {};
+const obj = {
+  test: 'king'
+};
 
-defineReactive(obj, 'test', 'king');
+// defineReactive(obj, 'test', 'king');
+new Observer(obj);
 
 
 const watcher = new Watcher(obj, 'test', (newVal, oldVal) => {
