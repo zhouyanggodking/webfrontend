@@ -7,16 +7,20 @@ const axios = require('axios');
  * @param {String} dest 
  */
 async function download(src, dest) {
-  return axios.request({
-    responseType: 'arraybuffer',
-    url: src,
-    method: 'get',
-    headers: {
-      'Content-Type': 'image/jpg',
-    }
-  }).then(res => {
+  try {
+    const res = await axios.request({
+      responseType: 'arraybuffer',
+      url: src,
+      method: 'get',
+      headers: {
+        'Content-Type': 'image/jpg',
+      }
+    })
     fs.writeFileSync(dest, res.data)
-  });
+  } catch {
+    console.log('error downloading jpg files');
+    return Promise.reject();
+  }
 }
 
 module.exports = {
