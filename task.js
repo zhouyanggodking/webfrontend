@@ -1,23 +1,25 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
 const fs = require('fs');
+const logger = require('./logger');
 const imageDownloader = require('./image-downloader');
 const { BASE_DIR, BASE_URL, IMAGE_HOST } = require('./config');
 
 const getPageDom = async (url) => {
   getPageDom.retryCount = getPageDom.retryCount || 0;
   try {
-    console.log(`start loading page ${url}`)
+    logger.debug(`start loading page ${url}`)
     const res = await axios.get(url, {
-      timeout: 60000
+      timeout: 160000
     });
-    console.log(`done loading page ${url}`)
+    getPageDom.retryCount = 0;
+    logger.debug(`done loading page ${url}`)
     return cheerio.load(res.data);
   } catch (e) {
     const errMsg = `error loading page ${url}`;
-    console.log(errMsg);
+    logger.debug(errMsg);
     getPageDom.retryCount++;
-    console.log(`retry ${url} - count ${getPageDom.retryCount}`);
+    logger.debug(`retry ${url} - count ${getPageDom.retryCount}`);
     if (getPageDom.retryCount > 5) {
       getPageDom.retryCount = 0;
       return Promise.reject();
@@ -27,20 +29,20 @@ const getPageDom = async (url) => {
 }
 
 const processChapter = async (chapterUrl, destFolder) => {
-  console.log(`processing ${chapterUrl}`)
-  console.log(`processing ${destFolder}`)
+  logger.debug(`processing ${chapterUrl}`)
+  logger.debug(`processing ${destFolder}`)
   try {
     const $ = await getPageDom(chapterUrl);
     const script = $('body > script').html();
     eval(script);
     const images = chapterImages; // from eval
-    console.log(`image length ${images.length}`)
+    logger.debug(`image length ${images.length}`)
     if (!fs.existsSync(destFolder)) {   
-      console.log(`creating folder ${destFolder}`)   
+      logger.debug(`creating folder ${destFolder}`)   
       fs.mkdirSync(destFolder, {
         recursive: true
       });
-      console.log(`done creating folder ${destFolder}`)   
+      logger.debug(`done creating folder ${destFolder}`)   
     } else {
       return nextChapterData;
     }
@@ -50,11 +52,11 @@ const processChapter = async (chapterUrl, destFolder) => {
       const destFile = `${destFolder}/${imageNum}.jpg`;
       await imageDownloader.download(imageUrl, destFile);
     });
-    console.log(`processing ${chapterUrl} done`);
+    logger.debug(`processing ${chapterUrl} done`);
     return nextChapterData;
   } catch {
     const errMsg = `error process charpter number ${chapterUrl}`;
-    console.log(errMsg);
+    logger.debug(errMsg);
     return Promise.reject(errMsg);
   }
 }
@@ -85,7 +87,7 @@ const crawl = async () => {
   //   await processChapter(item.href, item.dest);
   // });
   for (let index = 0; index < links.length; ++index) {
-    await processChapter(links[index].href, item.dest);
+    await processChapter(links[index].href, links[index].dest);
   }
 };
 
