@@ -5,7 +5,7 @@ const imageDownloader = require('./image-downloader');
 const { BASE_DIR, BASE_URL, IMAGE_HOST } = require('./config');
 
 const getPageDom = async (url) => {
-  let retryCount = 0;
+  getPageDom.retryCount = getPageDom.retryCount || 0;
   try {
     console.log(`start loading page ${url}`)
     const res = await axios.get(url, {
@@ -16,9 +16,10 @@ const getPageDom = async (url) => {
   } catch (e) {
     const errMsg = `error loading page ${url}`;
     console.log(errMsg);
-    console.log(`retry ${url}`);
-    retryCount++;
-    if (retryCount > 5) {
+    getPageDom.retryCount++;
+    console.log(`retry ${url} - count ${getPageDom.retryCount}`);
+    if (getPageDom.retryCount > 5) {
+      getPageDom.retryCount = 0;
       return Promise.reject();
     }
     return getPageDom(url);
@@ -49,10 +50,10 @@ const processChapter = async (chapterUrl, destFolder) => {
       const destFile = `${destFolder}/${imageNum}.jpg`;
       await imageDownloader.download(imageUrl, destFile);
     });
-    console.log(`processing ${chapterNum} done`);
+    console.log(`processing ${chapterUrl} done`);
     return nextChapterData;
   } catch {
-    const errMsg = `error process charpter number ${chapterNum}`;
+    const errMsg = `error process charpter number ${chapterUrl}`;
     console.log(errMsg);
     return Promise.reject(errMsg);
   }
@@ -70,7 +71,7 @@ const processAllLinks = async () => {
     const href = $(item).attr('href');
     const title = $(item).find('span').text()
     links.push({
-      href: `${BASE_URL}${href}`,
+      href: `${new URL(BASE_URL).origin}${href}`,
       dest: `${getDestFolder(index)}_${title}`
     });
   });
@@ -80,9 +81,12 @@ const processAllLinks = async () => {
 
 const crawl = async () => {
   const links = await processAllLinks();
-  links.forEach(async item => {
-    await processChapter(item.href, item.dest);
-  });
+  // links.forEach(async item => {
+  //   await processChapter(item.href, item.dest);
+  // });
+  for (let index = 0; index < links.length; ++index) {
+    await processChapter(links[index].href, item.dest);
+  }
 };
 
 
