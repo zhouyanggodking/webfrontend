@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mandelbrot Set</title>
+  <style>
+    #canvas {
+      border: solid 1px blue;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas" width="600" height="600"></canvas>
+  <div class="operations">
+    <button id="zoomin">Zoom In</button>
+    <button id="zoomout">Zoom Out</button>
+    <button id="x-increase">X++</button>
+    <button id="x-decrease">X--</button>
+    <button id="y-increase">Y++</button>
+    <button id="y-decrease">Y--</button>
+  </div>
+  
+  <script>
+    // refer to https://progur.com/2017/02/create-mandelbrot-fractal-javascript.html
+    const checkIfPointBelongsToMandelbrotSet = (x, y, iterations = 100) => {
+      let real = x;
+      let imaginary = y;
+      const boundVal = 10;
+      // check for Z := Z^2 + C
+      for (let i = 0; i < iterations; ++i) {
+        let tempReal = real * real - imaginary * imaginary + x;
+        let tempImaginary = 2 * real * imaginary + y;
+        
+        real = tempReal;
+        imaginary = tempImaginary;
+
+        if (real * imaginary > boundVal) {
+          return (i / iterations * 100);
+        }
+      }      
+      return 0;
+    };
+
+    const drawFactal = (panX, panY, magnificationFactor) => {
+
+      const canvas = document.querySelector('#canvas');
+      const ctx = canvas.getContext("2d");
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for(let x = 0; x < canvas.width; x++) {
+        for(let y= 0; y < canvas.height; y++) {
+          let belongsToSet = checkIfPointBelongsToMandelbrotSet(x/magnificationFactor - panX, y/magnificationFactor - panY, iterations);
+          if(belongsToSet == 0) {
+            ctx.fillStyle = '#000';
+            ctx.fillRect(x, y, 1, 1); // Draw a black pixel
+          } else {
+            ctx.fillStyle = 'hsl(0, 100%, ' + belongsToSet + '%)';
+            ctx.fillRect(x, y, 1, 1); // Draw a colorful pixel
+          }               
+        } 
+      }
+    }  
+
+    // global variables
+    let iterations = 100;
+    let panX = 0; 
+    let panY = 0;
+    let magnificationFactor = 100;
+    drawFactal(panX, panY, magnificationFactor, iterations);
+
+    document.querySelector('#zoomin').addEventListener('click', () => {
+      magnificationFactor += 5;
+      if (magnificationFactor > 5000) {
+        magnificationFactor = 5000;
+      }
+    });
+    document.querySelector('#zoomout').addEventListener('click', () => {
+      magnificationFactor -= 5;
+      if (magnificationFactor < 10) {
+        magnificationFactor = 10;
+      }
+      drawFactal(panX, panY, magnificationFactor, iterations);
+    });
+    document.querySelector('#x-increase').addEventListener('click', () => {
+      panX += 0.1;
+      drawFactal(panX, panY, magnificationFactor, iterations);
+    });
+    document.querySelector('#x-decrease').addEventListener('click', () => {
+      panX -= 0.1;
+      if (panX < 0) {
+        panX = 0;
+      }
+      drawFactal(panX, panY, magnificationFactor, iterations);
+    });
+    document.querySelector('#y-increase').addEventListener('click', () => {
+      panY += 0.1;
+      drawFactal(panX, panY, magnificationFactor, iterations);
+    });
+    document.querySelector('#y-decrease').addEventListener('click', () => {
+      panY -= 0.1;
+      if (panY < 0) {
+        panY = 0;
+      }
+      drawFactal(panX, panY, magnificationFactor, iterations);
+    });
+  </script>
+</body>
+</html>
