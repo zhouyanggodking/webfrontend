@@ -19,7 +19,20 @@ highlightDiv.style = `position: fixed; left: ${rect.left}px; top: ${rect.top}px;
 highlightDiv.id = 'target';
 document.body.appendChild(highlightDiv);
 
-const target = document.querySelector('#target');
-target.addEventListener('mouseenter', e => { // not working
-  console.log(e); 
+
+function onTopOfRect(rect, point) {
+  return point.y > rect.top && point.x > rect.left && point.x < (rect.left + rect.width) && point.y < (rect.top + rect.height);
+}
+
+document.addEventListener('mousemove', e => {
+  const point = {
+    x: e.pageX,
+    y: e.pageY
+  };
+  const target = document.querySelector('#target');
+  if (onTopOfRect(rect, point)) { // actions
+    target.style.backgroundColor = '#12345680';
+  } else {
+    target.style.backgroundColor = '#ffff0080';
+  }
 });
