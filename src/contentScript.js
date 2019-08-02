@@ -15,5 +15,11 @@ const rect = rects[0]
 console.log(rect);   // range bounding rect
 
 const highlightDiv = document.createElement('div');
-highlightDiv.style = `position: fixed; left: ${rect.left}px; top: ${rect.top}px;width:${rect.width}px; height: ${rect.height}px; background-color: #ffff0080;`;
+highlightDiv.style = `position: fixed; left: ${rect.left}px; top: ${rect.top}px;width:${rect.width}px; height: ${rect.height}px; background-color: #ffff0080;pointer-events:none;`;
+highlightDiv.id = 'target';
 document.body.appendChild(highlightDiv);
+
+const target = document.querySelector('#target');
+target.addEventListener('mouseenter', e => { // not working
+  console.log(e); 
+});
