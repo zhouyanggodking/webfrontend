@@ -1,16 +1,14 @@
-// console = chrome.extension.getBackgroundPage().console;
-
 chrome.runtime.onInstalled.addListener(() => {
   chrome.contextMenus.create({
     id: 'sampleContextMenu',
     title: 'Sample Context Menu',
     contexts: ['page', 'selection']
   });
-  chrome.contextMenus.create({
-    id: 'sampleContextMenu2',
-    title: 'Sample Context Menu2',
-    contexts: ['page', 'selection']
-  });
+  // chrome.contextMenus.create({
+  //   id: 'sampleContextMenu2',
+  //   title: 'Sample Context Menu2',
+  //   contexts: ['page', 'selection']
+  // });
 
   chrome.contextMenus.onClicked.addListener((info, tab) => {
     chrome.browserAction.setBadgeText({ text: '10' });

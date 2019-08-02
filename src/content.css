@@ -1,4 +1,4 @@
-.test::before {
+/* .test::before {
   visibility: hidden !important;
   content: "" !important;
   position: absolute !important;
@@ -10,4 +10,4 @@
 .test:focus {
   background-color: green;
   border: 2px solid red;
-}
+} */
