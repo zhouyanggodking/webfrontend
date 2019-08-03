@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,18 +10,21 @@
     * {
       box-sizing: border-box;
     }
+
     .text {
       display: block;
       width: 100%;
-      height:100px;
+      height: 100px;
     }
+
     .bingo {
       color: green;
     }
+
     .editor {
       overflow: auto;
-      padding:48px;
-      font-size:32px;
+      padding: 48px;
+      font-size: 32px;
     }
 
     .range-div {
@@ -29,103 +33,78 @@
     }
   </style>
 </head>
+
 <body>
   <textarea class="text" name="" id="" cols="30" rows="10">i spek english</textarea>
-  <div class="editor" contenteditable="true" style="height: 300px;">i spek english<div><br/></div><div><br>i spek english i spek english i spek english</div></div>
+  <div class="editor" contenteditable="true" style="height: 300px;">i spek english<div><br /></div>
+    <div><br>i spek english i spek english i spek english</div>
   </div>
   <script>
-    // let startOffset = 2;
-    // let endOffset = 6;
-
-    // const text = document.querySelector('.editor').childNodes[0];
-    // let range = document.createRange();
-    // // endOffset = text.childNodes.length
-    // range.setStart(text, startOffset);
-    // range.setEnd(text, endOffset);
-
-    // const rects = range.getClientRects();
-    // console.log(rects)
-
-    // // document.addEventListener('mouseup', () => {
-    // //   sel = window.getSelection();
-    // //   const rangea = sel.getRangeAt(0);
-    // //   console.log(rangea)
-    // // })
-    // const rect = rects[0];
-    // const div = document.createElement('div')
-    // div.style=`background-color: #ffff0070;position: fixed; left: ${rect.left}px; top: ${rect.top}px;width:${rect.width}px; height: ${rect.height}px;pointer-events:none;`;
-    // document.body.appendChild(div)
-
-    // document.addEventListener('mousemove', (e) => {
-    //   const point = {
-    //     x: e.pageX,
-    //     y: e.pageY
-    //   };
-
-    //   if (onTopOfRect(rect, point)) {
-    //     console.log('bingo')
-    //     document.body.removeChild(div)
-    //     div.style.backgroundColor = '#33333350';
-    //     document.body.appendChild(div)
-    //   } else {
-    //     document.body.removeChild(div)
-    //     div.style.backgroundColor = '#ffff0070';
-    //     document.body.appendChild(div)
-    //   }
-    // });
-
-    // function onTopOfRect(rect, point) {
-    //   return point.y > rect.top && point.x > rect.left && point.x < (rect.left + rect.width) && point.y < (rect.top + rect.height);
-    // }
+    function onTopOfRect(rect, point) {
+      return point.y > rect.top && point.x > rect.left && point.x < (rect.left + rect.width) && point.y < (rect.top + rect.height);
+    }
 
     const editor = document.querySelector('.editor');
-
-    // editor.addEventListener('input', (e) => {
-    //   console.log(e)
-    // });
-
-    // const indexArr = [{
-    //   start: 2,
-    //   end: 6
-    // }, {
-    //   start: 50,
-    //   end: 60
-    // }];
     const indexArr = [{
       start: 2,
       end: 6
     }, {
       start: 8,
       end: 14
+    }, {
+      start: 50,
+      end: 60
+    }, {
+      start: 70,
+      end: 76
     }];
+    // const indexArr = [{
+    //   start: 50,
+    //   end: 60
+    // }];
 
-    const childNodes = editor.childNodes;
-    let accLength = 0;
-    let clientRects = [];
-    for (let index = 0; index < childNodes.length; ++index) {
-      const node = childNodes[index];
-      const text = node.innerText;
-      const textRange = [accLength, accLength + node.length];
+    const getAllRects = (targetNode, indexArray, startIndex = 0) => {
+      const childNodes = targetNode.childNodes;
+      let accLength = startIndex;
+      let clientRects = [];
 
-      // select all index ranges from current node
-      const validIndexRanges = indexArr.filter(item => item.start >= textRange[0] && item.start <= textRange[1]);
-
-      if (node.nodeType === 3) { // for text node
-        const rects = validIndexRanges.map(item => {
-          const range = document.createRange();
-          range.setStart(node, item.start - accLength);
-          range.setEnd(node, item.end - accLength);
-          const rect = range.getBoundingClientRect();
-          // console.log(rect);
-          return rect;
-        });
-        clientRects = clientRects.concat(rects);        
-      }      
+      for (let index = 0; index < childNodes.length; ++index) {
+        const node = childNodes[index];
+        if (node.nodeName.toLowerCase() === 'br') {
+          accLength += 1;
+          continue;
+        }
+        const text = node.innerText || node.textContent;
+        const textRange = [accLength, accLength + text.length];
+        // select all index ranges from current node
+        const validIndexRanges = indexArr.filter(item => item.start >= textRange[0] && item.start <= textRange[1]);
+        if (validIndexRanges.length) {
+          if (node.nodeType === 3) { // for text node             
+            const rects = validIndexRanges.map(item => {
+              const range = document.createRange();
+              range.setStart(node, item.start - accLength);
+              range.setEnd(node, item.end - accLength);
+              const rect = range.getBoundingClientRect();
+              // console.log(rect);
+              return rect;
+            });
+            accLength += node.textContent.length;
+            clientRects = clientRects.concat(rects);
+          } else {
+            clientRects = clientRects.concat(getAllRects(node, indexArr, accLength));
+          }
+        } else {
+          accLength += text.length;
+        }
+      }
+      return clientRects;
     }
+
+    const clientRects = getAllRects(editor, indexArr);
     console.log(clientRects);
 
     // DOM manipulation
-    
+
     // common parent with no width and height
     const editorStyle = window.getComputedStyle(editor);
     const commonParent = document.createElement('div');
@@ -135,9 +114,9 @@
     } else {
       commonParent.style = `position: ${editorStyle.position}; top: ${editorStyle.top}; left: ${editorStyle.left};pointer-events: none;`;
     }
-    
+
     const panel = document.createElement('div');
-    panel.style =`overflow: hidden;position: absolute; width: ${editor.clientWidth}px; height: ${editor.clientHeight}px;`;
+    panel.style = `overflow: hidden;position: absolute; width: ${editor.clientWidth}px; height: ${editor.clientHeight}px;`;
 
     const rectsContainer = document.createElement('div');
     rectsContainer.style = `position: absolute; width: 3000px; height:3000px;`;
@@ -169,10 +148,13 @@
         return div;
       });
 
+      // rectsContainer.childNodes.forEach(node => rect)
       rectDivs.forEach(div => {
         rectsContainer.appendChild(div);
       })
     }
+
   </script>
 </body>
+
 </html>
