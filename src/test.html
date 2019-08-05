@@ -36,15 +36,13 @@
 
 <body>
   <textarea class="text" name="" id="" cols="30" rows="10">i spek english</textarea>
-  <div class="editor" contenteditable="true" style="height: 300px;">i spek english<div><br /></div>
-    <div><br>i spek english i spek english i spek english</div>
-  </div>
+  <div class="editor" contenteditable="true" style="height: 300px;">i spek english<div><br /></div><div><br>i spek english i spek english i spek english</div></div>
   <script>
     function onTopOfRect(rect, point) {
       return point.y > rect.top && point.x > rect.left && point.x < (rect.left + rect.width) && point.y < (rect.top + rect.height);
     }
 
-    const editor = document.querySelector('.editor');
+    var editor = document.querySelector('.editor');
     const indexArr = [{
       start: 2,
       end: 6
@@ -52,15 +50,15 @@
       start: 8,
       end: 14
     }, {
-      start: 50,
-      end: 60
+      start: 55,
+      end: 62
     }, {
       start: 70,
       end: 76
     }];
     // const indexArr = [{
-    //   start: 50,
-    //   end: 60
+    //   start: 55,
+    //   end: 62
     // }];
 
     const getAllRects = (targetNode, indexArray, startIndex = 0) => {
@@ -71,13 +69,15 @@
       for (let index = 0; index < childNodes.length; ++index) {
         const node = childNodes[index];
         if (node.nodeName.toLowerCase() === 'br') {
+          console.log(node.nodeName)
           accLength += 1;
+          console.log(accLength)
           continue;
         }
         const text = node.innerText || node.textContent;
         const textRange = [accLength, accLength + text.length];
         // select all index ranges from current node
-        const validIndexRanges = indexArr.filter(item => item.start >= textRange[0] && item.start <= textRange[1]);
+        const validIndexRanges = indexArr.filter(item => item.start >= textRange[0] && item.end <= textRange[1]);
         if (validIndexRanges.length) {
           if (node.nodeType === 3) { // for text node             
             const rects = validIndexRanges.map(item => {
@@ -88,15 +88,18 @@
               // console.log(rect);
               return rect;
             });
-            accLength += node.textContent.length;
+            accLength += node.textContent.length + 1; // considering newLine
+            console.log(accLength)
             clientRects = clientRects.concat(rects);
           } else {
             clientRects = clientRects.concat(getAllRects(node, indexArr, accLength));
           }
         } else {
-          accLength += text.length;
+          accLength += text.length + 1; // considering newLine
+          console.log(accLength)
         }
       }
+      console.log(accLength)
       return clientRects;
     }
 
@@ -153,6 +156,8 @@
         rectsContainer.appendChild(div);
       })
     }
+
+    // TODO: innerText has extra newlines
 
   </script>
 </body>
