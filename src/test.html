@@ -31,6 +31,10 @@
       background-color: aqua;
       opacity: 0.6;
     }
+
+    .range-div.hovered {
+      background-color: purple;
+    }
   </style>
 </head>
 
@@ -125,15 +129,16 @@
     rectsContainer.style = `position: absolute; width: 3000px; height:3000px;`;
     panel.appendChild(rectsContainer);
     commonParent.appendChild(panel);
-
+    let relativeRects = [];
+    let rectDivs = [];
+    const editorMetrics = editor.getBoundingClientRect();
+    console.log(editorMetrics);
     if (editor.parentNode) {
       editor.parentNode.insertBefore(commonParent, editor);
 
       // get editor's bounding rect
-      const editorMetrics = editor.getBoundingClientRect();
-      console.log(editorMetrics);
-
-      const relativeRects = clientRects.map(rect => {
+      
+      relativeRects = clientRects.map(rect => {
         return {
           top: rect.top - editorMetrics.top,
           left: rect.left - editorMetrics.left,
@@ -144,9 +149,10 @@
 
       console.log(relativeRects)
 
-      const rectDivs = relativeRects.map(rect => {
+      rectDivs = relativeRects.map(rect => {
         const div = document.createElement('div');
         div.classList = 'range-div';
+        div.setAttribute('data-metrics', `${rect.top};${rect.left};${rect.width};${rect.height};`)
         div.style = `position: absolute; top: ${rect.top}px; left: ${rect.left}px;width: ${rect.width}px; height: ${rect.height}px;`;
         return div;
       });
@@ -157,7 +163,30 @@
       })
     }
 
-    // TODO: innerText has extra newlines
+    document.addEventListener('mousemove', e => {
+      // e.clientX is relative to page, need to convert back to coords relative to editor
+      const point = {
+        x: e.clientX - editorMetrics.left,
+        y: e.clientY - editorMetrics.top
+      };
+
+      const hoveredRect = relativeRects.filter(rect => onTopOfRect(rect, point))[0];
+      
+      if (hoveredRect) {
+        const hoveredDiv = rectsContainer.querySelector(`[data-metrics="${hoveredRect.top};${hoveredRect.left};${hoveredRect.width};${hoveredRect.height};"]`);
+        console.log(hoveredDiv);
+        if (hoveredDiv) {
+          hoveredDiv.classList.add('hovered');
+        }
+      } else {
+        // remove all hover styles
+        const hoveredDiv = rectsContainer.querySelector('.hovered');
+        if (hoveredDiv) {
+          hoveredDiv.classList.remove('hovered');
+        }
+      }
+      
+    })
 
   </script>
 </body>
