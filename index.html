@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Notification demo</title>
+</head>
+<body>
+  <h1>Notification</h1>
+  <script>
+    // notification requires https to work except for localhost to development
+
+    if (!('Notification') in window) {
+      console.log('notification not supported');
+    } else if (Notification.permission === 'granted') {
+      console.log('granted')
+      notify();
+    } else {
+      Notification.requestPermission().then(result => {
+        console.log(result);
+        if (result === 'granted') {
+          notify();
+        }
+      })
+    }
+
+    function notify() {
+      const title = 'bingo';
+      const options = {
+        dir: 'rtl',
+        body: 'Notification Body - Trump',  // represents body text which is displayed below the title
+        // tag: 'NTag',
+        icon: '/logo.png',
+        image: '/price-icon.png',
+        requireInteraction: true,
+        data: 'Notification data'
+      };
+      var notification = new Notification('bingo', options);
+      notification.onclick = (ev) => {
+        console.log(ev.currentTarget.data)
+      };
+    }
+  </script>
+</body>
+</html>
