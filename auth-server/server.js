@@ -45,8 +45,6 @@ app.post('/api/authorization', (req, res) => {
 // token endpoint
 app.post('/api/token', (req, res) => {
   const body = req.body;
-  console.log(body)
-  console.log(clientRegistration)
   if (body.code === clientRegistration.code && 
     body.clientId == clientRegistration.clientId && 
     body.secret === clientRegistration.clientSecret) {    

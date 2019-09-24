@@ -18,7 +18,9 @@ app.post('/api/notify_code', (req, res) => {
   axios.post('http://localhost:9999/api/token', {
     code,
     clientId,
-    secret
+    secret,
+    grant_type: 'authorization_code',
+    redirect_uri: '' // omitted here
   }).then(response => {
     accessToken = response.data.accessToken;
     res.json({
