@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .sep {
+      margin-top:20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>OAuth Login</h1>
+  <label for="username">Username:</label>
+  <input type="text" id="username">
+  <div class="sep"></div>
+  <label for="password">Password:</label>
+  <input type="password" id="password">
+  <div class="sep"></div>
+  <button id="submit">Login</button>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script>
+    const loginBtn = document.querySelector('#submit');
+    loginBtn.addEventListener('click', () => {
+      const username = document.querySelector('#username').value;
+      const password = document.querySelector('#password').value;
+      // should be clientid, redirect_uri, resposne_type
+      const query = processQuery();
+      const clientId = query.clientid;
+      axios.post('/api/authorization', {
+        username,
+        password
+      }).then(res => {
+        const code = res.data.code;
+        const redirect_uri = decodeURIComponent(query.redirect_uri);
+        const stat = query.stat;
+        const urlStr = `${redirect_uri}?code=${code}`;
+        if (stat) {
+          window.location = `${urlStr}&stat=${stat}`;
+        } else {
+          window.location = urlStr;
+        }
+      }).catch(() =>{
+        alert('login failed');
+      });
+    });
+
+    function processQuery() {
+      if (!location.search) {
+        return {};
+      }
+      const queryStr = location.search.slice(1);
+      const fieldPairs = queryStr.split('&');
+      const queryArr = fieldPairs.map(pair => {
+        const fields = pair.split('=');
+        return {
+          key: fields[0],
+          val: fields[1]
+        }
+      });
+      const queryObj = {};
+      queryArr.forEach(item => {
+        if (!item.key) {
+          return;
+        }
+        queryObj[item.key] = item.val;
+      });
+      return queryObj;
+    }
+  </script>
+</body>
+</html>
