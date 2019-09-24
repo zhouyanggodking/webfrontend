@@ -14,7 +14,7 @@ export default {
     }).then((res) => {
       const token = res.data.token;
       localStorage.setItem('token', token);
-      this.$router.push('/')
+      this.$router.push('/');
     });
   }
 };
