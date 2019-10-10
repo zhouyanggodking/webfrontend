@@ -3,6 +3,7 @@ const MyCustPlugin = require('./my-cust-plugin')
 const TestPlugin = require('./test-plugin')
 
 module.exports = {
+  mode: 'development',
   entry: './index.js',
   output: {
     filename:'main-dist.js',
