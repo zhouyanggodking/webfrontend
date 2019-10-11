@@ -22,5 +22,7 @@
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.9"
   },
-  "dependencies": {}
+  "dependencies": {
+    "tapable": "^1.1.3"
+  }
 }
