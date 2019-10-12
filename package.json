@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "ajv": "^6.10.2",
+    "loader-runner": "^3.0.0",
     "tapable": "^1.1.3"
   }
 }
