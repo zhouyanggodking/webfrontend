@@ -39,7 +39,6 @@ app.post('/api/authorization', (req, res) => {
       msg: 'invalid credential'
     });
   }
-  
 });
 
 // token endpoint
@@ -49,7 +48,10 @@ app.post('/api/token', (req, res) => {
     body.clientId == clientRegistration.clientId && 
     body.secret === clientRegistration.clientSecret) {    
     res.json({
-      accessToken
+      access_token: accessToken,
+      token_type: 'code',
+      exprires_in: 100000000,
+      refresh_token: 'refresh-token'
     });
   } else {
     res.status(401);

@@ -22,7 +22,7 @@ app.post('/api/notify_code', (req, res) => {
     grant_type: 'authorization_code',
     redirect_uri: '' // omitted here
   }).then(response => {
-    accessToken = response.data.accessToken;
+    accessToken = response.data.access_token;
     res.json({
       token
     });
@@ -47,7 +47,9 @@ app.get('/api/user_info', (req, res) => {
     })
   } else {
     res.status(401);
-    res.end();
+    res.json({
+      msg: 'invalid internal token'
+    });
   }
 });
 

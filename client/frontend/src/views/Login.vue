@@ -12,7 +12,7 @@ export default {
   methods: {
     onOAuthLogin() {
       // open to oauth login page
-      const redirectUri = encodeURIComponent('http://localhost:8081/#/oauth');
+      const redirectUri = encodeURIComponent('http://localhost:8080/#/oauth');
       window.location = `http://localhost:9999/oauth?clientid=my-client-app-id&resposne_type=code&redirect_uri=${redirectUri}`;
     }
   }
