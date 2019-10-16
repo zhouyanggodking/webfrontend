@@ -13,6 +13,35 @@ myCar.hooks.accelerate.tap('test', (newSpeed) => {
   console.log(`accelerate to ${newSpeed}`)
 });
 
+myCar.hooks.accelerateWaterfall.tap('test', (newSpeed) => {
+  console.log(`accelerate to ${newSpeed} in waterfall`)
+  return 1000;
+});
+
+myCar.hooks.accelerateWaterfall.tap('test', (newSpeed) => {
+  console.log(`accelerate to ${newSpeed} in waterfall2`)
+});
+
+myCar.hooks.accelerateBail.tap('test', (newSpeed) => {
+  console.log(`accelerate to ${newSpeed} in bail1`)
+  return '';
+});
+
+myCar.hooks.accelerateBail.tap('test', (newSpeed) => {
+  console.log(`accelerate to ${newSpeed} in bail2`)  
+});
+
+myCar.hooks.accelerateLoop.tap('test', (newSpeed) => {
+  console.log(`accelerate to ${newSpeed} in loop1`)
+  if (newSpeed < 200) {
+    return 300;
+  }
+});
+
+myCar.hooks.accelerateLoop.tap('test', (newSpeed) => {
+  console.log(`accelerate to ${newSpeed} in loop2`)
+});
+
 myCar.hooks.brake.tap('test', (newSpeed) => {
   console.log(`brake to ${newSpeed}`)
 });

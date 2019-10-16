@@ -8,13 +8,16 @@ const {
 	AsyncSeriesHook,
 	AsyncSeriesBailHook,
 	AsyncSeriesWaterfallHook
- } = require("tapable");
+} = require("tapable");
 
 class Car {
   constructor() {
     this.hooks = {
-      start: new SyncHook(),
+      start: new SyncHook(),      
       accelerate: new SyncHook(['newSpeed']),
+      accelerateWaterfall: new SyncWaterfallHook(['newSpeed']),
+      accelerateBail: new SyncBailHook(['newSpeed']),
+      accelerateLoop: new SyncLoopHook(['newSpeed']),
       brake: new SyncHook(['newSpeed']),
       stop: new SyncHook()
     }
@@ -26,6 +29,9 @@ class Car {
 
   accelerateTo(newSpeed) {
     this.hooks.accelerate.call(newSpeed);
+    this.hooks.accelerateWaterfall.call(newSpeed);
+    this.hooks.accelerateBail.call(newSpeed);
+    this.hooks.accelerateLoop.call(newSpeed);
   }
 
   brakeTo(newSpeed) {
