@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Layer Creation</title>
+  <style>
+    .layer {
+      width: 100px;
+      height: 100px;
+      transform: translateZ(0);
+    }
+
+    .parent {
+      width: 200px;
+      /* height: 2000px; */
+    }
+
+    #a, #b {
+      position: absolute;
+    }
+
+    #a {
+      left: 10px;
+      top: 10px;
+      animation: move 1s linear infinite;
+      will-change: transform;
+      z-index: 2;
+      height: 100px;
+    }
+
+    #b {
+      left: 50px;
+      top: 50px;
+      z-index: 4;
+      
+    }
+
+    @keyframes move {
+      /* from { transform: translateX(30px); }
+      to { transform: translateX(100px);} */
+      from { left: 30px }
+      to { left: 100px }
+    }
+
+    /* #bg-change {
+      width: 100px;
+      height: 100px;
+      background: red;
+    }
+
+    #bg-change::before {
+      content:"";
+      display: block;
+      width: 100px;
+      height: 100px;
+      background: blue;
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    #bg-change:hover::before {
+      opacity: 1;
+    } */
+  </style>
+</head>
+<body>
+  <!-- <button id="btn">test</button>
+  <div class="layer">WTF</div>
+  <div class="parent">
+    test
+    <div class="layer">KING</div>
+  </div> -->
+  <div id="a">A</div>
+  <div id="b">B</div>
+  <div id="bg-change"></div>
+  <!-- <script>
+    var width = 100;
+    var btn = document.querySelector('#btn');
+    btn.addEventListener('click', () => {
+      width = width + 1
+      console.log(width)
+      document.querySelector('.layer').style.width = width + 'px';
+      // document.querySelector('.layer').style.height = width + 'px';
+    })
+  </script> -->
+</body>
+</html>
