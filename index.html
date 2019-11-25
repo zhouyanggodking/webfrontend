@@ -16,6 +16,7 @@
     btn.addEventListener('click', () => {
       Promise.resolve().then(() => console.log('Microtask 1'));
       console.log('task 1');
+      setTimeout(() => console.log('godking'), 2000)
     });
 
     btn.addEventListener('click', () => {
