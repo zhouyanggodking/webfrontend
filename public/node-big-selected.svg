@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="168px" height="168px" viewBox="0 0 168 168" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 57.1 (83088) - https://sketch.com -->
+    <title>选中的大节点</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M41,9.25806452 C58.5305869,9.25806452 72.7419355,23.4694131 72.7419355,41 C72.7419355,58.5305869 58.5305869,72.7419355 41,72.7419355 C23.4694131,72.7419355 9.25806452,58.5305869 9.25806452,41 C9.25806452,23.4694131 23.4694131,9.25806452 41,9.25806452 Z M41,25.8847926 C32.6521015,25.8847926 25.8847926,32.6521015 25.8847926,41 C25.8847926,49.3478985 32.6521015,56.1152074 41,56.1152074 C49.3478985,56.1152074 56.1152074,49.3478985 56.1152074,41 C56.1152074,32.6521015 49.3478985,25.8847926 41,25.8847926 Z" id="path-1"></path>
+        <filter x="-130.0%" y="-130.0%" width="359.9%" height="359.9%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="27.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 1   0 0 0 0 0.421383304   0 0 0 0 0  0 0 0 0.8 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <circle id="path-3" cx="41" cy="41" r="10.5806452"></circle>
+        <filter x="-170.1%" y="-170.1%" width="440.2%" height="440.2%" filterUnits="objectBoundingBox" id="filter-4">
+            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="12" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 1   0 0 0 0 0.635434878   0 0 0 0 0  0 0 0 1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <circle id="path-5" cx="41" cy="41" r="3.96774194"></circle>
+        <filter x="-151.2%" y="-151.2%" width="402.4%" height="402.4%" filterUnits="objectBoundingBox" id="filter-6">
+            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="4" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1  0 0 0 1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="桌面端-HD备份" transform="translate(-622.000000, -525.000000)">
+            <g id="选中的大节点" transform="translate(665.000000, 568.000000)">
+                <g id="形状结合">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    <use fill-opacity="0.8" fill="#FF8433" fill-rule="evenodd" xlink:href="#path-1"></use>
+                </g>
+                <g id="椭圆形备份">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-4)" xlink:href="#path-3"></use>
+                    <use fill="#FFC039" fill-rule="evenodd" xlink:href="#path-3"></use>
+                </g>
+                <g id="椭圆形">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-6)" xlink:href="#path-5"></use>
+                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-5"></use>
+                </g>
+                <path d="M3.96774194,0 L13.2258065,0 L13.2258065,3.96774194 L3.967,3.967 L3.96774194,13.2258065 L0,13.2258065 L0,0 L3.96774194,0 Z" id="形状结合" fill="#FDA547" fill-rule="evenodd"></path>
+                <rect id="矩形" fill-opacity="0.1" fill="#FFFFFF" fill-rule="evenodd" x="13.2258065" y="2.64516129" width="55.5483871" height="1.32258065"></rect>
+                <rect id="矩形备份-6" fill-opacity="0.1" fill="#FFFFFF" fill-rule="evenodd" x="78.0322581" y="13.2258065" width="1.32258065" height="55.5483871"></rect>
+                <rect id="矩形备份-7" fill-opacity="0.1" fill="#FFFFFF" fill-rule="evenodd" x="2.64516129" y="13.2258065" width="1.32258065" height="55.5483871"></rect>
+                <rect id="矩形备份-5" fill-opacity="0.1" fill="#FFFFFF" fill-rule="evenodd" x="13.2258065" y="78.0322581" width="55.5483871" height="1.32258065"></rect>
+                <path d="M3.96774194,68.7741935 L13.2258065,68.7741935 L13.2258065,72.7419355 L3.967,72.7411935 L3.96774194,82 L0,82 L0,68.7741935 L3.96774194,68.7741935 Z" id="形状结合备份-2" fill="#FDA547" fill-rule="evenodd" transform="translate(6.612903, 75.387097) scale(1, -1) translate(-6.612903, -75.387097) "></path>
+                <path d="M72.7419355,0 L82,0 L82,3.96774194 L72.7411935,3.967 L72.7419355,13.2258065 L68.7741935,13.2258065 L68.7741935,0 L72.7419355,0 Z" id="形状结合备份" fill="#FDA547" fill-rule="evenodd" transform="translate(75.387097, 6.612903) scale(-1, 1) translate(-75.387097, -6.612903) "></path>
+                <path d="M72.7419355,68.7741935 L82,68.7741935 L82,72.7419355 L72.7411935,72.7411935 L72.7419355,82 L68.7741935,82 L68.7741935,68.7741935 L72.7419355,68.7741935 Z" id="形状结合备份-3" fill="#FDA547" fill-rule="evenodd" transform="translate(75.387097, 75.387097) scale(-1, -1) translate(-75.387097, -75.387097) "></path>
+            </g>
+        </g>
+    </g>
+</svg>
