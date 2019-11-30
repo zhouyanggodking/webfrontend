@@ -1,6 +1,6 @@
 class Dep {  
   constructor() {
-    this.subs = [];
+    this.subs = []; // watcher
     Dep.target = null;
   }
 
@@ -13,7 +13,7 @@ class Dep {
   }
 
   depend() {
-    if (Dep.target) {
+    if (Dep.target) { // watcher
       this.addSub(Dep.target);
     }    
   }
@@ -21,7 +21,7 @@ class Dep {
   notify() {
     const subs = this.subs.slice();
     subs.forEach(sub => {
-      sub.update();
+      sub.update(); // watcher.update
     });
   }
 }
