@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- <title>History API</title> -->
+</head>
+<body>
+  <script>
+    // https://developer.mozilla.org/zh-CN/docs/Web/API/History/replaceState
+    // history.forward()
+    // history.back()
+    // history.go(delta: Number)
+    // history.pushState(data, title, url)
+    // history.replaceState(data, title, string)
+    // popstate event
+    // hashchange event
+
+    window.addEventListener('popstate', evt => {
+      console.log(event.state)
+    })
+
+    history.pushState({page: 1}, 'page 1', '?page=1');
+    history.pushState({page: 2}, 'page 2', '?page=2');
+    history.replaceState({page: 3}, 'page 3', '?page=3');
+
+  </script>
+</body>
+</html>
