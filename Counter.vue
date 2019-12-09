@@ -1,6 +1,5 @@
 <template>
   <div>
-    <span>current counter:</span>
     <span>{{counter}}</span>
     <button @click="onCountClick">count</button>
   </div>
