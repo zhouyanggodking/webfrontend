@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>VueX</title>
+</head>
+<body>
+  <div id="app"></div>
+  <script src="./node_modules/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vuex"></script>
+  <script>
+    Vue.use(Vuex);
+    
+    const store = new Vuex.Store({
+      state: {
+        points: 0
+      },
+      mutations: {
+        increment(state) {
+          state.points++
+        }
+      }
+    });
+
+    console.log(store.state.points);
+
+    const Points = {
+      template: `<h1>{{points}}</h1>`,
+      computed: Vuex.mapState({
+        // points: state => state.points,
+        points: 'points'
+      })
+    }
+
+    const app = new Vue({
+      el: '#app',
+      store, // inject into all components
+      template: `
+        <points></points>
+      `,
+      components: {
+        Points
+      }
+    });
+
+    store.commit('increment'); // to commit mutation
+    console.log(store.state.points);
+  </script>
+</body>
+</html>
