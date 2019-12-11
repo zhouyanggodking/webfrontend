@@ -9,7 +9,7 @@
 <body>
   <div id="app"></div>
   <script src="./node_modules/vue/dist/vue.js"></script>
-  <script src="https://unpkg.com/vuex"></script>
+  <script src="./node_modules/vuex/dist/vuex.js"></script>
   <script>
     Vue.use(Vuex);
     
@@ -18,8 +18,23 @@
         points: 0
       },
       mutations: {
-        increment(state) {
-          state.points++
+        increment(state, payload) {
+          state.points += payload.amount;
+        }
+      },
+      getters: {
+        pointSquare: state => {
+          return state.points * state.points;
+        },
+        pointPoly: (state, getters) => {
+          return getters.pointSquare + state.points;
+        }
+      },
+      actions: {
+        incrementAsync(context, payload) {
+          setTimeout(() =>{
+            context.commit('increment', payload)
+          }, 1000)
         }
       }
     });
@@ -27,11 +42,35 @@
     console.log(store.state.points);
 
     const Points = {
-      template: `<h1>{{points}}</h1>`,
-      computed: Vuex.mapState({
-        // points: state => state.points,
-        points: 'points'
-      })
+      template: `<h1>{{points}} {{pointSquare}} {{pointPoly}}</h1>`,
+      computed: {
+        ...Vuex.mapState({
+          // points: state => state.points,
+          points: 'points'
+        }),
+        ...Vuex.mapGetters({
+          pointSquare: 'pointSquare',
+          pointPoly: 'pointPoly'
+        })
+      },
+      methods: {
+        ...Vuex.mapMutations({
+          increment: 'increment'
+        }),
+        incrementX(amount){
+          this.$store.commit('increment', { amount })
+        },
+        ...Vuex.mapActions({
+          incrementAsync: 'incrementAsync'
+        }),
+        incrementXAsync(amount) {
+          this.$store.dispatch('incrementAsync', {amount})
+        }
+      },
+      mounted() {
+        // this.increment({amount: 10})
+        this.incrementAsync({amount: 10})
+      }
     }
 
     const app = new Vue({
@@ -45,7 +84,7 @@
       }
     });
 
-    store.commit('increment'); // to commit mutation
+    // store.commit('increment', { amount: 10 }); // to commit mutation
     console.log(store.state.points);
   </script>
 </body>
