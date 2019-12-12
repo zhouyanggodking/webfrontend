@@ -1,7 +1,7 @@
 // need to consider array, reg, date, object.prototype, etc  circular reference?
-
+const set = new WeakSet();
 const deepClone = obj => {
-  if (typeof obj !== obj || typeof obj !== 'function') { // primitive checks
+  if (typeof obj !== 'object' || typeof obj !== 'function') { // primitive checks
     return obj;
   }
 
@@ -30,7 +30,12 @@ const deepClone = obj => {
   const clone = Object.create(proto);
   for (let key in obj) {
     if (obj.hasOwnProperty(key)) {
-      clone[key] = deepClone(obj[key]);
+      set.add(obj);
+      if (set.has(obj[key])) {
+        clone[key] = obj[key];
+      } else {
+        clone[key] = deepClone(obj[key]);
+      }      
     }
   }
   return clone;

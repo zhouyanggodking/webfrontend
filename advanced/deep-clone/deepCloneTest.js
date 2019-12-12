@@ -27,6 +27,8 @@ const obj = {
   date
 };
 
+obj.circular = obj;
+
 
 const clone = deepClone(obj)
 console.log(clone)
