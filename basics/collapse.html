@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .wrapper {
+      overflow: hidden;
+      position: relative;
+      height: 0;
+      background-color: cyan;
+      transition: height 1s;
+    }
+    .content {
+      overflow: auto;
+      margin-top: 60px;
+      background-color: purple;
+    }
+  </style>
+</head>
+<body>
+  <button id="btn" data-test="king">test</button>
+  <div class="wrapper" data-status="collapsed">
+    <div class="content">
+      <p>what</p>
+      <p>king</p>
+      <p>what</p>
+      <p>king</p><p>what</p>
+      <p>king</p><p>what</p>
+      <p>king</p><p>what</p>
+      <p>king</p><p>what</p>
+      <p>king</p>
+    </div>
+  </div>
+  <div>
+    king
+  </div>
+  <script>
+    const wrapper = document.querySelector('.wrapper');
+    const content = document.querySelector('.content');
+    const btn = document.querySelector('#btn');
+    btn.addEventListener('click', () => { 
+      if (wrapper.dataset.status === 'collapsed') {
+        wrapper.dataset.status = 'expanded';
+        wrapper.style.height = `${content.offsetHeight + content.offsetTop}px`;
+      } else {
+        wrapper.dataset.status = 'collapsed';
+        wrapper.style.height = 0;
+      }
+      
+    });
+  </script>
+</body>
+</html>
