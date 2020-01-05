@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .display, .visibility, .opacity {
+      height: 100px;
+    }
+
+    .blue {
+      background-color: blue;
+    }
+    .cyan {
+      background-color: cyan;
+    }
+    .yellow {
+      background-color: yellow;
+    }
+    .purple {
+      background-color: purple;
+    }
+
+    .display {
+      display: none;
+    }
+    .visibility {
+      visibility: hidden;      
+    }
+    .opacity {
+      opacity: 0;
+    }
+    
+  </style>
+</head>
+
+<body>
+  <div class="display blue" onclick="console.log('display clicked')">
+    display
+    <div class="purple">child</div>
+  </div>
+
+  <div class="visibility cyan" onclick="console.log('visibility clicked')">
+    visibility
+    <div class="purple">child</div>
+  </div>
+
+  <div class="opacity yellow" onclick="console.log('opacity clicked'); document.querySelector('.opacity').style.opacity=1;">
+    opacicy
+    <div class="purple">child</div>
+  </div>
+
+</body>
+
+</html>
