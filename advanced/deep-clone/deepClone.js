@@ -41,4 +41,8 @@ const deepClone = obj => {
   return clone;
 };
 
+const bftDeepClone = obj => {
+  
+}
+
 module.exports = deepClone

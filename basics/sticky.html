@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Sticky</title>
+  <style>
+    html, body {
+      margin: 0;
+      width: 100%;
+      height: 100%;      
+    }
+    .container {
+      overflow: auto;
+      height: 500px;
+    }
+
+    .top-content {
+      height: 40px;
+      background-color: cyan;
+    }
+    .sticky {
+      position: sticky;
+      top: 0;
+      /* left: 0; */
+      height: 60px;
+      background-color: purple;
+    }
+
+    .bottom-content {
+      height:1000px;
+      background-color: blue;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="top-content"></div>
+    <div class="sticky"></div>
+    <div class="bottom-content"></div>
+  </div>
+</body>
+</html>

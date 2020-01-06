@@ -42,12 +42,13 @@
 
 ///////////////////////
 const p3 = new Promise(resolve => {
-  throw new Error('error');
-  resolve();
-}).catch((e) => console.log(e))
+  // throw new Error('error');
+  resolve('king');
+  console.log('after king')
+}).then(console.log).catch((e) => console.log(e))
 
-setTimeout(console.log, 1000, 'test')
+// setTimeout(console.log, 1000, 'test')
 
-throw new Error('king'); //此处抛出异常后，已经产生的异步会继续执行,  promise.then, promise.catch, setTimeout会接着执行
+// throw new Error('king'); //此处抛出异常后，已经产生的异步会继续执行,  promise.then, promise.catch, setTimeout会接着执行
 
-p3.then(data => console.log('data')).catch(e => console.log(e))
+// p3.then(data => console.log('data')).catch(e => console.log(e))
