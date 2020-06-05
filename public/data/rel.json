@@ -1,0 +1,32 @@
+{
+  "nodes": [
+    {
+      "id": "node1",
+      "x": 100,
+      "y": 100,
+      "type": "star"
+    },
+    {
+      "id": "node2",
+      "x": 200,
+      "y": 200,
+      "type": "triangle"
+    }
+  ],
+  "edges": [
+    {
+      "source": "node1",
+      "target": "node2",
+      "label": "connection",
+      "type": "arc",
+      "curveOffset": 70
+    },
+    {
+      "source": "node2",
+      "target": "node1",
+      "label": "connection",
+      "type": "arc",
+      "curveOffset": 70
+    }
+  ]
+}
