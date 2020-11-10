@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Basic ZRender Operations</title>
+</head>
+<link rel="stylesheet" href="./style.css">
+<body>
+  <div id="app"></div>
+  <script src="../node_modules/zrender/dist/zrender.js"></script>
+  <script>
+    const dom = document.querySelector('#app');
+    const zr = zrender.init(dom);
+    const circle = new zrender.Circle({
+      shape: {
+        cx: 200,
+        cy: 200,
+        r: 100
+      },
+      draggable: true,
+      style: {
+        fill: 'cyan'
+      }
+    });
+    circle.on('mouseover', () => {
+      zr.addHover(circle, {
+        fill: 'green'
+      });
+    });
+
+    circle.on('mouseout', () => {
+      zr.removeHover(circle);
+    });    
+
+    circle.on('click', (evt) => {
+      // circle.attr('style', {        
+      //   fill: 'purple',
+      // });
+      // circle.attr('shape', {
+      //   r: 150
+      // });
+      // circle.animateTo({
+      //   shape: {
+      //     r: 150
+      //   },
+      //   style: {
+      //     fill: 'purple'
+      //   }
+      // }, 10000)
+      circle.animate('style', true)
+        .when(1000, {
+          fill: 'purple'
+        })
+        .when(2000, {
+          fill: 'cyan'
+        })
+        .start();
+
+      circle.animate('shape', true)
+        .when(1000, {
+          r: 150
+        })
+        .when(2000, {
+          r: 100
+        })
+        .start();
+    })
+    zr.add(circle);
+
+    const gradient = new  zrender.LinearGradient(0, 0, 1, 1);
+    gradient.addColorStop(0, 'blue');
+    gradient.addColorStop(1, 'red');
+    const droplet = new zrender.Droplet({
+      shape: {
+        cx: 400,
+        cy: 200,
+        width: 20,
+        height: 60
+      },
+      style: {
+        fill: gradient
+      }
+    });
+    zr.add(droplet);
+
+    const isogon = new zrender.Isogon({
+      shape: {
+        x: 400,
+        y: 400,
+        r: 100,
+        n: 10
+      },
+      style: {
+        fill: gradient
+      }
+    });
+    zr.add(isogon);
+
+    const star = new zrender.Star({
+      shape: {
+        cx: 600,
+        cy: 200,
+        r: 50,
+        n: 5
+      },
+      style: {
+        fill: 'steelblue'
+      }
+    });
+    zr.add(star);
+  </script>
+</body>
+</html>
