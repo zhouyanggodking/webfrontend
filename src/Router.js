@@ -12,11 +12,11 @@ class Router extends Component {
   render() {
     return (
       <Switch>
+        <Route exact path="/">
+          <LandingPage></LandingPage>
+        </Route>
         <Route path="/about">
           <AboutPage></AboutPage>
-        </Route>
-        <Route path="/">
-          <LandingPage></LandingPage>
         </Route>
       </Switch>
     );
