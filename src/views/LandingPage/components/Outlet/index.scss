@@ -1,0 +1,8 @@
+.outlet-container {
+  padding: 20px;
+  border: solid 1px #cccccc;
+  border-radius: 4px;
+  &:hover {
+    box-shadow: 4px 4px 8px #cccccc;
+  }
+}

@@ -1,13 +1,13 @@
 import './App.css';
 import JsHeader from './components/JsHeader';
 import JsFooter from './components/JsFooter';
-import JsBody from './components/JsBody';
+import LandingPage from './views/LandingPage';
 
 function App() {
   return (
     <div className="app">
       <JsHeader></JsHeader> 
-      <JsBody></JsBody>
+      <LandingPage></LandingPage>
       <JsFooter></JsFooter>
     </div>
   );

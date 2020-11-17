@@ -3,3 +3,9 @@
 .main {
   height: calc(100% - #{$headerHeight} - #{$footerHeight});
 }
+
+.result-list {
+  .outlet-container {
+    margin: 10px;
+  }
+}
