@@ -1,15 +1,21 @@
-import './App.css';
+import { 
+  HashRouter as Router
+} from 'react-router-dom';
+
+import './App.scss';
 import JsHeader from './components/JsHeader';
 import JsFooter from './components/JsFooter';
-import LandingPage from './views/LandingPage';
+import PageRouter from './Router';
 
 function App() {
   return (
-    <div className="app">
+    <Router>
       <JsHeader></JsHeader> 
-      <LandingPage></LandingPage>
+      <div className="main">
+        <PageRouter></PageRouter>
+      </div>
       <JsFooter></JsFooter>
-    </div>
+    </Router>
   );
 }
 

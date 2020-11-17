@@ -19,7 +19,7 @@ export default class JsBody extends Component {
 
   render() {
     return (
-      <main className="main">
+      <>
         <SearchInput change={this.onSearchInputChange}></SearchInput>
         <Result></Result>
         {
@@ -28,7 +28,7 @@ export default class JsBody extends Component {
         <ErrorBoundary>
           <ComponentCouldGoWrong></ComponentCouldGoWrong>
         </ErrorBoundary>
-      </main>
+      </>
     )
   }
 }
