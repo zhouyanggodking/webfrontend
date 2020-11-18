@@ -17,18 +17,16 @@ class Result extends Component {
   static contextType = UserContext;
 
   render() {
+    const compDict = {
+      table: Table,
+      bar: BarChart,
+      line: LineChart
+    }
     const list = this.state.result.map((item, index) => {
-      let comp = '';
-      if (item.type === 'table') {
-        comp = <Table></Table>
-      } else if (item.type === 'bar') {
-        comp = <BarChart></BarChart>
-      } else if (item.type === 'line') {
-        comp = <LineChart></LineChart>
-      }
+      const Comp = compDict[item.type];
       return (
         <Outlet key={index}>
-          {comp}
+          <Comp></Comp>
         </Outlet>
       )
     });
