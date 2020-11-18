@@ -4,6 +4,8 @@ import LineChart from './LineChart';
 import Table from './Table';
 import Outlet from './Outlet';
 
+import { UserContext } from 'context';
+
 class Result extends Component {
   constructor(props) {
     super(props);
@@ -11,6 +13,9 @@ class Result extends Component {
       result: []
     };
   }
+
+  static contextType = UserContext;
+
   render() {
     const list = this.state.result.map((item, index) => {
       let comp = '';
@@ -31,6 +36,7 @@ class Result extends Component {
       <div className="result-list">
         result component
         {list}
+        <div>By {this.context}</div>
       </div>
     );
   }

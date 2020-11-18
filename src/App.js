@@ -7,15 +7,19 @@ import JsHeader from './components/JsHeader';
 import JsFooter from './components/JsFooter';
 import PageRouter from './Router';
 
+import { UserContext } from './context';
+
 function App() {
   return (
-    <Router>
-      <JsHeader></JsHeader> 
-      <div className="main">
-        <PageRouter></PageRouter>
-      </div>
-      <JsFooter></JsFooter>
-    </Router>
+    <UserContext.Provider value="GODKING">
+      <Router>
+        <JsHeader></JsHeader> 
+        <div className="main">
+          <PageRouter></PageRouter>
+        </div>
+        <JsFooter></JsFooter>
+      </Router>
+    </UserContext.Provider>    
   );
 }
 
