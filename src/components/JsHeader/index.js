@@ -21,6 +21,7 @@ export default class JsHeader extends Component {
           <ul className="link-list row">
             <li className="link"><NavLink to="/" activeClassName="current" isActive={this.isActive}>HOME</NavLink></li>
             <li className="link"><NavLink to="/hoc" activeClassName="current">HOC Demo</NavLink></li>
+            <li className="link"><NavLink to="/hooks" activeClassName="current">Hooks Demo</NavLink></li>
             <li className="link"><NavLink to="/about" activeClassName="current">About</NavLink></li>
           </ul>
         </nav>

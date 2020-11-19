@@ -6,7 +6,8 @@ import {
 import React, { Component } from 'react';
 
 import LandingPage from './views/LandingPage';
-import HOCPage from './views/HOC';
+import HOCPage from './views/HOCPage';
+import HooksPage from './views/HooksPage';
 import AboutPage from './views/AboutPage';
 
 class Router extends Component {
@@ -18,6 +19,9 @@ class Router extends Component {
         </Route>
         <Route path="/hoc">
           <HOCPage></HOCPage>
+        </Route>
+        <Route path="/hooks">
+          <HooksPage></HooksPage>
         </Route>
         <Route path="/about">
           <AboutPage></AboutPage>
